@@ -1,10 +1,10 @@
-package com.raptorplan.RaptorPlan.model.response;
+package com.raptorplan.raptorplan.model.response;
 
-import com.raptorplan.RaptorPlan.model.Attribute;
-import com.raptorplan.RaptorPlan.model.Links;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.raptorplan.raptorplan.model.Attribute;
+import com.raptorplan.raptorplan.model.Links;
+
+import java.util.List;
 
 public class CourseResponse {
     private Integer id;
@@ -12,14 +12,14 @@ public class CourseResponse {
     private String code;
     private Integer credit;
     private String title;
-    private Attribute[] attribute;
+    private List<Attribute> attribute;
     private Links links;
 
     public CourseResponse() {
         super();
     }
 
-    public CourseResponse(Integer id, String subject, String code, Integer credit, String title, Attribute[] attribute, Links links) {
+    public CourseResponse(Integer id, String subject, String code, Integer credit, String title, List<Attribute> attribute, Links links) {
         this.id = id;
         this.subject = subject;
         this.code = code;
@@ -69,11 +69,11 @@ public class CourseResponse {
         this.title = title;
     }
 
-    public Attribute[] getAttribute() {
+    public List<Attribute> getAttribute() {
         return attribute;
     }
 
-    public void setAttribute(Attribute[] attribute) {
+    public void setAttribute(List<Attribute> attribute) {
         this.attribute = attribute;
     }
 

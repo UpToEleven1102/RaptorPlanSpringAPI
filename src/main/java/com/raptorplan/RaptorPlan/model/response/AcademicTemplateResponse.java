@@ -1,8 +1,9 @@
-package com.raptorplan.RaptorPlan.model.response;
+package com.raptorplan.raptorplan.model.response;
 
-import com.raptorplan.RaptorPlan.model.academic_template.category.DistributionCategory;
-import com.raptorplan.RaptorPlan.model.academic_template.category.FoundationCategory;
-import com.raptorplan.RaptorPlan.model.academic_template.category.ProgramCategory;
+
+import com.raptorplan.raptorplan.model.academic_template.category.DistributionCategory;
+import com.raptorplan.raptorplan.model.academic_template.category.FoundationCategory;
+import com.raptorplan.raptorplan.model.academic_template.category.ProgramCategory;
 
 public class AcademicTemplateResponse {
     private Integer id;

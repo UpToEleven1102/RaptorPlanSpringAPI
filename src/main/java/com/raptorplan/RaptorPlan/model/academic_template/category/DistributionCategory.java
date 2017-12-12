@@ -1,6 +1,6 @@
-package com.raptorplan.RaptorPlan.model.academic_template.category;
+package com.raptorplan.raptorplan.model.academic_template.category;
 
-import com.raptorplan.RaptorPlan.model.academic_template.*;
+import com.raptorplan.raptorplan.model.academic_template.*;
 
 public class DistributionCategory {
     private Integer id;

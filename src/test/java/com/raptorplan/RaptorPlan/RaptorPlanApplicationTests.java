@@ -1,4 +1,4 @@
-package com.raptorplan.RaptorPlan;
+package com.raptorplan.raptorplan;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

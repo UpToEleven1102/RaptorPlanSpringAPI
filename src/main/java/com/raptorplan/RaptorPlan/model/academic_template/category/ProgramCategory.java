@@ -1,7 +1,7 @@
-package com.raptorplan.RaptorPlan.model.academic_template.category;
+package com.raptorplan.raptorplan.model.academic_template.category;
 
-import com.raptorplan.RaptorPlan.model.academic_template.Electives;
-import com.raptorplan.RaptorPlan.model.academic_template.MajorRequirement;
+import com.raptorplan.raptorplan.model.academic_template.Electives;
+import com.raptorplan.raptorplan.model.academic_template.MajorRequirement;
 
 public class ProgramCategory {
     private Integer id;

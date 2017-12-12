@@ -1,8 +1,8 @@
-package com.raptorplan.RaptorPlan.model.academic_template.category;
+package com.raptorplan.raptorplan.model.academic_template.category;
 
-import com.raptorplan.RaptorPlan.model.academic_template.EnglishFoundation;
-import com.raptorplan.RaptorPlan.model.academic_template.MathFoundation;
-import com.raptorplan.RaptorPlan.model.academic_template.SpeechFoundation;
+import com.raptorplan.raptorplan.model.academic_template.EnglishFoundation;
+import com.raptorplan.raptorplan.model.academic_template.MathFoundation;
+import com.raptorplan.raptorplan.model.academic_template.SpeechFoundation;
 
 public class FoundationCategory {
     private Integer id;

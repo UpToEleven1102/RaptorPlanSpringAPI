@@ -1,16 +1,18 @@
-package com.raptorplan.RaptorPlan.model.academic_template;
+package com.raptorplan.raptorplan.model.academic_template;
 
-import com.raptorplan.RaptorPlan.model.Course;
+import com.raptorplan.raptorplan.model.Course;
+
+import java.util.List;
 
 public class ArtDistribution {
     private Integer id;
     private Integer credit;
-    private Course[] Course;
+    private List<Course> Course;
 
     public ArtDistribution() {
     }
 
-    public ArtDistribution(Integer id, Integer credit, Course[] course) {
+    public ArtDistribution(Integer id, Integer credit, List<Course> course) {
         this.id = id;
         this.credit = credit;
         Course = course;
@@ -32,11 +34,11 @@ public class ArtDistribution {
         this.credit = credit;
     }
 
-    public Course[] getCourse() {
+    public List<Course> getCourse() {
         return Course;
     }
 
-    public void setCourse(Course[] course) {
+    public void setCourse(List<Course> course) {
         Course = course;
     }
 }

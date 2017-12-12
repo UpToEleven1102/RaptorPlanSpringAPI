@@ -1,16 +1,19 @@
-package com.raptorplan.RaptorPlan.model.academic_template;
+package com.raptorplan.raptorplan.model.academic_template;
 
-import com.raptorplan.RaptorPlan.model.Course;
+
+import com.raptorplan.raptorplan.model.Course;
+
+import java.util.List;
 
 public class NaturalScienceLabDistribution {
     private Integer id;
     private Integer credit;
-    private com.raptorplan.RaptorPlan.model.Course[] Course;
+    private List<com.raptorplan.raptorplan.model.Course> Course;
 
     public NaturalScienceLabDistribution() {
     }
 
-    public NaturalScienceLabDistribution(Integer id, Integer credit, Course[] course) {
+    public NaturalScienceLabDistribution(Integer id, Integer credit, List<Course> course) {
         this.id = id;
         this.credit = credit;
         Course = course;
@@ -32,11 +35,11 @@ public class NaturalScienceLabDistribution {
         this.credit = credit;
     }
 
-    public Course[] getCourse() {
+    public List<Course> getCourse() {
         return Course;
     }
 
-    public void setCourse(Course[] course) {
+    public void setCourse(List<Course> course) {
         Course = course;
     }
 }

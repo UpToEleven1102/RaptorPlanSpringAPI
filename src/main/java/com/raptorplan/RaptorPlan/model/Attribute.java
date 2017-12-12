@@ -1,4 +1,4 @@
-package com.raptorplan.RaptorPlan.model;
+package com.raptorplan.raptorplan.model;
 
 public class Attribute {
     private String name;
