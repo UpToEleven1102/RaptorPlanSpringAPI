@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = ResourceConstant.COURSE_PATH)
 public class CourseResource {
@@ -38,7 +39,7 @@ public class CourseResource {
         attributes.add(new Attribute("art_distribution"));
         attributes.add(new Attribute("natural_science_lab_distribution"));
 
-        response.setAttribute(attributes);
+//        response.setAttribute(attributes);
         return new ResponseEntity<CourseResponse>(response, HttpStatus.OK);
     }
 }

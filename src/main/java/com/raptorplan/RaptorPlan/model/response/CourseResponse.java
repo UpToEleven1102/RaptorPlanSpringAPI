@@ -1,7 +1,6 @@
 package com.raptorplan.raptorplan.model.response;
 
 
-import com.raptorplan.raptorplan.model.Attribute;
 import com.raptorplan.raptorplan.model.Links;
 
 import java.util.List;
@@ -12,14 +11,14 @@ public class CourseResponse {
     private String code;
     private Integer credit;
     private String title;
-    private List<Attribute> attribute;
+    private List<AttributeResponse> attribute;
     private Links links;
 
     public CourseResponse() {
         super();
     }
 
-    public CourseResponse(Integer id, String subject, String code, Integer credit, String title, List<Attribute> attribute, Links links) {
+    public CourseResponse(Integer id, String subject, String code, Integer credit, String title, List<AttributeResponse> attribute, Links links) {
         this.id = id;
         this.subject = subject;
         this.code = code;
@@ -69,11 +68,11 @@ public class CourseResponse {
         this.title = title;
     }
 
-    public List<Attribute> getAttribute() {
+    public List<AttributeResponse> getAttribute() {
         return attribute;
     }
 
-    public void setAttribute(List<Attribute> attribute) {
+    public void setAttribute(List<AttributeResponse> attribute) {
         this.attribute = attribute;
     }
 

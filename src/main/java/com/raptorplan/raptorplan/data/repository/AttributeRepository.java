@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AttributeRepository extends CrudRepository<AttributeEntity,Long>{
-
+    AttributeEntity findById(Long id);
 }

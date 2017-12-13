@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan
 @AutoConfigurationPackage
 public class RaptorPlanApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(RaptorPlanApplication.class, args);
 	}

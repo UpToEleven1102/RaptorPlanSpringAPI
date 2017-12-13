@@ -10,7 +10,7 @@ import {AttributeService} from "../service/attribute.service";
 })
 export class AddAttributeComponent implements OnInit {
     form;
-    constructor(private service:AttributeService){
+    constructor(private service: AttributeService){
 
     }
 
@@ -21,7 +21,7 @@ export class AddAttributeComponent implements OnInit {
     }
 
     onSubmit(formValue) {
-      this.service.add(formValue).subscribe(attributes=>{
+      this.service.add(formValue).subscribe(attributes => {
         console.log(attributes);
       });
     }
