@@ -10,7 +10,7 @@ export class AttributeService {
     const jsonObject = JSON.stringify(attribute);
     const headers = new Headers({'Content-Type' : 'appplication/json'});
     console.log(headers);
-    return this.http.post('http://localhost:8080/v1/attribute', jsonObject, { headers : headers })
+    return this.http.post('http://localhost:8080/v1/course', jsonObject, { headers : headers })
       .map(response => {
       return (response);
     });

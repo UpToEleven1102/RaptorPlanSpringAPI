@@ -3,6 +3,7 @@ package com.raptorplan.raptorplan.rest;
 import com.raptorplan.raptorplan.model.Attribute;
 import com.raptorplan.raptorplan.model.Links;
 import com.raptorplan.raptorplan.model.Self;
+import com.raptorplan.raptorplan.model.request.CourseRequest;
 import com.raptorplan.raptorplan.model.response.CourseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,6 +20,12 @@ public class CourseResource {
     @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<CourseResponse> getCourses(){
         return new ResponseEntity<CourseResponse>(new CourseResponse(),HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
+    consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<CourseResponse> addCourse(@RequestBody CourseRequest courseRequest){
+        return new ResponseEntity<CourseResponse>(new CourseResponse(),HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/{courseId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

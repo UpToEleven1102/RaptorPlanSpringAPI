@@ -24,7 +24,7 @@ public class AttributeResource {
 
 
     @RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-    consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<AttributeResponse> addAttribute(@RequestBody AttributeRequest attribute){
         AttributeResponse response = service.create(attribute);
         return new ResponseEntity<AttributeResponse>(response, HttpStatus.CREATED);
