@@ -5,4 +5,5 @@ public class ResourceConstant {
     public static final String COURSE_PATH = VERSION + "/course";
     public static final String ATTRIBUTE_PATH = VERSION + "/attribute";
     public static final String FRONTEND_PATH = VERSION + "/frontend";
+    public static final String CATEGORY_PATH = VERSION + "/category";
 }

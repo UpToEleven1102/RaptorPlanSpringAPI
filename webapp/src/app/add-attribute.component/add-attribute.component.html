@@ -5,9 +5,14 @@
     <div class="grid-container">
         <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
             <div class="grid-x grid-margin-x grid-margin-y">
-                <div class="cell small-2"></div>
-                <div class="cell small-4">
-                    <input type="text" name="name" placeholder="Attribute name" formControlName="name"> </div>
+                <div class="cell small-3">
+                    <input type="text" name="name" placeholder="Attribute name" formControlName="name">
+                </div>
+                <div class="cell small-3">
+                    <select name="categoryId" formControlName="category">
+                        <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                    </select>
+                </div>
                 <div class="cell small-1">
                     <input type="submit" class="button success" value="Submit">
                 </div>

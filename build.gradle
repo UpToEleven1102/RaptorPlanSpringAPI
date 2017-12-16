@@ -29,8 +29,8 @@ dependencies {
 //	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile 'com.google.guava:guava:23.5-jre'
 	compile files('ojdbc7.jar')
 	runtime('com.h2database:h2')
-	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

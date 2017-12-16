@@ -1,6 +1,7 @@
 package com.raptorplan.raptorplan.data.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,13 +15,13 @@ public class CourseEntity {
     @Column(name = "subject")
     private String subject;
 
-    @Column(name = "code")
+    @Column(name = "code", unique = true)
     private String code;
 
     @Column(name = "credit")
     private Integer credit;
 
-    @Column(name = "title")
+    @Column(name = "title", unique = true)
     private String title;
 
     @ManyToMany

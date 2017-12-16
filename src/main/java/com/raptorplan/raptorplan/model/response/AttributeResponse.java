@@ -8,15 +8,17 @@ public class AttributeResponse {
     private Long id;
     private String name;
     private List<CourseResponse> courses;
+    private String category;
     private Links links;
 
     public AttributeResponse() {
     }
 
-    public AttributeResponse(Long id, String name, List<CourseResponse> courses, Links links) {
+    public AttributeResponse(Long id, String name, List<CourseResponse> courses, String category, Links links) {
         this.id = id;
         this.name = name;
         this.courses = courses;
+        this.category = category;
         this.links = links;
     }
 
@@ -50,5 +52,13 @@ public class AttributeResponse {
 
     public void setLinks(Links links) {
         this.links = links;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

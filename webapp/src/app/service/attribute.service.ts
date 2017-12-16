@@ -4,18 +4,23 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class AttributeService {
-  constructor(private http: Http) {}
+  headers;
+  constructor(private http: Http) {
+    this.headers = new Headers({'Content-Type' : 'application/json'});
+  }
 
   add(attribute) {
     const jsonObject = JSON.stringify(attribute);
-    const headers = new Headers({'Content-Type' : 'appplication/json'});
-    console.log(headers);
-    return this.http.post('http://localhost:8080/v1/course', jsonObject, { headers : headers })
+    return this.http.post('http://localhost:8080/v1/attribute', jsonObject, { headers : this.headers })
       .map(response => {
       return (response);
     });
   }
-
+  getCategories() {
+    return this.http.get('http://localhost:8080/v1/category', {headers: this.headers}).map(response => {
+      return response;
+    });
+  }
   // getAll(){
   //   var headers = new Headers({'Accept': 'application/json'});
   //   console.log(headers);

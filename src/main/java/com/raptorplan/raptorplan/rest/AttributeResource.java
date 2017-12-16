@@ -1,3 +1,4 @@
+
 package com.raptorplan.raptorplan.rest;
 
 import com.raptorplan.raptorplan.model.request.AttributeRequest;
@@ -8,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @CrossOrigin
@@ -22,6 +25,11 @@ public class AttributeResource {
         this.service = service;
     }
 
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public ResponseEntity<List<AttributeResponse>> getAttributes(){
+        List<AttributeResponse> attributes = service.getAll();
+        return new ResponseEntity<>(attributes, HttpStatus.OK);
+    }
 
     @RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -35,6 +43,4 @@ public class AttributeResource {
         AttributeResponse response = service.get(attributeId);
         return new ResponseEntity<AttributeResponse>(response, HttpStatus.OK);
     }
-
-
 }

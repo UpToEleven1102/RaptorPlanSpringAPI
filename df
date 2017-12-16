@@ -1,0 +1,23 @@
+[33mcommit c02d564cc357e92a9c14e06445e010eb89e2b023[m
+Author: Huyen Vu <quyhuyen.vu@hotmail.com>
+Date:   Wed Dec 13 14:14:43 2017 -0500
+
+    add post COurseResource
+
+[33mcommit 4ca0bdf65955d950532326b6b83ecb38b910a39b[m
+Author: Huyen Vu <quyhuyen.vu@hotmail.com>
+Date:   Wed Dec 13 14:02:49 2017 -0500
+
+    test post CORS from angular
+
+[33mcommit 78c304f8c0d01014cc5c1d2d8ac73354d0fb2445[m
+Author: Huyen Vu <quyhuyen.vu@hotmail.com>
+Date:   Tue Dec 12 15:00:28 2017 -0500
+
+    update post attribute
+
+[33mcommit f58cc86d921b3b4f773209efaaa249494e137769[m
+Author: Huyen Vu <quyhuyen.vu@hotmail.com>
+Date:   Wed Dec 6 16:23:23 2017 -0500
+
+    creating models and controllers(started for courses)

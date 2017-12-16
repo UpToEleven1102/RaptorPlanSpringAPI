@@ -27,6 +27,7 @@ public class AttributeEntityToAttributeResponse implements Converter<AttributeEn
         response.setLinks(links);
         if(null!=source.getCourses())
             response.setCourses(convertCourseEntity(source.getCourses()));
+        response.setCategory(source.getCategory().getName());
 
         return response;
     }
