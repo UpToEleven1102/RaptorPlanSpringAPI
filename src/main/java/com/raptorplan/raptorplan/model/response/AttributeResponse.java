@@ -11,8 +11,7 @@ public class AttributeResponse {
     private String category;
     private Links links;
 
-    public AttributeResponse() {
-    }
+    public AttributeResponse() {}
 
     public AttributeResponse(Long id, String name, List<CourseResponse> courses, String category, Links links) {
         this.id = id;

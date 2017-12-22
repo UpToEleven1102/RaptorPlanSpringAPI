@@ -5,6 +5,7 @@ import { AttributeComponent } from './attribute.component/attribute.component';
 import { AddAttributeComponent } from './add-attribute.component/add-attribute.component';
 import { UpdateAttributeComponent } from './update-attribute.component/update-attribute.component';
 import { AttributeListComponent } from './attribute-list.component/attribute-list.component';
+import { AddCourseComponent } from './add-course.component/add-course.component';
 
 const appRoutes: Routes = [
     {path: 'main', component: MainComponent},
@@ -13,7 +14,9 @@ const appRoutes: Routes = [
         {path: 'add', component: AddAttributeComponent},
         {path: 'update', component: UpdateAttributeComponent}
     ]},
-    {path: 'course', component: CourseComponent},
+    {path: 'course', component: CourseComponent, children: [
+        {path: 'add', component: AddCourseComponent}
+    ]},
     {path: '', pathMatch: 'full', redirectTo: 'main'}
 ];
 

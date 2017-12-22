@@ -13,7 +13,9 @@ import { AttributeListComponent } from './attribute-list.component/attribute-lis
 import { CourseListComponent } from './course-list.component/course-list.component';
 import { AddAttributeComponent } from './add-attribute.component/add-attribute.component';
 import { UpdateAttributeComponent } from './update-attribute.component/update-attribute.component';
-import {AttributeService} from "./service/attribute.service";
+import { AddCourseComponent } from './add-course.component/add-course.component';
+import { AttributeService } from './service/attribute.service';
+import { CourseService } from './service/course.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {AttributeService} from "./service/attribute.service";
     AttributeListComponent,
     CourseListComponent,
     AddAttributeComponent,
-    UpdateAttributeComponent
+    UpdateAttributeComponent,
+    AddCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {AttributeService} from "./service/attribute.service";
     routing,
     HttpModule
   ],
-  providers: [AttributeService],
+  providers: [AttributeService,
+          CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

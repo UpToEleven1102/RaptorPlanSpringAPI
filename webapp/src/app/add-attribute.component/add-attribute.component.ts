@@ -22,7 +22,6 @@ export class AddAttributeComponent implements OnInit {
         });
         this.service.getCategories().subscribe(categories => {
             this.categories = categories.json();
-            console.log(this.categories);
         });
     }
 

@@ -5,15 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "H.API.courses")
+@Table(name = "H.courses")
 public class CourseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
-
-    @Column(name = "subject")
-    private String subject;
 
     @Column(name = "code", unique = true)
     private String code;
@@ -24,16 +21,21 @@ public class CourseEntity {
     @Column(name = "title", unique = true)
     private String title;
 
-    @ManyToMany
-    @JoinTable(name="H.API.join_course_attribute",
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name="H.API.course_attribute",
             joinColumns = @JoinColumn(name="course_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id", referencedColumnName = "id"))
     private List<AttributeEntity> attributes;
 
+    @ManyToOne
+    private DisciplineEntity discipline;
+
+//    @ManyToOne
+//    private TemplateEntity template;
+
     public CourseEntity(){}
 
-    public CourseEntity(String subject, String code, Integer credit, String title, List<AttributeEntity> attributes) {
-        this.subject = subject;
+    public CourseEntity(String code, Integer credit, String title, List<AttributeEntity> attributes) {
         this.code = code;
         this.credit = credit;
         this.title = title;
@@ -46,14 +48,6 @@ public class CourseEntity {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
     }
 
     public String getCode() {
@@ -86,5 +80,45 @@ public class CourseEntity {
 
     public void setAttributes(List<AttributeEntity> attributes) {
         this.attributes = attributes;
+    }
+
+    public DisciplineEntity getDiscipline() {
+        return discipline;
+    }
+
+    public void setDiscipline(DisciplineEntity discipline) {
+        this.discipline = discipline;
+    }
+//
+//    public TemplateEntity getTemplate() {
+//        return template;
+//    }
+//
+//    public void setTemplate(TemplateEntity template) {
+//        this.template = template;
+//    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CourseEntity)) return false;
+
+        CourseEntity that = (CourseEntity) o;
+
+        return code.equals(that.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return code.hashCode();
+    }
+
+    public void addAttribute(AttributeEntity attribute) {
+        if(this.attributes==null){
+            attributes = new ArrayList<>();
+            this.attributes.add(attribute);
+        } else if(!this.attributes.contains(attribute)) {
+            attributes.add(attribute);
+        }
     }
 }

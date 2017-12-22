@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "H.API.categories")
+@Table(name = "H.categories")
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,7 +50,7 @@ public class CategoryEntity {
     }
 
     public void addAttribute(AttributeEntity attribute){
-        if(null!=this.attributes){
+        if(null==this.attributes){
             this.attributes = new ArrayList<>();
             this.attributes.add(attribute);
         } else {

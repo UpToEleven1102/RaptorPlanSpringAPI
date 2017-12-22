@@ -55,4 +55,8 @@ public class AttributeService {
         AttributeResponse response = entity == null? null : conversionService.convert(entity , AttributeResponse.class);
         return response;
     }
+
+    public void delete(Long id){
+        repoAttribute.delete(id);
+    }
 }

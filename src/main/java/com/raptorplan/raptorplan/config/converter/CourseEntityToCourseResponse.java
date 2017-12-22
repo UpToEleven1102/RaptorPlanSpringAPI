@@ -13,13 +13,17 @@ public class CourseEntityToCourseResponse implements Converter<CourseEntity,Cour
     @Override
     public CourseResponse convert(CourseEntity source) {
         CourseResponse response = new CourseResponse();
-        response.setCode(source.getCode());
-        if(null != source.getAttributes())
-            response.setAttribute(convertAttributeEntities(source.getAttributes()));
-        response.setCredit(source.getCredit());
-        response.setId(source.getId());
-        response.setSubject(source.getSubject());
         response.setTitle(source.getTitle());
+        response.setId(source.getId());
+        response.setCredit(source.getCredit());
+        response.setCode(source.getCode());
+        response.setSubject(source.getDiscipline().getCode());
+        List<String> attributes = new ArrayList<>();
+        for (AttributeEntity attribute :
+                source.getAttributes()) {
+            attributes.add(attribute.getName());
+        }
+        response.setAttribute(attributes);
 
         return response;
     }

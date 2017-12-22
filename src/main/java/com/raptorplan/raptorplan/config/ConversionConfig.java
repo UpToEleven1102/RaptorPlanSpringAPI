@@ -1,9 +1,6 @@
 package com.raptorplan.raptorplan.config;
 
-import com.raptorplan.raptorplan.config.converter.AttributeEntityToAttributeResponse;
-import com.raptorplan.raptorplan.config.converter.AttributeRequestToAttributeEntity;
-import com.raptorplan.raptorplan.config.converter.CategoryEntityToCategoryResponse;
-import com.raptorplan.raptorplan.config.converter.CourseEntityToCourseResponse;
+import com.raptorplan.raptorplan.config.converter.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ConversionServiceFactoryBean;
@@ -22,6 +19,10 @@ public class ConversionConfig {
         converters.add(new AttributeEntityToAttributeResponse());
         converters.add(new CourseEntityToCourseResponse());
         converters.add(new CategoryEntityToCategoryResponse());
+        converters.add(new DisciplineEntityToDisciplineResponse());
+        converters.add(new DisciplineRequestToDisciplineEntity());
+        converters.add(new TemplateRequestToTemplateEntity());
+        converters.add(new TemplateEntityToTemplateResponse());
         return converters;
     }
 

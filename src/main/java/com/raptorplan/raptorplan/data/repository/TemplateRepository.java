@@ -1,0 +1,10 @@
+package com.raptorplan.raptorplan.data.repository;
+
+import com.raptorplan.raptorplan.data.entity.TemplateEntity;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TemplateRepository extends CrudRepository<TemplateEntity,Long> {
+    public TemplateEntity findByMajor(String major);
+}

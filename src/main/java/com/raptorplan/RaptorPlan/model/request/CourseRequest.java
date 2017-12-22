@@ -9,11 +9,11 @@ public class CourseRequest {
     private String code;
     private Integer credit;
     private String name;
-    private List<Attribute> attributes;
+    private List<Long> attributes;
 
     public CourseRequest(){}
 
-    public CourseRequest(String subject, String code, Integer credit, String name, List<Attribute> attributes) {
+    public CourseRequest(String subject, String code, Integer credit, String name, List<Long> attributes) {
         this.subject = subject;
         this.code = code;
         this.credit = credit;
@@ -53,11 +53,11 @@ public class CourseRequest {
         this.name = name;
     }
 
-    public List<Attribute> getAttributes() {
+    public List<Long> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(List<Attribute> attributes) {
+    public void setAttributes(List<Long> attributes) {
         this.attributes = attributes;
     }
 }

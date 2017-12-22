@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "H.API.attributes")
+@Table(name = "H.attributes")
 public class AttributeEntity {
     @Id
     @Column(name = "id")
@@ -22,6 +22,9 @@ public class AttributeEntity {
 
     @ManyToOne
     private CategoryEntity category;
+
+//    @ManyToOne
+//    private TemplateEntity template;
 
     public AttributeEntity(){}
 
@@ -61,5 +64,37 @@ public class AttributeEntity {
 
     public void setCourses(List<CourseEntity> courses) {
         this.courses = courses;
+    }
+
+//    public TemplateEntity getTemplate() {
+//        return template;
+//    }
+//
+//    public void setTemplate(TemplateEntity template) {
+//        this.template = template;
+//    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AttributeEntity)) return false;
+
+        AttributeEntity that = (AttributeEntity) o;
+
+        return name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    public void addCourse(CourseEntity course){
+        if(this.courses==null){
+            this.courses = new ArrayList<>();
+            this.courses.add(course);
+        } else if(!this.courses.contains(course)){
+            this.courses.add(course);
+        }
     }
 }
