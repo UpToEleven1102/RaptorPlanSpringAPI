@@ -10,14 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class DataBootstrap implements CommandLineRunner {
 
     CategoryRepository repoCategory;
     DisciplineRepository repoDiscipline;
     AttributeRepository repoAttribute;
 
-    @Autowired
+//    @Autowired
     public DataBootstrap(CategoryRepository repoCategory, AttributeRepository repoAttribute, DisciplineRepository repoDiscipline){
         this.repoCategory = repoCategory;
         this.repoAttribute = repoAttribute;
@@ -38,43 +38,53 @@ public class DataBootstrap implements CommandLineRunner {
         repoCategory.save(entity3);
 
         AttributeEntity attribute1 = new AttributeEntity();
-        attribute1.setName("english_foundation");
+        attribute1.setCode("english_foundation");
+        attribute1.setName("English Foundation");
         attribute1.setCategory(entity1);
         entity1.addAttribute(attribute1);
         AttributeEntity attribute2 = new AttributeEntity();
-        attribute2.setName("math_foundation");
+        attribute2.setCode("math_foundation");
+        attribute2.setName("Math Foundation");
         attribute2.setCategory(entity1);
         entity1.addAttribute(attribute2);
         AttributeEntity attribute3 = new AttributeEntity();
-        attribute3.setName("speech_foundation");
+        attribute3.setCode("speech_foundation");
+        attribute3.setName("Speech Foundation");
         attribute3.setCategory(entity1);
         entity1.addAttribute(attribute3);
         AttributeEntity attribute4 = new AttributeEntity();
-        attribute4.setName("art_distribution");
+        attribute4.setCode("art_distribution");
+        attribute4.setName("Art Distribution");
         attribute4.setCategory(entity2);
         entity2.addAttribute(attribute4);
         AttributeEntity attribute5 = new AttributeEntity();
-        attribute5.setName("behavioral_distribution");
+        attribute5.setCode("behavioral_distribution");
+        attribute5.setName("Behavioral Distribution");
         attribute5.setCategory(entity2);
         entity2.addAttribute(attribute5);
         AttributeEntity attribute6 = new AttributeEntity();
-        attribute6.setName("humanities_distribution");
+        attribute6.setCode("humanities_distribution");
+        attribute6.setName("Humanities Distribution");
         attribute6.setCategory(entity2);
         entity2.addAttribute(attribute6);
         AttributeEntity attribute7 = new AttributeEntity();
-        attribute7.setName("natural_science_lab_distribution");
+        attribute7.setCode("natural_science_lab_distribution");
+        attribute7.setName("Natural Science with Lab Distribution");
         attribute7.setCategory(entity2);
         entity2.addAttribute(attribute7);
         AttributeEntity attribute8 = new AttributeEntity();
-        attribute8.setName("natural_science_distribution");
+        attribute8.setCode("natural_science_distribution");
+        attribute8.setName("Natural Science Distribution");
         attribute8.setCategory(entity2);
         entity2.addAttribute(attribute8);
         AttributeEntity attribute9 = new AttributeEntity();
-        attribute9.setName("major");
+        attribute9.setCode("major");
+        attribute9.setName("Major Requirement");
         attribute9.setCategory(entity2);
         entity3.addAttribute(attribute9);
         AttributeEntity attribute10 = new AttributeEntity();
-        attribute10.setName("electives");
+        attribute10.setCode("electives");
+        attribute10.setName("Electives");
         attribute10.setCategory(entity2);
         entity3.addAttribute(attribute10);
 
@@ -178,5 +188,7 @@ public class DataBootstrap implements CommandLineRunner {
         repoDiscipline.save(new DisciplineEntity("TED","Teacher Education"));
         repoDiscipline.save(new DisciplineEntity("WMST","Women's Studies"));
         repoDiscipline.save(new DisciplineEntity("WRT","Writing"));
+
+
     }
 }

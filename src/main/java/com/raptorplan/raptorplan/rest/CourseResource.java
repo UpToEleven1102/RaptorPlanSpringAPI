@@ -1,12 +1,12 @@
 package com.raptorplan.raptorplan.rest;
 
-import com.raptorplan.raptorplan.model.Attribute;
 import com.raptorplan.raptorplan.model.Links;
 import com.raptorplan.raptorplan.model.Self;
 import com.raptorplan.raptorplan.model.request.CourseRequest;
 import com.raptorplan.raptorplan.model.response.CourseResponse;
 import com.raptorplan.raptorplan.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,21 +21,23 @@ import java.util.List;
 @RequestMapping(path = ResourceConstant.COURSE_PATH)
 public class CourseResource {
     private CourseService courseService;
+    private ConversionService conversionService;
 
     @Autowired
-    public CourseResource(CourseService courseService){
+    public CourseResource(CourseService courseService, ConversionService conversionService){
         this.courseService = courseService;
+        this.conversionService = conversionService;
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<CourseResponse> getCourses(){
-        return new ResponseEntity<>(new CourseResponse(),HttpStatus.OK);
+    public ResponseEntity<List<CourseResponse>> getCourses(){
+        return new ResponseEntity<List<CourseResponse>>(this.courseService.getCourses(),HttpStatus.OK);
     }
 
     @RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-    consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<CourseResponse> addCourse(@RequestBody CourseRequest courseRequest){
-        CourseResponse response = courseService.createCourse(courseRequest);
+        consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<CourseResponse> createCourse(@RequestBody CourseRequest courseRequest){
+        CourseResponse response = this.courseService.createCourse(courseRequest);
         return new ResponseEntity<CourseResponse>(response,HttpStatus.CREATED);
     }
 

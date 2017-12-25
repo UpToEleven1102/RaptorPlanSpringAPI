@@ -6,6 +6,7 @@ import java.util.List;
 
 public class AttributeResponse {
     private Long id;
+    private String code;
     private String name;
     private List<CourseResponse> courses;
     private String category;
@@ -13,13 +14,18 @@ public class AttributeResponse {
 
     public AttributeResponse() {}
 
-    public AttributeResponse(Long id, String name, List<CourseResponse> courses, String category, Links links) {
+    public AttributeResponse(Long id, String name,String code, List<CourseResponse> courses, String category, Links links) {
         this.id = id;
         this.name = name;
+        this.code = code;
         this.courses = courses;
         this.category = category;
         this.links = links;
     }
+
+    public String getCode(){return code;}
+
+    public void setCode(String code){this.code = code;}
 
     public Long getId() {
         return id;

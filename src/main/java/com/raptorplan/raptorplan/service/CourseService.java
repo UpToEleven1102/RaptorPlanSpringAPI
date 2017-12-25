@@ -1,15 +1,20 @@
 package com.raptorplan.raptorplan.service;
 
+import com.google.common.collect.Lists;
+import com.raptorplan.raptorplan.config.converter.CourseEntityToCourseResponse;
 import com.raptorplan.raptorplan.data.entity.AttributeEntity;
 import com.raptorplan.raptorplan.data.entity.CourseEntity;
 import com.raptorplan.raptorplan.data.entity.DisciplineEntity;
 import com.raptorplan.raptorplan.data.repository.AttributeRepository;
 import com.raptorplan.raptorplan.data.repository.CourseRepository;
 import com.raptorplan.raptorplan.data.repository.DisciplineRepository;
+import com.raptorplan.raptorplan.model.CourseAttribute;
 import com.raptorplan.raptorplan.model.request.CourseRequest;
 import com.raptorplan.raptorplan.model.response.CourseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,11 +40,10 @@ public class CourseService {
         DisciplineEntity discipline = repoDiscipline.findByCode(requestObj.getSubject());
         entity.setDiscipline(discipline);
         discipline.addCourse(entity);
-        repoDiscipline.save(discipline);
 
-        for (Long attribute :
+        for (CourseAttribute attribute :
                 requestObj.getAttributes()) {
-            AttributeEntity attributeEntity = repoAttribute.findById(attribute);
+            AttributeEntity attributeEntity = repoAttribute.findById(attribute.getId());
             entity.addAttribute(attributeEntity);
             attributeEntity.addCourse(entity);
         }
@@ -51,7 +55,12 @@ public class CourseService {
         return null;
     }
 
+    public List<CourseResponse> getCourses(){
+        List<CourseResponse> response = Lists.newArrayList(new PageImpl(Lists.newArrayList(repoCourse.findAll())).map(new CourseEntityToCourseResponse()));
+        return response;
+    }
+
     public CourseResponse getCourseByCode(String code){
-        return null;
+        return this.conversionService.convert(this.repoCourse.findByCode(code),CourseResponse.class);
     }
 }

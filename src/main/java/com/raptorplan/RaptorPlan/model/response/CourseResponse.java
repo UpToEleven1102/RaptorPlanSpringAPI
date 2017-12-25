@@ -11,7 +11,6 @@ public class CourseResponse {
     private String code;
     private Integer credit;
     private String title;
-    private String disciplineCode;
     private List<String> attribute;
     private Links links;
 
@@ -19,13 +18,12 @@ public class CourseResponse {
         super();
     }
 
-    public CourseResponse(Integer id, String subject, String code, Integer credit, String title, String disciplineCode, List<String> attribute, Links links) {
+    public CourseResponse(Integer id, String subject, String code, Integer credit, String title, List<String> attribute, Links links) {
         this.id = id;
         this.subject = subject;
         this.code = code;
         this.credit = credit;
         this.title = title;
-        this.disciplineCode = disciplineCode;
         this.attribute = attribute;
         this.links = links;
     }
@@ -84,13 +82,5 @@ public class CourseResponse {
 
     public void setLinks(Links links) {
         this.links = links;
-    }
-
-    public String getDiscipline() {
-        return disciplineCode;
-    }
-
-    public void setDiscipline(String discipline) {
-        this.disciplineCode = discipline;
     }
 }

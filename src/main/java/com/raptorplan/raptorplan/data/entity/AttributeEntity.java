@@ -14,7 +14,10 @@ public class AttributeEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "code",unique = true)
+    private String code;
+
+    @Column(name = "name")
     private String name;
 
     @ManyToMany(mappedBy = "attributes")
@@ -23,22 +26,13 @@ public class AttributeEntity {
     @ManyToOne
     private CategoryEntity category;
 
-//    @ManyToOne
-//    private TemplateEntity template;
+    public AttributeEntity() {
+    }
 
-    public AttributeEntity(){}
-
-    public AttributeEntity(String name, List<CourseEntity> courses, CategoryEntity category) {
+    public AttributeEntity(String code, String name, List<CourseEntity> courses, CategoryEntity category) {
+        this.code = code;
         this.name = name;
         this.courses = courses;
-        this.category = category;
-    }
-
-    public CategoryEntity getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryEntity category) {
         this.category = category;
     }
 
@@ -48,6 +42,14 @@ public class AttributeEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -66,13 +68,13 @@ public class AttributeEntity {
         this.courses = courses;
     }
 
-//    public TemplateEntity getTemplate() {
-//        return template;
-//    }
-//
-//    public void setTemplate(TemplateEntity template) {
-//        this.template = template;
-//    }
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
 
     @Override
     public boolean equals(Object o) {

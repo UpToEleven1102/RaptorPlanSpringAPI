@@ -1,6 +1,23 @@
 <section>
-    <div style="text-align : center">
-        <a href="./course/add" class="button success">Add new course</a>
-    </div>
-    <router-outlet></router-outlet>
+  <div style="text-align : center">
+    <a href="./course/add" class="button success">Add new course</a>
+  </div>
+  <router-outlet></router-outlet>
+
+  <table *ngIf="courses">
+    <tr>
+      <th>Discipline</th>
+      <th>Course Code</th>
+      <th>Course Name</th>
+      <th>Credit</th>
+      <th> </th>
+    </tr>
+    <tr *ngFor="let course of courses">
+      <td>{{course.subject}}</td>
+      <td>{{course.code}}</td>
+      <td>{{course.name}}</td>
+      <td>{{course.credit}}</td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+  </table>
 </section>

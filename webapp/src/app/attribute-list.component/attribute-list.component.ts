@@ -6,5 +6,6 @@ import {Component} from '@angular/core';
     styleUrls: ['./attribute-list.component.css']
 })
 export class AttributeListComponent {
-
+  attributes;
+  constructor(){this.attributes=[];}
 }

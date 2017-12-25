@@ -17,6 +17,7 @@ public class ConversionConfig {
         Set<Converter> converters = new HashSet<>();
         converters.add(new AttributeRequestToAttributeEntity());
         converters.add(new AttributeEntityToAttributeResponse());
+        converters.add(new CourseRequestToCourseEntity());
         converters.add(new CourseEntityToCourseResponse());
         converters.add(new CategoryEntityToCategoryResponse());
         converters.add(new DisciplineEntityToDisciplineResponse());

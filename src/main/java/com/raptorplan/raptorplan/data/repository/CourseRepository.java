@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface CourseRepository extends CrudRepository<CourseEntity, Long>{
+    public CourseEntity findByCode(String code);
+    public List<CourseEntity> findByDisciplineCode(String code);
 
-    List<CourseEntity> findByDisciplineCode(String code);
 }

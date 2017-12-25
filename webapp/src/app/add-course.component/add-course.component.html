@@ -1,8 +1,48 @@
 <section>
-    <div class="grid-container">
-        <!-- <form action=""> -->
-            <input type="text" placeholder="Course Code">
-            <input type="button" value="Submit">
-        <!-- </form> -->
-    </div>
+  <div class="grid-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <div class="card">
+        <div class="card-divider">
+          <span>Discipline</span>
+        </div>
+        <div style="padding: 10px 10px 5px 10px;">
+          <select formControlName="subject">
+            <option *ngFor="let subject of subjects" value="{{subject.code}}">{{subject.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <input type="text" placeholder="Course Code" formControlName="code">
+      <input type="text" placeholder="Course Title" formControlName="name">
+      <input type="text" placeholder="Credit" formControlName="credit">
+      <div class="grid-x grid-margin-x" formArrayName="attributes">
+        <div class="cell small-9" *ngFor="let attrControl of form.controls.attributes.controls; let i=index">
+          <div [formGroupName]="i">
+            <div class="card">
+              <div class="card-divider">
+                <span>
+                  Course Attribute:
+                </span>
+                <a *ngIf="i>0" (click)="removeAttribute(i)" aria-haspopup="true" title="Remove attribute" class="has-tip top title-bar-right"
+                   style="width: 2em"
+                   data-tooltip><i
+                  class="fa fa-minus-circle" aria-hidden="true"></i></a>
+              </div>
+              <div style="padding: 10px 10px 5px 10px;">
+                <select formControlName="id">
+                  <option *ngFor="let attribute of attr" value="{{attribute.id}}">{{attribute.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell small-3">
+          <a (click)="addAttribute()" aria-haspopup="true" title="Add attribute" class="has-tip top" data-tooltip><i
+            class="fa fa-plus-square-o" aria-hidden="true" style="font-size: 2.5em;"></i></a>
+        </div>
+      </div>
+      <input [disabled]="!form.valid" type="submit" value="Submit" class="button">
+    </form>
+  </div>
 </section>

@@ -1,6 +1,6 @@
 package com.raptorplan.raptorplan.model.request;
 
-import com.raptorplan.raptorplan.model.Attribute;
+import com.raptorplan.raptorplan.model.CourseAttribute;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ public class CourseRequest {
     private String code;
     private Integer credit;
     private String name;
-    private List<Long> attributes;
+    private List<CourseAttribute> attributes;
 
     public CourseRequest(){}
 
-    public CourseRequest(String subject, String code, Integer credit, String name, List<Long> attributes) {
+    public CourseRequest(String subject, String code, Integer credit, String name, List<CourseAttribute> attributes) {
         this.subject = subject;
         this.code = code;
         this.credit = credit;
@@ -53,11 +53,13 @@ public class CourseRequest {
         this.name = name;
     }
 
-    public List<Long> getAttributes() {
+    public List<CourseAttribute> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(List<Long> attributes) {
+    public void setAttributes(List<CourseAttribute> attributes) {
         this.attributes = attributes;
     }
+
 }
+

@@ -27,7 +27,6 @@ export class AddAttributeComponent implements OnInit {
 
     onSubmit(formValue) {
       this.service.add(formValue).subscribe(attributes => {
-        console.log(attributes);
         this.router.navigate(['/attribute']);
       });
     }

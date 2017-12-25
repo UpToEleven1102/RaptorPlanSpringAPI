@@ -6,8 +6,12 @@ import com.raptorplan.raptorplan.data.entity.AttributeEntity;
 import com.raptorplan.raptorplan.data.entity.CategoryEntity;
 import com.raptorplan.raptorplan.data.repository.AttributeRepository;
 import com.raptorplan.raptorplan.data.repository.CategoryRepository;
+import com.raptorplan.raptorplan.model.Links;
+import com.raptorplan.raptorplan.model.Self;
+import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
 import com.raptorplan.raptorplan.model.request.AttributeRequest;
 import com.raptorplan.raptorplan.model.response.AttributeResponse;
+import com.raptorplan.raptorplan.rest.ResourceConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.PageImpl;
@@ -40,12 +44,15 @@ public class AttributeService {
         return response;
     }
 
-    public List<AttributeResponse> getAll(){
-        ArrayList<AttributeEntity> query =  Lists.newArrayList(repoAttribute.findAll());
-        List<AttributeResponse> response = null;
-        if(query.size()!=0&&query!=null){
-            response = Lists.newArrayList((new PageImpl<AttributeEntity>(query)).map(new AttributeEntityToAttributeResponse()));
-        }
+    public List<AttributeCustom> getAll(){
+        List<AttributeCustom> response =  repoAttribute.getAttributeList();
+        response.forEach( e ->{
+            Links links = new Links();
+            Self self = new Self();
+            self.setRef(ResourceConstant.ATTRIBUTE_PATH+"/"+e.getId());
+            links.setSelf(self);
+            e.setLinks(links);
+        });
         return response;
     }
 

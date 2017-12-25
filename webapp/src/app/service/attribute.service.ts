@@ -1,31 +1,49 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {baseUrlToken} from "./provider.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class AttributeService {
   headers;
-  constructor(private http: Http) {
+  constructor(private http: Http, @Inject(baseUrlToken)public baseUrl) {
     this.headers = new Headers({'Content-Type' : 'application/json'});
   }
 
   add(attribute) {
     const jsonObject = JSON.stringify(attribute);
-    return this.http.post('http://localhost:8080/v1/attribute', jsonObject, { headers : this.headers })
+    return this.http.post(this.baseUrl+'/attribute', jsonObject, { headers : this.headers })
       .map(response => {
-      return (response);
+      return (response.json());
     });
   }
   getCategories() {
-    return this.http.get('http://localhost:8080/v1/category', {headers: this.headers}).map(response => {
-      return response;
+    return this.http.get(this.baseUrl+'/category', {headers: this.headers}).map(response => {
+      return response.json();
     });
   }
-  // getAll(){
-  //   var headers = new Headers({'Accept': 'application/json'});
-  //   console.log(headers);
-  //   return this.http.get('https://api-raptorplan.herokuapp.com/v1/attribute',{headers:headers}).map(resp =>{
-  //     return resp.json();
-  //   });
-  // }
+
+  getAll():Observable<Attribute[]>{
+    return this.http.get(this.baseUrl+'/attribute',{headers: this.headers}).map(this.mapResponse);
+  }
+
+  mapResponse(response):Attribute[]{
+    return response.json();
+  }
+}
+
+export class Attribute{
+  id;
+  code: string;
+  name: string;
+  links: Links;
+}
+
+export class Links{
+  self: Self;
+}
+
+export class Self{
+  href:string;
 }

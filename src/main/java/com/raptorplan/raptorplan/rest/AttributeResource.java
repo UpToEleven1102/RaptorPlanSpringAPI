@@ -1,6 +1,7 @@
 
 package com.raptorplan.raptorplan.rest;
 
+import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
 import com.raptorplan.raptorplan.model.request.AttributeRequest;
 import com.raptorplan.raptorplan.model.response.AttributeResponse;
 import com.raptorplan.raptorplan.service.AttributeService;
@@ -26,8 +27,8 @@ public class AttributeResource {
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public ResponseEntity<List<AttributeResponse>> getAttributes(){
-        List<AttributeResponse> attributes = service.getAll();
+    public ResponseEntity<List<AttributeCustom>> getAttributes(){
+        List<AttributeCustom> attributes = service.getAll();
         return new ResponseEntity<>(attributes, HttpStatus.OK);
     }
 
