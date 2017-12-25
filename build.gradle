@@ -31,7 +31,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile 'com.google.guava:guava:23.5-jre'
 	compile 'org.json:json:20171018'
-	compile files('ojdbc7.jar')
+	compile files('ojdbc8.jar')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
