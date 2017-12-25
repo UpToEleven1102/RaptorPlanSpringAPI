@@ -10,14 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class DataBootstrap implements CommandLineRunner {
 
     CategoryRepository repoCategory;
     DisciplineRepository repoDiscipline;
     AttributeRepository repoAttribute;
 
-//    @Autowired
+    @Autowired
     public DataBootstrap(CategoryRepository repoCategory, AttributeRepository repoAttribute, DisciplineRepository repoDiscipline){
         this.repoCategory = repoCategory;
         this.repoAttribute = repoAttribute;
