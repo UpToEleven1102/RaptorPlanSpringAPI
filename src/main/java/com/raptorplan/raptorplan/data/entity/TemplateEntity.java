@@ -1,7 +1,5 @@
 package com.raptorplan.raptorplan.data.entity;
 
-import com.raptorplan.raptorplan.model.Attribute;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
