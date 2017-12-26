@@ -5,8 +5,8 @@
     <h1>
       API Management Tool
     </h1>
-    <a href="./course" class="button">Manage Courses</a>
-    <a href="./attribute" class="button">Manage Attributes</a>
+    <a [routerLink]="['./course']" class="button">Manage Courses</a>
+    <a [routerLink]="['./attribute']" class="button">Manage Attributes</a>
   </div>
   <hr>
   <router-outlet></router-outlet>

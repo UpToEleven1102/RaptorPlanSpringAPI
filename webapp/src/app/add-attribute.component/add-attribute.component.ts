@@ -21,7 +21,7 @@ export class AddAttributeComponent implements OnInit {
             category: new FormControl(1)
         });
         this.service.getCategories().subscribe(categories => {
-            this.categories = categories.json();
+            this.categories = categories;
         });
     }
 

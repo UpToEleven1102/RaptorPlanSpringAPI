@@ -26,10 +26,10 @@ export class AddCourseComponent implements OnInit {
       name: new FormControl('',Validators.required),
       subject: new FormControl('CMSC',Validators.required),
       code: new FormControl('',Validators.required),
-      credit: new FormControl(0,Validators.required),
+      credit: new FormControl(0,Validators.compose([Validators.required, Validators.pattern("^[0-9]")])),
       attributes: new FormArray([
         new FormGroup({
-          id: new FormControl('4',Validators.compose([Validators.required, Validators.pattern("^[0-9]")]))
+          id: new FormControl('4', Validators.required)
         })
       ])
     });

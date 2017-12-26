@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main.component/main.component';
-import { routing } from './route.component';
 import { AttributeComponent } from './attribute.component/attribute.component';
 import { CourseComponent } from './course.component/course.component';
 import { AttributeListComponent } from './attribute-list.component/attribute-list.component';
@@ -17,6 +16,7 @@ import { AddCourseComponent } from './add-course.component/add-course.component'
 import { AttributeService } from './service/attribute.service';
 import { CourseService } from './service/course.service';
 import { baseUrlToken,baseUrl } from "./service/provider.service";
+import {routing} from "./route.component";
 
 
 @NgModule({
@@ -35,8 +35,8 @@ import { baseUrlToken,baseUrl } from "./service/provider.service";
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    routing,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [AttributeService,
           CourseService,

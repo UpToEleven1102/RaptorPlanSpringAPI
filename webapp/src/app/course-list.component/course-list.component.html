@@ -1,4 +1,19 @@
 <section>
+  <table *ngIf="courses">
+    <tr>
+      <th>Discipline</th>
+      <th>Course Code</th>
+      <th>Course Name</th>
+      <th>Credit</th>
+      <th> </th>
+    </tr>
+    <tr *ngFor="let course of courses">
+      <td>{{course.subject}}</td>
+      <td>{{course.code}}</td>
+      <td>{{course.title}}</td>
+      <td>{{course.credit}}</td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+  </table>
 
-    
 </section>

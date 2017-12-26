@@ -10,7 +10,6 @@ public class ApiConfig {
     public ObjectMapper objectMapper(){
         return new ObjectMapper();
     }
-
     @Bean
     public ObjectWriter objectWriter(ObjectMapper objectMapper){
         return objectMapper.writerWithDefaultPrettyPrinter();
