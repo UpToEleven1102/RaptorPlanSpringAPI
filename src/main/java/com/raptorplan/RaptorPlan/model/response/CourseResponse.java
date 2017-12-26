@@ -6,7 +6,7 @@ import com.raptorplan.raptorplan.model.Links;
 import java.util.List;
 
 public class CourseResponse {
-    private Integer id;
+    private Long id;
     private String subject;
     private String code;
     private Integer credit;
@@ -18,7 +18,7 @@ public class CourseResponse {
         super();
     }
 
-    public CourseResponse(Integer id, String subject, String code, Integer credit, String title, List<String> attribute, Links links) {
+    public CourseResponse(Long id, String subject, String code, Integer credit, String title, List<String> attribute, Links links) {
         this.id = id;
         this.subject = subject;
         this.code = code;
@@ -28,11 +28,11 @@ public class CourseResponse {
         this.links = links;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -27,4 +27,10 @@ export class CourseService {
       return response.json();
     });
   }
+
+  public deleteCourse(id){
+    return this.http.delete(this.baseUrl+'/course/'+id, {headers:this.headers});
+
+  }
 }
+

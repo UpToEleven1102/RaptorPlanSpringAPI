@@ -63,4 +63,11 @@ public class CourseService {
     public CourseResponse getCourseByCode(String code){
         return this.conversionService.convert(this.repoCourse.findByCode(code),CourseResponse.class);
     }
+
+    public void deleteCourse(Long id){
+        CourseEntity course = this.repoCourse.findOne(id);
+        DisciplineEntity discipline = course.getDiscipline();
+        discipline.getCourses().remove(course);
+        this.repoCourse.delete(id);
+    }
 }

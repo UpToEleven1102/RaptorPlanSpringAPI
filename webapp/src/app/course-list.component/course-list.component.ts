@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../service/course.service";
+import {Router} from "@angular/router";
 
 @Component ({
     selector: 'app-course-list',
@@ -9,15 +10,21 @@ import {CourseService} from "../service/course.service";
 export class CourseListComponent implements OnInit{
 
   courses;
-  constructor(private couseService:CourseService){
+  constructor(private couseService:CourseService, private router:Router){
 
   }
 
   ngOnInit(){
     this.couseService.getCourses().subscribe(response => {
       this.courses = response;
-      console.log(this.courses);
     });
 
+  }
+
+  removeCourse(id){
+    this.couseService.deleteCourse(id).subscribe();
+    this.couseService.getCourses().subscribe(response => {
+      this.courses = response;
+    });
   }
 }

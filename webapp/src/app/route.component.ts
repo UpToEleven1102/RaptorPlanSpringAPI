@@ -9,7 +9,7 @@ import {AddCourseComponent} from './add-course.component/add-course.component';
 import {CourseListComponent} from "./course-list.component/course-list.component";
 
 const appRoutes: Routes = [
-  {path: 'main', component: MainComponent},
+  {path: 'index.html', component: MainComponent},
   {
     path: 'attribute', component: AttributeComponent, children: [
     {path: '', component: AttributeListComponent},

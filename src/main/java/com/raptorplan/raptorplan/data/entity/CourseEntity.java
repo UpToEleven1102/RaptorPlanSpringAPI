@@ -10,7 +10,7 @@ public class CourseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "code", unique = true)
     private String code;
@@ -42,11 +42,11 @@ public class CourseEntity {
         this.attributes = attributes;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -89,7 +89,7 @@ public class CourseEntity {
     public void setDiscipline(DisciplineEntity discipline) {
         this.discipline = discipline;
     }
-//
+
 //    public TemplateEntity getTemplate() {
 //        return template;
 //    }

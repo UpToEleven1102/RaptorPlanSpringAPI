@@ -48,26 +48,8 @@ public class CourseResource {
         return new ResponseEntity<CourseResponse>(response, HttpStatus.OK);
     }
 
-//    @RequestMapping(path = "/{courseId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    public ResponseEntity<CourseResponse> getCourseById(@PathVariable Long courseId){
-//        System.out.println("Get course by id");
-//        CourseResponse response = new CourseResponse();
-//        response.setId(1234);
-//        response.setSubject("MATH");
-//        response.setCode("MATH284");
-//        response.setCredit(4);
-//        response.setTitle("Linear Algebra");
-//        Links link = new Links();
-//        Self self = new Self();
-//        self.setRef(ResourceConstant.COURSE_PATH+"/"+response.getId());
-//        link.setSelf(self);
-//        response.setLinks(link);
-//
-//        List<Attribute> attributes = new ArrayList<>();
-//        attributes.add(new Attribute("art_distribution"));
-//        attributes.add(new Attribute("natural_science_lab_distribution"));
-//
-////        response.setAttribute(attributes);
-//        return new ResponseEntity<CourseResponse>(response, HttpStatus.OK);
-//    }
+    @RequestMapping(path = "/{courseId}", method = RequestMethod.DELETE)
+    public void deleteCourse(@PathVariable Long courseId){
+        this.courseService.deleteCourse(courseId);
+    }
 }

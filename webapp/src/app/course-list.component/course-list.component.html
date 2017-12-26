@@ -14,6 +14,7 @@
       <td>{{course.title}}</td>
       <td>{{course.credit}}</td>
       <td><span *ngFor="let attribute of course.attribute">{{attribute}} </span></td>
+      <td><a (click)="removeCourse(course.id)">delete</a></td>
     </tr>
   </table>
 
