@@ -5,6 +5,7 @@
       <th>Course Code</th>
       <th>Course Name</th>
       <th>Credit</th>
+      <th>Attribute(s)</th>
       <th> </th>
     </tr>
     <tr *ngFor="let course of courses">
@@ -12,7 +13,7 @@
       <td>{{course.code}}</td>
       <td>{{course.title}}</td>
       <td>{{course.credit}}</td>
-      <td><a href="#">Delete</a></td>
+      <td><span *ngFor="let attribute of course.attribute">{{attribute}} </span></td>
     </tr>
   </table>
 
