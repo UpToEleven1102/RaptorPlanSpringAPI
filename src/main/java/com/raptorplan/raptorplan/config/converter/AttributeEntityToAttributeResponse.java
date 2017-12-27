@@ -8,10 +8,8 @@ import com.raptorplan.raptorplan.model.response.AttributeResponse;
 import com.raptorplan.raptorplan.model.response.CourseResponse;
 import com.raptorplan.raptorplan.rest.ResourceConstant;
 import org.springframework.core.convert.converter.Converter;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class AttributeEntityToAttributeResponse implements Converter<AttributeEntity,AttributeResponse> {
     @Override
@@ -27,7 +25,6 @@ public class AttributeEntityToAttributeResponse implements Converter<AttributeEn
         response.setLinks(links);
         if(null!=source.getCourses())
             response.setCourses(convertCourseEntity(source.getCourses()));
-        response.setCategory(source.getCategory().getName());
 
         return response;
     }
@@ -42,5 +39,4 @@ public class AttributeEntityToAttributeResponse implements Converter<AttributeEn
         }
         return response;
     }
-
 }

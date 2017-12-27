@@ -17,6 +17,9 @@ import { AttributeService } from './service/attribute.service';
 import { CourseService } from './service/course.service';
 import { baseUrlToken,baseUrl } from "./service/provider.service";
 import {routing} from "./route.component";
+import {McTemplateListComponent} from "./mc-template-list.component/mc-template-list.component";
+import {McTemplateComponent} from "./mc-template.component/mc-template.component";
+import {AddMcTemplateComponent} from "./add-mc-template.component/add-mc-template.component";
 
 
 @NgModule({
@@ -29,8 +32,10 @@ import {routing} from "./route.component";
     CourseListComponent,
     AddAttributeComponent,
     UpdateAttributeComponent,
-    AddCourseComponent
-
+    AddCourseComponent,
+    McTemplateListComponent,
+    McTemplateComponent,
+    AddMcTemplateComponent
   ],
   imports: [
     BrowserModule,

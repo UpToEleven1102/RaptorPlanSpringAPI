@@ -1,11 +1,7 @@
 package com.raptorplan.raptorplan.service;
 
-import com.google.common.collect.Lists;
-import com.raptorplan.raptorplan.config.converter.AttributeEntityToAttributeResponse;
 import com.raptorplan.raptorplan.data.entity.AttributeEntity;
-import com.raptorplan.raptorplan.data.entity.CategoryEntity;
 import com.raptorplan.raptorplan.data.repository.AttributeRepository;
-import com.raptorplan.raptorplan.data.repository.CategoryRepository;
 import com.raptorplan.raptorplan.model.Links;
 import com.raptorplan.raptorplan.model.Self;
 import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
@@ -14,7 +10,6 @@ import com.raptorplan.raptorplan.model.response.AttributeResponse;
 import com.raptorplan.raptorplan.rest.ResourceConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -23,23 +18,15 @@ import java.util.*;
 public class AttributeService {
     public AttributeRepository repoAttribute;
     public ConversionService conversionService;
-    public CategoryRepository repoCategory;
 
     @Autowired
-    public AttributeService(AttributeRepository attributeRepository, ConversionService conversionService, CategoryRepository categoryRepository){
+    public AttributeService(AttributeRepository attributeRepository, ConversionService conversionService){
         this.repoAttribute = attributeRepository;
         this.conversionService = conversionService;
-        this.repoCategory = categoryRepository;
     }
 
     public AttributeResponse create(AttributeRequest requestObj){
         AttributeEntity attribute = conversionService.convert(requestObj, AttributeEntity.class);
-        CategoryEntity category = repoCategory.findById(requestObj.getCategoryId());
-
-        category.addAttribute(attribute);
-        repoCategory.save(category);
-
-        attribute.setCategory(category);
         AttributeResponse response = conversionService.convert(repoAttribute.save(attribute),AttributeResponse.class);
         return response;
     }

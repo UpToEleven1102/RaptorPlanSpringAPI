@@ -34,37 +34,35 @@ public class TemplateEntityToTemplateResponse implements Converter<TemplateEntit
 
         InstitutionalAttribute institutionalAttribute = new InstitutionalAttribute(source.getInstitutionalCredit(),null);
 
-        source.getInstitutionalAttributes().forEach(e ->{
+        source.getInstAttributes().forEach(e ->{
             institutionalAttribute.addAttribute(converter.convert(e));
         });
 
-        source.getRequiredCourses().forEach(e ->{
-            CourseResponse course = courseConverter.convert(e);
-            if (course.getAttribute().contains("english_foundation"))
-                englishFoundation.addCourse(course);
-            if (course.getAttribute().contains("math_foundation"))
-                mathFoundation.addCourse(course);
-            if (course.getAttribute().contains("speech_foundation"))
-                speechFoundation.addCourse(course);
-            if (course.getAttribute().contains("art_distribution"))
-                artDistribution.addCourse(course);
-            if (course.getAttribute().contains("behavioral_distribution"))
-                behavioralDistribution.addCourse(course);
-            if (course.getAttribute().contains("humanities_distribution"))
-                humanitiesDistribution.addCourse(course);
-            if (course.getAttribute().contains("natural_science_lab_distribution"))
-                scienceLabDistribution.addCourse(course);
-            if (course.getAttribute().contains("natural_science_distribution"))
-                scienceDistribution.addCourse(course);
-            if (course.getAttribute().contains("major"))
-                majorFoundation.addCourse(course);
-            if (course.getAttribute().contains("electives"))
-                electives.addCourse(course);
-        });
+//        source.getRequiredCourses().forEach(e ->{
+//            CourseResponse course = courseConverter.convert(e);
+//            if (course.getAttribute().contains("english_foundation"))
+//                englishFoundation.addCourse(course);
+//            if (course.getAttribute().contains("math_foundation"))
+//                mathFoundation.addCourse(course);
+//            if (course.getAttribute().contains("speech_foundation"))
+//                speechFoundation.addCourse(course);
+//            if (course.getAttribute().contains("art_distribution"))
+//                artDistribution.addCourse(course);
+//            if (course.getAttribute().contains("behavioral_distribution"))
+//                behavioralDistribution.addCourse(course);
+//            if (course.getAttribute().contains("humanities_distribution"))
+//                humanitiesDistribution.addCourse(course);
+//            if (course.getAttribute().contains("natural_science_lab_distribution"))
+//                scienceLabDistribution.addCourse(course);
+//            if (course.getAttribute().contains("natural_science_distribution"))
+//                scienceDistribution.addCourse(course);
+//            if (course.getAttribute().contains("major"))
+//                majorFoundation.addCourse(course);
+//            if (course.getAttribute().contains("electives"))
+//                electives.addCourse(course);
+//        });
         ObjectMapper mapper = new ObjectMapper();
 //        mapper.writeValueAsString(englishFoundation);
-
-
 
         JSONObject value = new JSONObject();
         try {

@@ -7,6 +7,9 @@ import {UpdateAttributeComponent} from './update-attribute.component/update-attr
 import {AttributeListComponent} from './attribute-list.component/attribute-list.component';
 import {AddCourseComponent} from './add-course.component/add-course.component';
 import {CourseListComponent} from "./course-list.component/course-list.component";
+import {McTemplateComponent} from "./mc-template.component/mc-template.component";
+import {AddMcTemplateComponent} from "./add-mc-template.component/add-mc-template.component";
+import {McTemplateListComponent} from "./mc-template-list.component/mc-template-list.component";
 
 const appRoutes: Routes = [
   {path: 'index.html', component: MainComponent},
@@ -14,14 +17,18 @@ const appRoutes: Routes = [
     path: 'attribute', component: AttributeComponent, children: [
     {path: '', component: AttributeListComponent},
     {path: 'add', component: AddAttributeComponent},
-    {path: 'update', component: UpdateAttributeComponent}
-  ]
+    {path: 'update', component: UpdateAttributeComponent}]
   },
   {
     path: 'course', component: CourseComponent, children: [
     {path: 'add', component: AddCourseComponent},
     {path: '', component: CourseListComponent}
   ]
+  }, {
+    path: 'mctemplate', component: McTemplateComponent, children: [
+      {path: 'add', component: AddMcTemplateComponent},
+      {path: '', component: McTemplateListComponent}
+    ]
   },
   {path: '', pathMatch: 'full', redirectTo: 'main'}
 ];

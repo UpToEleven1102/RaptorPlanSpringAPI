@@ -1,92 +1,55 @@
 package com.raptorplan.raptorplan;
 
 import com.raptorplan.raptorplan.data.entity.AttributeEntity;
-import com.raptorplan.raptorplan.data.entity.CategoryEntity;
 import com.raptorplan.raptorplan.data.entity.DisciplineEntity;
 import com.raptorplan.raptorplan.data.repository.AttributeRepository;
-import com.raptorplan.raptorplan.data.repository.CategoryRepository;
 import com.raptorplan.raptorplan.data.repository.DisciplineRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 //@Component
 public class DataBootstrap implements CommandLineRunner {
 
-    CategoryRepository repoCategory;
     DisciplineRepository repoDiscipline;
     AttributeRepository repoAttribute;
 
 //    @Autowired
-    public DataBootstrap(CategoryRepository repoCategory, AttributeRepository repoAttribute, DisciplineRepository repoDiscipline){
-        this.repoCategory = repoCategory;
+    public DataBootstrap( AttributeRepository repoAttribute, DisciplineRepository repoDiscipline){
         this.repoAttribute = repoAttribute;
         this.repoDiscipline = repoDiscipline;
     }
     @Override
     public void run(String... args) throws Exception {
 
-        CategoryEntity entity1 = new CategoryEntity();
-        entity1.setName("foundation");
-        CategoryEntity entity2 = new CategoryEntity();
-        entity2.setName("distribution");
-        CategoryEntity entity3 = new CategoryEntity();
-        entity3.setName("program");
-
-        repoCategory.save(entity1);
-        repoCategory.save(entity2);
-        repoCategory.save(entity3);
-
         AttributeEntity attribute1 = new AttributeEntity();
         attribute1.setCode("english_foundation");
         attribute1.setName("English Foundation");
-        attribute1.setCategory(entity1);
-        entity1.addAttribute(attribute1);
         AttributeEntity attribute2 = new AttributeEntity();
         attribute2.setCode("math_foundation");
         attribute2.setName("Math Foundation");
-        attribute2.setCategory(entity1);
-        entity1.addAttribute(attribute2);
         AttributeEntity attribute3 = new AttributeEntity();
         attribute3.setCode("speech_foundation");
         attribute3.setName("Speech Foundation");
-        attribute3.setCategory(entity1);
-        entity1.addAttribute(attribute3);
         AttributeEntity attribute4 = new AttributeEntity();
         attribute4.setCode("art_distribution");
         attribute4.setName("Art Distribution");
-        attribute4.setCategory(entity2);
-        entity2.addAttribute(attribute4);
         AttributeEntity attribute5 = new AttributeEntity();
         attribute5.setCode("behavioral_distribution");
         attribute5.setName("Behavioral Distribution");
-        attribute5.setCategory(entity2);
-        entity2.addAttribute(attribute5);
         AttributeEntity attribute6 = new AttributeEntity();
         attribute6.setCode("humanities_distribution");
         attribute6.setName("Humanities Distribution");
-        attribute6.setCategory(entity2);
-        entity2.addAttribute(attribute6);
         AttributeEntity attribute7 = new AttributeEntity();
         attribute7.setCode("natural_science_lab_distribution");
         attribute7.setName("Natural Science with Lab Distribution");
-        attribute7.setCategory(entity2);
-        entity2.addAttribute(attribute7);
         AttributeEntity attribute8 = new AttributeEntity();
         attribute8.setCode("natural_science_distribution");
         attribute8.setName("Natural Science Distribution");
-        attribute8.setCategory(entity2);
-        entity2.addAttribute(attribute8);
         AttributeEntity attribute9 = new AttributeEntity();
         attribute9.setCode("major");
         attribute9.setName("Major Requirement");
-        attribute9.setCategory(entity2);
-        entity3.addAttribute(attribute9);
         AttributeEntity attribute10 = new AttributeEntity();
         attribute10.setCode("electives");
         attribute10.setName("Electives");
-        attribute10.setCategory(entity2);
-        entity3.addAttribute(attribute10);
 
         repoAttribute.save(attribute1);
         repoAttribute.save(attribute2);

@@ -19,7 +19,6 @@ public class ConversionConfig {
         converters.add(new AttributeEntityToAttributeResponse());
         converters.add(new CourseRequestToCourseEntity());
         converters.add(new CourseEntityToCourseResponse());
-        converters.add(new CategoryEntityToCategoryResponse());
         converters.add(new DisciplineEntityToDisciplineResponse());
         converters.add(new DisciplineRequestToDisciplineEntity());
         converters.add(new TemplateRequestToTemplateEntity());

@@ -23,17 +23,13 @@ public class AttributeEntity {
     @ManyToMany(mappedBy = "attributes")
     private List<CourseEntity> courses;
 
-    @ManyToOne
-    private CategoryEntity category;
-
     public AttributeEntity() {
     }
 
-    public AttributeEntity(String code, String name, List<CourseEntity> courses, CategoryEntity category) {
+    public AttributeEntity(String code, String name, List<CourseEntity> courses) {
         this.code = code;
         this.name = name;
         this.courses = courses;
-        this.category = category;
     }
 
     public Long getId() {
@@ -66,14 +62,6 @@ public class AttributeEntity {
 
     public void setCourses(List<CourseEntity> courses) {
         this.courses = courses;
-    }
-
-    public CategoryEntity getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryEntity category) {
-        this.category = category;
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.raptorplan.raptorplan.model.response.CategoryResponse;
 public class AttributeRequest {
     public String name;
     public Long category;
+
     public AttributeRequest(){}
 
     public AttributeRequest(String name, Long category){

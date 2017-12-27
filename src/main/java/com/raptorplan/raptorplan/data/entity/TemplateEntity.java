@@ -51,12 +51,39 @@ public class TemplateEntity {
     private List<AttributeEntity> instAttributes;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<CourseEntity> requiredCourses;
+    private List<CourseEntity> englCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> mathCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> speechCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> artCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> behaveCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> humanCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> scienceCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> labCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> majorCourses;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<CourseEntity> electiveCourses;
 
     public TemplateEntity() {
     }
 
-    public TemplateEntity(String major, Integer enFoundationCredit, Integer mathFoundationCredit, Integer speechFoundationCredit, Integer artDistributionCredit, Integer behavioralDistributionCredit, Integer humanDistributionCredit, Integer scienceDistributionCredit, Integer scienceLabDistributionCredit, Integer programCredit, Integer electivesCredit, Integer institutionalCredit, List<AttributeEntity> institutionalAttributes, List<CourseEntity> requiredCourses) {
+    public TemplateEntity(String major, Integer enFoundationCredit, Integer mathFoundationCredit, Integer speechFoundationCredit, Integer artDistributionCredit, Integer behavioralDistributionCredit, Integer humanDistributionCredit, Integer scienceDistributionCredit, Integer scienceLabDistributionCredit, Integer programCredit, Integer electivesCredit, Integer institutionalCredit, List<AttributeEntity> instAttributes, List<CourseEntity> englCourses, List<CourseEntity> mathCourses, List<CourseEntity> speechCourses, List<CourseEntity> artCourses, List<CourseEntity> behaveCourses, List<CourseEntity> humanCourses, List<CourseEntity> scienceCourses, List<CourseEntity> labCourses, List<CourseEntity> majorCourses, List<CourseEntity> electiveCourses) {
         this.major = major;
         this.enFoundationCredit = enFoundationCredit;
         this.mathFoundationCredit = mathFoundationCredit;
@@ -69,8 +96,17 @@ public class TemplateEntity {
         this.programCredit = programCredit;
         this.electivesCredit = electivesCredit;
         this.institutionalCredit = institutionalCredit;
-        this.instAttributes = institutionalAttributes;
-        this.requiredCourses = requiredCourses;
+        this.instAttributes = instAttributes;
+        this.englCourses = englCourses;
+        this.mathCourses = mathCourses;
+        this.speechCourses = speechCourses;
+        this.artCourses = artCourses;
+        this.behaveCourses = behaveCourses;
+        this.humanCourses = humanCourses;
+        this.scienceCourses = scienceCourses;
+        this.labCourses = labCourses;
+        this.majorCourses = majorCourses;
+        this.electiveCourses = electiveCourses;
     }
 
     public Long getId() {
@@ -177,28 +213,183 @@ public class TemplateEntity {
         this.institutionalCredit = institutionalCredit;
     }
 
-    public List<AttributeEntity> getInstitutionalAttributes() {
-        return this.instAttributes;
+    public List<AttributeEntity> getInstAttributes() {
+        return instAttributes;
     }
 
-    public void setInstitutionalAttributes(List<AttributeEntity> institutionalAttributes) {
-        this.instAttributes = institutionalAttributes;
+    public void setInstAttributes(List<AttributeEntity> instAttributes) {
+        this.instAttributes = instAttributes;
     }
 
-    public List<CourseEntity> getRequiredCourses() {
-        return requiredCourses;
+    public List<CourseEntity> getEnglCourses() {
+        return englCourses;
     }
 
-    public void setRequiredCourses(List<CourseEntity> requiredCourses) {
-        this.requiredCourses = requiredCourses;
+    public void setEnglCourses(List<CourseEntity> englCourses) {
+        this.englCourses = englCourses;
     }
 
-    public void addCourses(CourseEntity course){
-        if(this.requiredCourses==null){
-            this.requiredCourses = new ArrayList<>();
-            this.requiredCourses.add(course);
-        } else if (!this.requiredCourses.contains(course)) {
-            this.requiredCourses.add(course);
+    public List<CourseEntity> getMathCourses() {
+        return mathCourses;
+    }
+
+    public void setMathCourses(List<CourseEntity> mathCourses) {
+        this.mathCourses = mathCourses;
+    }
+
+    public List<CourseEntity> getSpeechCourses() {
+        return speechCourses;
+    }
+
+    public void setSpeechCourses(List<CourseEntity> speechCourses) {
+        this.speechCourses = speechCourses;
+    }
+
+    public List<CourseEntity> getArtCourses() {
+        return artCourses;
+    }
+
+    public void setArtCourses(List<CourseEntity> artCourses) {
+        this.artCourses = artCourses;
+    }
+
+    public List<CourseEntity> getBehaveCourses() {
+        return behaveCourses;
+    }
+
+    public void setBehaveCourses(List<CourseEntity> behaveCourses) {
+        this.behaveCourses = behaveCourses;
+    }
+
+    public List<CourseEntity> getHumanCourses() {
+        return humanCourses;
+    }
+
+    public void setHumanCourses(List<CourseEntity> humanCourses) {
+        this.humanCourses = humanCourses;
+    }
+
+    public List<CourseEntity> getScienceCourses() {
+        return scienceCourses;
+    }
+
+    public void setScienceCourses(List<CourseEntity> scienceCourses) {
+        this.scienceCourses = scienceCourses;
+    }
+
+    public List<CourseEntity> getLabCourses() {
+        return labCourses;
+    }
+
+    public void setLabCourses(List<CourseEntity> labCourses) {
+        this.labCourses = labCourses;
+    }
+
+    public List<CourseEntity> getMajorCourses() {
+        return majorCourses;
+    }
+
+    public void setMajorCourses(List<CourseEntity> majorCourses) {
+        this.majorCourses = majorCourses;
+    }
+
+    public List<CourseEntity> getElectiveCourses() {
+        return electiveCourses;
+    }
+
+    public void setElectiveCourses(List<CourseEntity> electiveCourses) {
+        this.electiveCourses = electiveCourses;
+    }
+
+    public void addEngl(CourseEntity course){
+        if(this.englCourses==null) {
+            this.englCourses = new ArrayList<>();
+        }
+        else if(!this.englCourses.contains(course)){
+            this.englCourses.add(course);
+        }
+        
+    }
+
+    public void addSpeech(CourseEntity course){
+        if(this.speechCourses==null){
+            this.speechCourses = new ArrayList<>();
+            this.speechCourses.add(course);
+        } else if(!this.speechCourses.contains(course)){
+            this.speechCourses.add(course);
+        }
+    }
+
+    public void addMath(CourseEntity course){
+        if(this.mathCourses==null){
+            this.mathCourses = new ArrayList<>();
+            this.mathCourses.add(course);
+        } else if(!this.mathCourses.contains(course)){
+            this.mathCourses.add(course);
+        }
+    }
+
+    public void addArt(CourseEntity course){
+        if(this.artCourses==null){
+            this.artCourses = new ArrayList<>();
+            this.artCourses.add(course);
+        } else if(!this.artCourses.contains(course)){
+            this.artCourses.add(course);
+        }
+    }
+
+    public void addBehave(CourseEntity course){
+        if(this.behaveCourses==null){
+            this.behaveCourses = new ArrayList<>();
+            this.behaveCourses.add(course);
+        } else if(!this.behaveCourses.contains(course)){
+            this.behaveCourses.add(course);
+        }
+    }
+
+    public void addHumanities(CourseEntity course){
+        if(this.humanCourses==null){
+            this.humanCourses = new ArrayList<>();
+            this.humanCourses.add(course);
+        } else if(!this.humanCourses.contains(course)){
+            this.humanCourses.add(course);
+        }
+
+    }
+
+    public void addScience(CourseEntity course){
+        if(this.scienceCourses==null){
+            this.scienceCourses = new ArrayList<>();
+            this.scienceCourses.add(course);
+        } else if(!this.scienceCourses.contains(course)){
+            this.scienceCourses.add(course);
+        }
+    }
+
+    public void addLabScience(CourseEntity course){
+        if(this.labCourses ==null){
+            this.labCourses = new ArrayList<>();
+            this.labCourses.add(course);
+        } else if(!this.labCourses.contains(course)){
+            this.labCourses.add(course);
+        }
+    }
+
+    public void addMajor(CourseEntity course){
+        if(this.majorCourses==null){
+            this.majorCourses = new ArrayList<>();
+            this.majorCourses.add(course);
+        } else if(!this.majorCourses.contains(course)){
+            this.majorCourses.add(course);
+        }
+    }
+
+    public void addElectives(CourseEntity course){
+        if(this.electiveCourses==null){
+            this.electiveCourses = new ArrayList<>();
+            this.electiveCourses.add(course);
+        } else if(!this.electiveCourses.contains(course)){
+            this.electiveCourses.add(course);
         }
     }
 

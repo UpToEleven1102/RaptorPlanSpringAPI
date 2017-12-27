@@ -32,11 +32,29 @@ public class TemplateRequest {
 
     private List<Long> instAttributes;
 
-    private List<Long> requiredCourses;
+    private List<Long> englCourses;
+
+    private List<Long> mathCourses;
+
+    private List<Long> speechCourses;
+
+    private List<Long> artCourses;
+
+    private List<Long> behaveCourses;
+
+    private List<Long> humanCourses;
+
+    private List<Long> scienceCourses;
+
+    private List<Long> scienceLabCourses;
+
+    private List<Long> majorCourses;
+
+    private List<Long> electiveCourses;
 
     public TemplateRequest(){}
 
-    public TemplateRequest(String major, Integer enFoundationCredit, Integer mathFoundationCredit, Integer speechFoundationCredit, Integer artDistributionCredit, Integer behavioralDistributionCredit, Integer humanDistributionCredit, Integer scienceDistributionCredit, Integer scienceLabDistributionCredit, Integer programCredit, Integer electivesCredit, Integer institutionalCredit, List<Long> instAttributes, List<Long> requiredCourses) {
+    public TemplateRequest(String major, Integer enFoundationCredit, Integer mathFoundationCredit, Integer speechFoundationCredit, Integer artDistributionCredit, Integer behavioralDistributionCredit, Integer humanDistributionCredit, Integer scienceDistributionCredit, Integer scienceLabDistributionCredit, Integer programCredit, Integer electivesCredit, Integer institutionalCredit, List<Long> instAttributes, List<Long> englCourses, List<Long> mathCourses, List<Long> speechCourses, List<Long> artCourses, List<Long> behaveCourses, List<Long> humanCourses, List<Long> scienceCourses, List<Long> scienceLabCourses, List<Long> majorCourses, List<Long> electiveCourses) {
         this.major = major;
         this.enFoundationCredit = enFoundationCredit;
         this.mathFoundationCredit = mathFoundationCredit;
@@ -50,7 +68,16 @@ public class TemplateRequest {
         this.electivesCredit = electivesCredit;
         this.institutionalCredit = institutionalCredit;
         this.instAttributes = instAttributes;
-        this.requiredCourses = requiredCourses;
+        this.englCourses = englCourses;
+        this.mathCourses = mathCourses;
+        this.speechCourses = speechCourses;
+        this.artCourses = artCourses;
+        this.behaveCourses = behaveCourses;
+        this.humanCourses = humanCourses;
+        this.scienceCourses = scienceCourses;
+        this.scienceLabCourses = scienceLabCourses;
+        this.majorCourses = majorCourses;
+        this.electiveCourses = electiveCourses;
     }
 
     public String getMajor() {
@@ -157,11 +184,83 @@ public class TemplateRequest {
         this.instAttributes = instAttributes;
     }
 
-    public List<Long> getRequiredCourses() {
-        return requiredCourses;
+    public List<Long> getEnglCourses() {
+        return englCourses;
     }
 
-    public void setRequiredCourses(List<Long> requiredCourses) {
-        this.requiredCourses = requiredCourses;
+    public void setEnglCourses(List<Long> englCourses) {
+        this.englCourses = englCourses;
+    }
+
+    public List<Long> getMathCourses() {
+        return mathCourses;
+    }
+
+    public void setMathCourses(List<Long> mathCourses) {
+        this.mathCourses = mathCourses;
+    }
+
+    public List<Long> getSpeechCourses() {
+        return speechCourses;
+    }
+
+    public void setSpeechCourses(List<Long> speechCourses) {
+        this.speechCourses = speechCourses;
+    }
+
+    public List<Long> getArtCourses() {
+        return artCourses;
+    }
+
+    public void setArtCourses(List<Long> artCourses) {
+        this.artCourses = artCourses;
+    }
+
+    public List<Long> getBehaveCourses() {
+        return behaveCourses;
+    }
+
+    public void setBehaveCourses(List<Long> behaveCourses) {
+        this.behaveCourses = behaveCourses;
+    }
+
+    public List<Long> getHumanCourses() {
+        return humanCourses;
+    }
+
+    public void setHumanCourses(List<Long> humanCourses) {
+        this.humanCourses = humanCourses;
+    }
+
+    public List<Long> getScienceCourses() {
+        return scienceCourses;
+    }
+
+    public void setScienceCourses(List<Long> scienceCourses) {
+        this.scienceCourses = scienceCourses;
+    }
+
+    public List<Long> getScienceLabCourses() {
+        return scienceLabCourses;
+    }
+
+    public void setScienceLabCourses(List<Long> scienceLabCourses) {
+        this.scienceLabCourses = scienceLabCourses;
+    }
+
+    public List<Long> getMajorCourses() {
+        return majorCourses;
+    }
+
+    public void setMajorCourses(List<Long> majorCourses) {
+        this.majorCourses = majorCourses;
+    }
+
+    public List<Long> getElectiveCourses() {
+        return electiveCourses;
+    }
+
+    public void setElectiveCourses(List<Long> electiveCourses) {
+        this.electiveCourses = electiveCourses;
     }
 }

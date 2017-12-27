@@ -30,8 +30,6 @@ public class CourseEntity {
     @ManyToOne
     private DisciplineEntity discipline;
 
-//    @ManyToOne
-//    private TemplateEntity template;
 
     public CourseEntity(){}
 

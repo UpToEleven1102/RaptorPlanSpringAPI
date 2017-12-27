@@ -40,12 +40,53 @@ public class TemplateService {
         source.getInstAttributes().forEach(e -> {
             AttributeEntity attribute = repoAttribute.findOne(e);
             entity.addAttribute(attribute);
-//            attribute.setTemplate(entity);
         });
-        source.getRequiredCourses().forEach(e -> {
+        source.getArtCourses().forEach(e -> {
             CourseEntity course = repoCourse.findOne(e);
-            entity.addCourses(course);
-//            course.setTemplate(entity);
+            entity.addArt(course);
+        });
+        source.getBehaveCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addBehave(course);
+        });
+        source.getEnglCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addArt(course);
+        });
+        source.getElectiveCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addElectives(course);
+        });
+
+        source.getHumanCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addHumanities(course);
+        });
+
+
+        source.getMajorCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addMajor(course);
+        });
+
+        source.getMathCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addMath(course);
+        });
+
+        source.getScienceCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addScience(course);
+        });
+
+        source.getScienceLabCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addLabScience(course);
+        });
+
+        source.getSpeechCourses().forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e);
+            entity.addSpeech(course);
         });
         repoTemplate.save(entity);
         return conversionService.convert(entity, TemplateResponse.class);
