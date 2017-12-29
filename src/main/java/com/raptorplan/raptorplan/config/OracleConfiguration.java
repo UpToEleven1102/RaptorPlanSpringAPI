@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 import java.sql.SQLException;
 
 
-@Configuration
-@ConfigurationProperties("oracle")
+//@Configuration
+//@ConfigurationProperties("oracle")
 public class OracleConfiguration {
 //    private final String USERNAME = "cmsc269001aw";
 //    private final String CONNECTION_NAME = "cms269001aw";
@@ -40,7 +40,7 @@ public class OracleConfiguration {
         this.url = url;
     }
 
-    @Bean
+//    @Bean
     DataSource dataSource() throws SQLException {
         OracleDataSource dataSource = new OracleDataSource();
         dataSource.setUser(username);

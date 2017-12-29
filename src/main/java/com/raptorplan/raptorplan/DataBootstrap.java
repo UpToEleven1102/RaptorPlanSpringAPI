@@ -4,7 +4,9 @@ import com.raptorplan.raptorplan.data.entity.AttributeEntity;
 import com.raptorplan.raptorplan.data.entity.DisciplineEntity;
 import com.raptorplan.raptorplan.data.repository.AttributeRepository;
 import com.raptorplan.raptorplan.data.repository.DisciplineRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 //@Component
 public class DataBootstrap implements CommandLineRunner {
@@ -151,7 +153,6 @@ public class DataBootstrap implements CommandLineRunner {
         repoDiscipline.save(new DisciplineEntity("TED","Teacher Education"));
         repoDiscipline.save(new DisciplineEntity("WMST","Women's Studies"));
         repoDiscipline.save(new DisciplineEntity("WRT","Writing"));
-
 
     }
 }

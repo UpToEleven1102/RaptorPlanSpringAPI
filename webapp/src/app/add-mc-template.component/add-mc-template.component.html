@@ -1,196 +1,278 @@
 <section>
   <div class="grid-container">
-    <div class="grid-x">
-      <p><span>English Foundation</span></p>
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="englishCredit">Credit:</label>
-        <input type="text" id="englishCredit">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <div class="grid-x">
+        <p><span>English Foundation</span></p>
       </div>
-
-      <div class="cell medium-8">
-        <label for="englishCourses">Courses:</label>
-        <select id="englishCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Math Foundation
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="mathCredit">Credit:</label>
-        <input type="text" id="mathCredit">
-      </div>
-      <div class="cell medium-8">
-        <label for="mathCourses">Courses:</label>
-        <select id="mathCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Speech Foundation
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="speechCredit">Credit:</label>
-        <input type="text" id="speechCredit">
-      </div>
-      <div class="cell medium-8">
-        <label for="speechCourses">Courses:</label>
-        <select id="speechCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Art Distribution
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="artCredit">Credit:</label>
-        <input type="text" id="artCredit">
-      </div>
-      <div class="cell medium-8">
-        <label for="artCourses">Courses:</label>
-        <select id="artCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Behavioral Distribution
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="behavioralCredit">Credit:</label>
-        <input type="text" id="behavioralCredit">
-      </div>
-      <div class="cell medium-8">
-        <label for="behavioralCourses">Courses:</label>
-        <select id="behavioralCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Humanities Distribution
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="humanCredit">Credit:</label>
-        <input type="text" id="humanCredit">
-      </div>
-      <div class="cell medium-8">
-        <label for="humanCourses">Courses:</label>
-        <select id="humanCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Science Distribution
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="scienceCredit">Credit:</label>
-        <input type="text" id="scienceCredit">
-      </div>
-      <div class="cell medium-8">
-        <label for="scienceCourses">Courses:</label>
-        <select id="scienceCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Science Distribution with Lab
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="scienceLabCredit">Credit:</label>
-        <input type="text" id="scienceLabCredit">
-      </div>
-      <div class="cell medium-8">
-        <label for="scienceLabCourses">Courses:</label>
-        <select id="scienceLabCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Major Program
-    </div>
-
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="programCredit">Credit:</label>
-        <input type="text" id="programCredit">
-      </div>
-      <div class="cell medium-8">
-        <label for="programCourses">Courses:</label>
-        <select id="programCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
-
-    <div class="grid-x">
-      Electives
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="electivesCredit">Credit:</label>
-        <input type="text" id="electivesCredit">
-
-      </div>
-      <div class="cell medium-8">
-        <label for="electivesCourses">Courses:</label>
-        <select id="electivesCourses"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="englishCredit">Credit:</label>
+          <input type="text" id="englishCredit" formControlName="enFoundationCredit">
+        </div>
 
 
-    <div class="grid-x">
-      Institutional requirement
-    </div>
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-3">
-        <label for="institutionalCredit">Credit:</label>
-        <input type="text" id="institutionalCredit">
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="englishCourses">Courses:</label>
+              <select id="englishCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="cell medium-8">
-        <label for="institutionalAttribute">Attributes</label>
-        <select id="institutionalAttribute"></select>
-      </div>
-      <div class="cell medium-1">
-        <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-      </div>
-    </div>
 
-    <input type="submit" class="button" value="Submit">
+      <div class="grid-x">
+        Math Foundation
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="mathCredit">Credit:</label>
+          <input type="text" id="mathCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="mathCourses">Courses:</label>
+              <select id="mathCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="grid-x">
+        Speech Foundation
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="speechCredit">Credit:</label>
+          <input type="text" id="speechCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="speechCourses">Courses:</label>
+              <select id="speechCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x">
+        Art Distribution
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="artCredit">Credit:</label>
+          <input type="text" id="artCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="artCourses">Courses:</label>
+              <select id="artCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x">
+        Behavioral Distribution
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="behavioralCredit">Credit:</label>
+          <input type="text" id="behavioralCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="behavioralCourses">Courses:</label>
+              <select id="behavioralCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x">
+        Humanities Distribution
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="humanCredit">Credit:</label>
+          <input type="text" id="humanCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="humanCourses">Courses:</label>
+              <select id="humanCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x">
+        Science Distribution
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="scienceCredit">Credit:</label>
+          <input type="text" id="scienceCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="scienceCourses">Courses:</label>
+              <select id="scienceCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x">
+        Science Distribution with Lab
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="scienceLabCredit">Credit:</label>
+          <input type="text" id="scienceLabCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="scienceLabCourses">Courses:</label>
+              <select id="scienceLabCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x">
+        Major Program
+      </div>
+
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="programCredit">Credit:</label>
+          <input type="text" id="programCredit">
+        </div>
+
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="programCourses">Courses:</label>
+              <select id="programCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x">
+        Electives
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="electivesCredit">Credit:</label>
+          <input type="text" id="electivesCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="electivesCourses">Courses:</label>
+              <select id="electivesCourses"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="grid-x">
+        Institutional requirement
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3">
+          <label for="institutionalCredit">Credit:</label>
+          <input type="text" id="institutionalCredit">
+        </div>
+        <div class="cell medium-9">
+          <div class="grid-x">
+            <div class="cell medium-10">
+              <label for="institutionalAttribute">Attributes</label>
+              <select id="institutionalAttribute"></select>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 1em;"></i></a>
+            </div>
+            <div class="cell medium-1">
+              <a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <input type="submit" class="button" value="Submit">
+    </form>
   </div>
 </section>

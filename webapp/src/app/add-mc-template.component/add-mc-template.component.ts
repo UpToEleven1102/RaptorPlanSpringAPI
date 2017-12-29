@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-mc-template',
@@ -46,5 +46,16 @@ export class AddMcTemplateComponent implements OnInit{
     });
   }
 
+  addCourse(courseValue){
+    let control = <FormArray>this.form.controls[courseValue];
+    control.push(this.initFormGroup());
+  }
 
+  removeCourse(courseValue, i){
+    this.form.controls[courseValue].removeAt(i);
+  }
+
+  onSubmit(formValue){
+
+  }
 }

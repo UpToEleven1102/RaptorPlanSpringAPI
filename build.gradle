@@ -29,6 +29,7 @@ dependencies {
 //	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile 'mysql:mysql-connector-java'
 	compile 'com.google.guava:guava:23.5-jre'
 	compile 'org.json:json:20171018'
 	compile files('ojdbc6.jar')
