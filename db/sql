@@ -1,0 +1,3 @@
+mysqldump --opt -u sql3212024 -p sql3212024 -h sql3.freesqldatabase.com
+..password: 3un1gVILLm
+

@@ -38,7 +38,7 @@ CREATE TABLE `h_api_course_attribute` (
 
 LOCK TABLES `h_api_course_attribute` WRITE;
 /*!40000 ALTER TABLE `h_api_course_attribute` DISABLE KEYS */;
-INSERT INTO `h_api_course_attribute` VALUES (17,9),(18,9);
+INSERT INTO `h_api_course_attribute` VALUES (17,9),(18,9),(19,9),(20,9),(21,9),(22,9),(22,2),(23,2),(23,9),(24,3),(26,3),(27,1),(29,1),(30,10),(31,10);
 /*!40000 ALTER TABLE `h_api_course_attribute` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +86,7 @@ CREATE TABLE `h_courses` (
   UNIQUE KEY `UK_e9avha43885a76huh9d0wbmwb` (`title`),
   KEY `FKadhc30agyfj7eagew1lmsv17g` (`discipline_id`),
   CONSTRAINT `FKadhc30agyfj7eagew1lmsv17g` FOREIGN KEY (`discipline_id`) REFERENCES `h_disciplines` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `h_courses` (
 
 LOCK TABLES `h_courses` WRITE;
 /*!40000 ALTER TABLE `h_courses` DISABLE KEYS */;
-INSERT INTO `h_courses` VALUES (17,'CMSC203',4,'Computer Science I',23),(18,'CMSC204',4,'Computer Science II',23);
+INSERT INTO `h_courses` VALUES (17,'CMSC203',4,'Computer Science I',23),(18,'CMSC204',4,'Computer Science II',23),(19,'CMSC140',3,'Introduction to Programming',23),(20,'CMSC207',4,'Introduction to Discrete Structures',23),(21,'ENGL101',3,'Introduction to College Writing',38),(22,'MATH182',4,'Calculus II',70),(23,'MATH181',4,'Calculus I',70),(24,'COMM108',3,'Introduction to Human Communication',25),(26,'COMM112',3,'Business and Professional Speech Communication',25),(27,'ENGL102',3,'Critical Reading, Writing, and Research',38),(29,'ENGL103',3,'Critical Reading, Writing, and Research in the Work Place',38),(30,'MATH282',3,'Differential Equations',70),(31,'MATH284',4,'Linear Algebra',70);
 /*!40000 ALTER TABLE `h_courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +148,7 @@ CREATE TABLE `h_disciplines_courses` (
 
 LOCK TABLES `h_disciplines_courses` WRITE;
 /*!40000 ALTER TABLE `h_disciplines_courses` DISABLE KEYS */;
-INSERT INTO `h_disciplines_courses` VALUES (23,17),(23,18);
+INSERT INTO `h_disciplines_courses` VALUES (23,17),(23,18),(23,19),(23,20),(25,24),(25,26),(38,21),(38,27),(38,29),(70,22),(70,23),(70,30),(70,31);
 /*!40000 ALTER TABLE `h_disciplines_courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,4 +563,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-29  7:07:53
+-- Dump completed on 2017-12-29  8:15:06

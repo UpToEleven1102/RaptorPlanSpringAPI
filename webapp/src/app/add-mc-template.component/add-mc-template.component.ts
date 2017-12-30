@@ -27,6 +27,33 @@ export class AddMcTemplateComponent implements OnInit{
       ]),
       mathCourses:this._fb.array([
         this.initFormGroup()
+      ]),
+      speechCourses:this._fb.array([
+        this.initFormGroup()
+      ]),
+      artCourses:this._fb.array([
+        this.initFormGroup()
+      ]),
+      behavioralCourses:this._fb.array([
+        this.initFormGroup()
+      ]),
+      humanCourses:this._fb.array([
+        this.initFormGroup()
+      ]),
+      scienceCourses:this._fb.array([
+        this.initFormGroup()
+      ]),
+      scienceLabCourses:this._fb.array([
+        this.initFormGroup()
+      ]),
+      programCourses:this._fb.array([
+        this.initFormGroup()
+      ]),
+      electiveCourses:this._fb.array([
+        this.initFormGroup()
+      ]),
+      institutionalAttributes: this._fb.array([
+        this.initFormGroup()
       ])
       // speechCourses:this._fb.array([]),
       // artCourses

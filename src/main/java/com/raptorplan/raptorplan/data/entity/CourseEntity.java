@@ -21,7 +21,7 @@ public class CourseEntity {
     @Column(name = "title", unique = true)
     private String title;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name="H.API.course_attribute",
             joinColumns = @JoinColumn(name="course_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id", referencedColumnName = "id"))

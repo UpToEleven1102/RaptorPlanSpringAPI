@@ -45,7 +45,6 @@ public class AttributeService {
 
     public AttributeResponse get(Long id){
         AttributeEntity entity = repoAttribute.findById(id);
-
         AttributeResponse response = entity == null? null : conversionService.convert(entity , AttributeResponse.class);
         return response;
     }

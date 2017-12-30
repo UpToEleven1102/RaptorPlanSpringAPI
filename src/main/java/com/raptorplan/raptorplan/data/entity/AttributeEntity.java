@@ -20,7 +20,7 @@ public class AttributeEntity {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "attributes")
+    @ManyToMany(mappedBy = "attributes",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<CourseEntity> courses;
 
     public AttributeEntity() {

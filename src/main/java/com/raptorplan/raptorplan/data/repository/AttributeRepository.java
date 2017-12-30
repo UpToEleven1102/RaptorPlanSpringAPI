@@ -14,4 +14,6 @@ public interface AttributeRepository extends CrudRepository<AttributeEntity,Long
 
     @Query("SELECT NEW com.raptorplan.raptorplan.model.customObject.AttributeCustom(c.id,c.code,c.name) FROM AttributeEntity c")
     public List<AttributeCustom> getAttributeList();
+
+    public AttributeEntity findByCode(String code);
 }
