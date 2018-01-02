@@ -1,5 +1,7 @@
 ## API documentation
 
+API address: http://138.197.88.144:8080
+
 
 #Get list of discipline:
 
