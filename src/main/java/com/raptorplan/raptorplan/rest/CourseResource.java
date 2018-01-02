@@ -41,7 +41,6 @@ public class CourseResource {
         return new ResponseEntity<List<CourseResponse>>(this.courseService.getCourses(),HttpStatus.OK);
     }
 
-
     @RequestMapping(path = "/attribute/{attr}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<CourseResponse>> getByAttributeCode(@PathVariable String attr){
         List<CourseResponse> response = courseService.getCoursesByAttribute(attr);
