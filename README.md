@@ -11,7 +11,7 @@ API address: http://138.197.88.144:8080
 
 ./api/v1/discipline/{diciplineCode}
 
-## Get courses list of all pages:
+## Get all courses (not recommended to use)
 
 ./api/v1/course
 
