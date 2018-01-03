@@ -11,6 +11,8 @@ import com.raptorplan.raptorplan.service.CourseService;
 import com.raptorplan.raptorplan.service.DisciplineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +39,8 @@ public class CourseResource {
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<List<CourseResponse>> getCourses(){
-        return new ResponseEntity<List<CourseResponse>>(this.courseService.getCourses(),HttpStatus.OK);
+    public ResponseEntity<Page<CourseResponse>> getCourses(Pageable page){
+        return new ResponseEntity<Page<CourseResponse>>(this.courseService.getCourses(page),HttpStatus.OK);
     }
 
     @RequestMapping(path = "/attribute/{attr}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -48,8 +50,8 @@ public class CourseResource {
     }
 
     @RequestMapping(path = "/discipline/{discipline}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<List<CourseResponse>> getByDisciplineCode(@PathVariable String discipline){
-        List<CourseResponse> response = courseService.getCoursesByDisciplineCode(discipline);
+    public ResponseEntity<Page<CourseResponse>> getByDisciplineCode(@PathVariable String discipline, Pageable pageable){
+        Page<CourseResponse> response = courseService.getCoursesByDisciplineCode(discipline, pageable);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -59,7 +61,6 @@ public class CourseResource {
         CourseResponse response = this.courseService.createCourse(courseRequest);
         return new ResponseEntity<CourseResponse>(response,HttpStatus.CREATED);
     }
-
 
     @RequestMapping(path = "/{courseCode}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<CourseResponse> getByCode(@PathVariable(name = "courseCode") String code){

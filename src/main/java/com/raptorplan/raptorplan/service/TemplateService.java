@@ -6,7 +6,7 @@ import com.raptorplan.raptorplan.data.entity.AttributeEntity;
 import com.raptorplan.raptorplan.data.entity.CourseEntity;
 import com.raptorplan.raptorplan.data.entity.TemplateEntity;
 import com.raptorplan.raptorplan.data.repository.AttributeRepository;
-import com.raptorplan.raptorplan.data.repository.CourseRepository;
+import com.raptorplan.raptorplan.data.repository.PageableCourseRepository;
 import com.raptorplan.raptorplan.data.repository.TemplateRepository;
 import com.raptorplan.raptorplan.model.request.TemplateRequest;
 import com.raptorplan.raptorplan.model.response.TemplateResponse;
@@ -23,11 +23,11 @@ public class TemplateService {
     private ConversionService conversionService;
     private TemplateRepository repoTemplate;
     private AttributeRepository repoAttribute;
-    private CourseRepository repoCourse;
+    private PageableCourseRepository repoCourse;
 
     @Autowired
     public TemplateService(TemplateRepository repoTemplate, ConversionService conversionService,
-                           AttributeRepository repoAttribute, CourseRepository repoCourse) {
+                           AttributeRepository repoAttribute, PageableCourseRepository repoCourse) {
         this.repoTemplate = repoTemplate;
         this.conversionService = conversionService;
         this.repoAttribute = repoAttribute;

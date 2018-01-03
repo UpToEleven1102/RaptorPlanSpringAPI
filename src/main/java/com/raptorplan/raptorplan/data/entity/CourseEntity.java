@@ -33,11 +33,13 @@ public class CourseEntity {
 
     public CourseEntity(){}
 
-    public CourseEntity(String code, Integer credit, String title, List<AttributeEntity> attributes) {
+    public CourseEntity(Long id,String code, Integer credit, String title, List<AttributeEntity> attributes, DisciplineEntity discipline) {
+        this.id = id;
         this.code = code;
         this.credit = credit;
         this.title = title;
         this.attributes = attributes;
+        this.discipline = discipline;
     }
 
     public Long getId() {

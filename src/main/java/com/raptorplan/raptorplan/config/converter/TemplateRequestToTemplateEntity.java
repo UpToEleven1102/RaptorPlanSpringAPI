@@ -1,11 +1,7 @@
 package com.raptorplan.raptorplan.config.converter;
 
 import com.raptorplan.raptorplan.data.entity.TemplateEntity;
-import com.raptorplan.raptorplan.data.repository.AttributeRepository;
-import com.raptorplan.raptorplan.data.repository.CourseRepository;
-import com.raptorplan.raptorplan.data.repository.TemplateRepository;
 import com.raptorplan.raptorplan.model.request.TemplateRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
 public class TemplateRequestToTemplateEntity implements Converter<TemplateRequest,TemplateEntity>{

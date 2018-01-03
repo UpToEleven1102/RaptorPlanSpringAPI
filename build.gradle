@@ -10,6 +10,10 @@ buildscript {
 	}
 }
 
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
 
 
 group = 'com.raptorplan'
@@ -20,28 +24,16 @@ repositories {
 	mavenCentral()
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'war'
-
-war {
-	baseName='raptorplan'
-	version = '0.5.0'
-}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-//	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+//	compile('org.springframework.boot:spring-boot-starter-security')
 	compile 'mysql:mysql-connector-java'
 	compile 'com.google.guava:guava:23.5-jre'
 	compile 'org.json:json:20171018'
-	compile files('ojdbc6.jar')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-
 }

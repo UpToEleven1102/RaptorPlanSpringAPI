@@ -6,7 +6,7 @@ import com.raptorplan.raptorplan.data.entity.AttributeEntity;
 import com.raptorplan.raptorplan.data.entity.CourseEntity;
 import com.raptorplan.raptorplan.data.entity.DisciplineEntity;
 import com.raptorplan.raptorplan.data.repository.AttributeRepository;
-import com.raptorplan.raptorplan.data.repository.CourseRepository;
+import com.raptorplan.raptorplan.data.repository.PageableCourseRepository;
 import com.raptorplan.raptorplan.data.repository.DisciplineRepository;
 import com.raptorplan.raptorplan.model.CourseAttribute;
 import com.raptorplan.raptorplan.model.request.CourseRequest;
@@ -16,21 +16,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CourseService {
-    private CourseRepository repoCourse;
+    private PageableCourseRepository repoCourse;
     private DisciplineRepository repoDiscipline;
     private AttributeRepository repoAttribute;
     private ConversionService conversionService;
 
     @Autowired
-    public CourseService(CourseRepository repoCourse, ConversionService conversionService,
+    public CourseService(PageableCourseRepository repoCourse, ConversionService conversionService,
                          DisciplineRepository repoDiscipline, AttributeRepository repoAttribute){
         this.repoCourse = repoCourse;
         this.conversionService = conversionService;
@@ -55,8 +54,8 @@ public class CourseService {
         return conversionService.convert(entity, CourseResponse.class);
     }
 
-    public List<CourseResponse> getCoursesByDisciplineCode(String code){
-        List<CourseResponse> response = Lists.newArrayList(new PageImpl<CourseEntity>(Lists.newArrayList(repoDiscipline.findByCode(code).getCourses())).map(new CourseEntityToCourseResponse()));
+    public Page<CourseResponse> getCoursesByDisciplineCode(String code, Pageable page){
+        Page<CourseResponse> response = this.repoCourse.findCourseByDisciplineCode(code, page).map(new CourseEntityToCourseResponse());
         return response;
     }
 
@@ -65,8 +64,8 @@ public class CourseService {
         return attrResponse.getCourses();
     }
 
-    public List<CourseResponse> getCourses(){
-        List<CourseResponse> response = Lists.newArrayList(new PageImpl(Lists.newArrayList(repoCourse.findAll())).map(new CourseEntityToCourseResponse()));
+    public Page<CourseResponse> getCourses(Pageable pageable){
+        Page<CourseResponse> response = this.repoCourse.findAll(pageable).map(new CourseEntityToCourseResponse());
         return response;
     }
 
