@@ -37,7 +37,7 @@ ex: ./api/v1/course/discipline/ARTT  //get all ARTT courses
 
 ## Get courses grouped by attributes:
 
-./api/v1/course/{attribute_code}
+./api/v1/course/attribute/{attribute_code}
 
 ## Get list of attributes:
 
