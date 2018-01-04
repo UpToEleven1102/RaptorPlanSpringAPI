@@ -10,6 +10,8 @@ public class TemplateAttribute {
     private Integer credit;
     private List<CourseResponse> courses;
 
+
+
     public TemplateAttribute(){}
 
     public TemplateAttribute(Integer credit, List<CourseResponse> courses) {

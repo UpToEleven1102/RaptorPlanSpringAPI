@@ -29,7 +29,7 @@ API address: http://138.197.88.144:8080
 
 ex: ./api/v1/course/discipline/ARTT  //get all ARTT courses
 
-###paging:
+//paging:
 
 ./api/v1/course?discipline/{disciplineCode}?page=1&size=10&sort=title
 

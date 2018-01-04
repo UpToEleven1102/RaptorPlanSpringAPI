@@ -30,7 +30,6 @@ public class CourseEntity {
     @ManyToOne
     private DisciplineEntity discipline;
 
-
     public CourseEntity(){}
 
     public CourseEntity(Long id,String code, Integer credit, String title, List<AttributeEntity> attributes, DisciplineEntity discipline) {

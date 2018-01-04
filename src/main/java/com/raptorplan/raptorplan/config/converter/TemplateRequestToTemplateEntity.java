@@ -1,26 +1,14 @@
 package com.raptorplan.raptorplan.config.converter;
 
-import com.raptorplan.raptorplan.data.entity.TemplateEntity;
-import com.raptorplan.raptorplan.model.request.TemplateRequest;
+import com.raptorplan.raptorplan.data.entity.McTemplateEntity;
+import com.raptorplan.raptorplan.model.request.McTemplateRequest;
 import org.springframework.core.convert.converter.Converter;
 
-public class TemplateRequestToTemplateEntity implements Converter<TemplateRequest,TemplateEntity>{
+public class TemplateRequestToTemplateEntity implements Converter<McTemplateRequest,McTemplateEntity>{
 
     @Override
-    public TemplateEntity convert(TemplateRequest source) {
-        TemplateEntity entity = new TemplateEntity();
-        entity.setArtDistributionCredit(source.getArtDistributionCredit());
-        entity.setBehavioralDistributionCredit(source.getBehavioralDistributionCredit());
-        entity.setElectivesCredit(source.getElectivesCredit());
-        entity.setEnFoundationCredit(source.getEnFoundationCredit());
-        entity.setHumanDistributionCredit(source.getHumanDistributionCredit());
-        entity.setScienceDistributionCredit(source.getScienceDistributionCredit());
-        entity.setScienceLabDistributionCredit(source.getScienceLabDistributionCredit());
-        entity.setInstitutionalCredit(source.getInstitutionalCredit());
-        entity.setMajor(source.getMajor());
-        entity.setMathFoundationCredit(source.getMathFoundationCredit());
-        entity.setProgramCredit(source.getProgramCredit());
-        entity.setSpeechFoundationCredit(source.getSpeechFoundationCredit());
+    public McTemplateEntity convert(McTemplateRequest source) {
+        McTemplateEntity entity = new McTemplateEntity();
         return entity;
     }
 }

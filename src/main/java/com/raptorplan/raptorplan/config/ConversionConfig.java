@@ -23,6 +23,10 @@ public class ConversionConfig {
         converters.add(new DisciplineRequestToDisciplineEntity());
         converters.add(new TemplateRequestToTemplateEntity());
         converters.add(new TemplateEntityToTemplateResponse());
+        converters.add(new MajorEntityToMajorResponse());
+        converters.add(new MajorRequestToMajorEntity());
+        converters.add(new UniversityEntityToUniversityResponse());
+        converters.add(new UniversityRequestToUniversityEntity());
         return converters;
     }
 
