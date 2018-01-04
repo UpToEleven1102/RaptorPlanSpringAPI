@@ -3,13 +3,29 @@
 API address: http://138.197.88.144:8080
 
 
-## Get list of discipline:
+## Get list of disciplines:
 
 ./api/v1/discipline
 
 ## Get an individual discipline:
 
 ./api/v1/discipline/{diciplineCode}
+
+## Get list of universities:
+
+./api/v1/university
+
+## Get an individual universites:
+
+./api/v1/university/{universityCode}
+
+## Get list of majors:
+
+./api/v1/major
+
+## Get an indivigual major:
+
+./api/v1/major/{majorCode}
 
 ## Get all courses (not recommended to use)
 
