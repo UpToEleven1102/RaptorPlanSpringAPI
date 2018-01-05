@@ -8,11 +8,7 @@ import com.raptorplan.raptorplan.rest.ResourceConstant;
 import org.springframework.core.convert.converter.Converter;
 
 public class MajorEntityToMajorResponse implements Converter<MajorEntity,MajorResponse> {
-    private TemplateEntityToTemplateResponse templateConverter;
 
-    public MajorEntityToMajorResponse(){
-        templateConverter = new TemplateEntityToTemplateResponse();
-    }
     @Override
     public MajorResponse convert(MajorEntity source) {
         MajorResponse response = new MajorResponse();
@@ -22,7 +18,7 @@ public class MajorEntityToMajorResponse implements Converter<MajorEntity,MajorRe
 
         Links links = new Links();
         Self self = new Self();
-        self.setRef(ResourceConstant.MAJOR_PATH+"/"+source.getId());
+        self.setRef(ResourceConstant.MAJOR_PATH + "/"+source.getCode());
         links.setSelf(self);
         response.setLinks(links);
 

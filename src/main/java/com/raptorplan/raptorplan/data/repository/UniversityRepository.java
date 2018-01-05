@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UniversityRepository extends CrudRepository<UniversityEntity,Long> {
-
+    public UniversityEntity findByCode(String code);
 }

@@ -40,14 +40,14 @@ public class MajorService {
         response.forEach(e -> {
             Links links = new Links();
             Self self = new Self();
-            self.setRef(ResourceConstant.MAJOR_PATH + "/" + e.getId());
+            self.setRef(ResourceConstant.MAJOR_PATH + "/" + e.getCode());
             links.setSelf(self);
             e.setLinks(links);
         });
         return response;
     }
 
-    public MajorResponse getMajor(Long id){
-        return conversionService.convert(this.repoMajor.findOne(id),MajorResponse.class);
+    public MajorResponse getMajor(String code){
+        return conversionService.convert(this.repoMajor.findByCode(code),MajorResponse.class);
     }
 }

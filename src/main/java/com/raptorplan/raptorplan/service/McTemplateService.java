@@ -1,14 +1,13 @@
 package com.raptorplan.raptorplan.service;
 
 import com.google.common.collect.Lists;
-import com.raptorplan.raptorplan.config.converter.TemplateEntityToTemplateResponse;
-import com.raptorplan.raptorplan.data.entity.AttributeEntity;
-import com.raptorplan.raptorplan.data.entity.CourseEntity;
-import com.raptorplan.raptorplan.data.entity.McTemplateEntity;
-import com.raptorplan.raptorplan.data.repository.AttributeRepository;
-import com.raptorplan.raptorplan.data.repository.PageableCourseRepository;
-import com.raptorplan.raptorplan.data.repository.McTemplateRepository;
+import com.raptorplan.raptorplan.config.converter.McTemplateEntityToMcTemplateResponse;
+import com.raptorplan.raptorplan.data.entity.*;
+import com.raptorplan.raptorplan.data.repository.*;
+import com.raptorplan.raptorplan.model.CourseAttribute;
+import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
 import com.raptorplan.raptorplan.model.request.McTemplateRequest;
+import com.raptorplan.raptorplan.model.response.CourseInfoMcTemplateResponse;
 import com.raptorplan.raptorplan.model.response.McTemplateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
@@ -16,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,83 +24,81 @@ public class McTemplateService {
     private McTemplateRepository repoTemplate;
     private AttributeRepository repoAttribute;
     private PageableCourseRepository repoCourse;
+    private CourseInfoRepository repoCourseInfo;
+    private MajorRepository repoMajor;
 
     @Autowired
     public McTemplateService(McTemplateRepository repoTemplate, ConversionService conversionService,
-                             AttributeRepository repoAttribute, PageableCourseRepository repoCourse) {
+                             AttributeRepository repoAttribute, PageableCourseRepository repoCourse,
+                             CourseInfoRepository repoCourseInfo, MajorRepository repoMajor) {
         this.repoTemplate = repoTemplate;
         this.conversionService = conversionService;
         this.repoAttribute = repoAttribute;
         this.repoCourse = repoCourse;
+        this.repoCourseInfo = repoCourseInfo;
+        this.repoMajor = repoMajor;
+    }
+
+    public CourseInfoMcTemplate convertCourseInfo(String name, String attributeCode, Integer credit, List<CourseAttribute> courses){
+        CourseInfoMcTemplate courseInfo = new CourseInfoMcTemplate();
+        courseInfo.setCredit(credit);
+        courseInfo.setName(name);
+
+        courseInfo.setAttribute(repoAttribute.findByCode(attributeCode));
+
+        courses.forEach(e -> {
+            CourseEntity course = repoCourse.findOne(e.getId());
+            courseInfo.addCourse(course);
+        });
+        repoCourseInfo.save(courseInfo);
+        return courseInfo;
     }
 
     public McTemplateResponse create(McTemplateRequest source) {
-        McTemplateEntity entity = conversionService.convert(source, McTemplateEntity.class);
+        McTemplateEntity entity = new McTemplateEntity();
+
+        entity.setInstCredit(source.getInstitutionalCredit());
 
         source.getInstitutionalAttributes().forEach(e -> {
             AttributeEntity attribute = repoAttribute.findOne(e.getId());
-//            entity.addAttribute(attribute);
-        });
-        source.getArtCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addArt(course);
-        });
-        source.getBehavioralCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addBehave(course);
-        });
-        source.getEnglCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addArt(course);
-        });
-        source.getElectiveCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addElectives(course);
+            entity.addAttribute(attribute);
         });
 
-        source.getHumanCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addHumanities(course);
-        });
+        entity.setMajor(repoMajor.findByCode(source.getMajor()));
 
+        entity.addCourseInfo(convertCourseInfo("Art Distribution","art_distribution", source.getArtDistributionCredit(), source.getArtCourses()));
 
-        source.getProgramCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addMajor(course);
-        });
+        entity.addCourseInfo(convertCourseInfo("Behavioral Distribution", "behavioral_distribution", source.getBehavioralDistributionCredit(), source.getBehavioralCourses()));
 
-        source.getMathCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addMath(course);
-        });
+        entity.addCourseInfo(convertCourseInfo("English Foundation" , "english_foundation", source.getEnFoundationCredit(), source.getEnglCourses()));
 
-        source.getScienceCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addScience(course);
-        });
+        entity.addCourseInfo(convertCourseInfo("Electives" , "electives", source.getElectivesCredit(), source.getElectiveCourses()));
 
-        source.getScienceLabCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addLabScience(course);
-        });
+        entity.addCourseInfo(convertCourseInfo("Humanities Distribution" , "humanities_distribution", source.getHumanDistributionCredit(), source.getHumanCourses()));
 
-        source.getSpeechCourses().forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-//            entity.addSpeech(course);
-        });
+        entity.addCourseInfo(convertCourseInfo("Major Requirement" , "major", source.getProgramCredit(), source.getProgramCourses()));
+
+        entity.addCourseInfo(convertCourseInfo("Math Foundation" , "math_foundation", source.getMathFoundationCredit(), source.getMathCourses()));
+
+        entity.addCourseInfo(convertCourseInfo("Science Distribution" , "natural_science_distribution", source.getScienceDistributionCredit(), source.getScienceCourses()));
+
+        entity.addCourseInfo(convertCourseInfo("Science Distribution with Lab" , "natural_science_lab_distribution", source.getScienceLabDistributionCredit(), source.getScienceLabCourses()));
+
+        entity.addCourseInfo(convertCourseInfo("Speech Foundation" , "speech_foundation", source.getSpeechFoundationCredit(), source.getSpeechCourses()));
+
         repoTemplate.save(entity);
         return conversionService.convert(entity, McTemplateResponse.class);
     }
 
     public List<McTemplateResponse> getAll() {
         Page<McTemplateResponse> templates = new PageImpl<McTemplateEntity>(Lists.newArrayList(repoTemplate.findAll()))
-                .map(new TemplateEntityToTemplateResponse());
-
+                .map(new McTemplateEntityToMcTemplateResponse());
         return Lists.newArrayList(templates);
     }
 
     public McTemplateResponse getByMajor(String major) {
         McTemplateEntity entity = repoTemplate.findByMajorCode(major);
-        return conversionService.convert(entity,McTemplateResponse.class);
+        McTemplateResponse response = conversionService.convert(entity,McTemplateResponse.class);
+        return response;
     }
 }

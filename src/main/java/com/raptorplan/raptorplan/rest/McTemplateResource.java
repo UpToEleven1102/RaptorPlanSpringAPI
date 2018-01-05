@@ -31,13 +31,13 @@ public class McTemplateResource {
     }
 
     @RequestMapping(path = "/{major}")
-    public ResponseEntity<String> get(@PathVariable String major){
-        return new ResponseEntity<String>(mcTemplateService.getByMajor(major).getJsonObject().toString(), HttpStatus.OK);
+    public ResponseEntity<McTemplateResponse> get(@PathVariable String major){
+        return new ResponseEntity<McTemplateResponse>(mcTemplateService.getByMajor(major), HttpStatus.OK);
     }
 
     @RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<String> create(@RequestBody McTemplateRequest mcTemplateRequest){
+    public ResponseEntity<McTemplateResponse> create(@RequestBody McTemplateRequest mcTemplateRequest){
         McTemplateResponse response = mcTemplateService.create(mcTemplateRequest);
-        return new ResponseEntity<String>(response.getJsonObject().toString(), HttpStatus.CREATED);
+        return new ResponseEntity<McTemplateResponse>(response, HttpStatus.CREATED);
     }
 }

@@ -17,7 +17,7 @@ public class UniversityEntityToUniversityResponse implements Converter<Universit
 
         Links links = new Links();
         Self self = new Self();
-        self.setRef(ResourceConstant.UNIVERSITY_PATH + "/" + source.getId());
+        self.setRef(ResourceConstant.UNIVERSITY_PATH + "/" + source.getCode());
         links.setSelf(self);
         response.setLinks(links);
         return response;

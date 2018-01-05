@@ -1,23 +1,69 @@
 package com.raptorplan.raptorplan.model.response;
 
 
-import org.json.JSONObject;
+import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
+import com.raptorplan.raptorplan.model.customObject.MajorCustom;
+
+import java.util.List;
 
 public class McTemplateResponse {
-    private JSONObject jsonObject;
+    private Long id;
 
-    public McTemplateResponse(JSONObject jsonObject) {
-        this.jsonObject = jsonObject;
+    private MajorCustom major;
+
+    private Integer instCredit;
+
+    private List<AttributeCustom> instAttributes;
+
+    private List<CourseInfoMcTemplateResponse> courseInfo;
+
+    public McTemplateResponse(Long id, MajorCustom major, List<AttributeCustom> instAttributes, List<CourseInfoMcTemplateResponse> courseInfo) {
+        this.id = id;
+        this.major = major;
+        this.instAttributes = instAttributes;
+        this.courseInfo = courseInfo;
     }
 
     public McTemplateResponse() {
     }
 
-    public JSONObject getJsonObject() {
-        return jsonObject;
+    public Long getId() {
+        return id;
     }
 
-    public void setJsonObject(JSONObject jsonObject) {
-        this.jsonObject = jsonObject;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getInstCredit() {
+        return instCredit;
+    }
+
+    public void setInstCredit(Integer instCredit) {
+        this.instCredit = instCredit;
+    }
+
+    public MajorCustom getMajor() {
+        return major;
+    }
+
+    public void setMajor(MajorCustom major) {
+        this.major = major;
+    }
+
+    public List<AttributeCustom> getInstAttributes() {
+        return instAttributes;
+    }
+
+    public void setInstAttributes(List<AttributeCustom> instAttributes) {
+        this.instAttributes = instAttributes;
+    }
+
+    public List<CourseInfoMcTemplateResponse> getCourseInfo() {
+        return courseInfo;
+    }
+
+    public void setCourseInfo(List<CourseInfoMcTemplateResponse> courseInfo) {
+        this.courseInfo = courseInfo;
     }
 }

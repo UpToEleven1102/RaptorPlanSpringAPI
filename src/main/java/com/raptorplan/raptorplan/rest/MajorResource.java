@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = ResourceConstant.MAJOR_PATH)
 public class MajorResource {
@@ -33,8 +34,8 @@ public class MajorResource {
         return new ResponseEntity<List<MajorCustom>>(service.getAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<MajorResponse> get(@PathVariable Long id){
-        return new ResponseEntity<MajorResponse>(service.getMajor(id), HttpStatus.OK);
+    @RequestMapping(path = "/{code}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<MajorResponse> get(@PathVariable String code){
+        return new ResponseEntity<MajorResponse>(service.getMajor(code), HttpStatus.OK);
     }
 }

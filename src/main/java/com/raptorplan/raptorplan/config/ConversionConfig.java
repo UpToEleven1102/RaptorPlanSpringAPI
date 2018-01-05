@@ -21,12 +21,13 @@ public class ConversionConfig {
         converters.add(new CourseEntityToCourseResponse());
         converters.add(new DisciplineEntityToDisciplineResponse());
         converters.add(new DisciplineRequestToDisciplineEntity());
-        converters.add(new TemplateRequestToTemplateEntity());
-        converters.add(new TemplateEntityToTemplateResponse());
         converters.add(new MajorEntityToMajorResponse());
         converters.add(new MajorRequestToMajorEntity());
         converters.add(new UniversityEntityToUniversityResponse());
         converters.add(new UniversityRequestToUniversityEntity());
+        converters.add(new McTemplateEntityToMcTemplateResponse());
+        converters.add(new AttributeEntityToAttributeCustom());
+        converters.add(new CourseInfoTemplateToCourseInfoTemplateResponse());
         return converters;
     }
 

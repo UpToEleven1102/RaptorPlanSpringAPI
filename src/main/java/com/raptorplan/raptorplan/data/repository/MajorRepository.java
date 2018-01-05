@@ -12,4 +12,6 @@ import java.util.List;
 public interface MajorRepository extends CrudRepository<MajorEntity,Long> {
     @Query("SELECT NEW com.raptorplan.raptorplan.model.customObject.MajorCustom(c.id, c.code, c.name) FROM MajorEntity c")
     public List<MajorCustom> getAll();
+
+    public MajorEntity findByCode(String code);
 }

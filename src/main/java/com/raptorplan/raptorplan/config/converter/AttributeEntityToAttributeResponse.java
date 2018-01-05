@@ -17,6 +17,7 @@ public class AttributeEntityToAttributeResponse implements Converter<AttributeEn
         AttributeResponse response = new AttributeResponse();
         response.setName(source.getName());
         response.setId(source.getId());
+        response.setCode(source.getCode());
 
         Links links = new Links();
         Self self = new Self();

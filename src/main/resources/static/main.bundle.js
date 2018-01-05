@@ -204,7 +204,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-mc-template.component/add-mc-template.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section>\r\n  <div class=\"grid-container\">\r\n    <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\r\n      <div class=\"grid-x\">\r\n        <p><span>English Foundation</span></p>\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"englishCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"englishCredit\" formControlName=\"enFoundationCredit\">\r\n        </div>\r\n\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"englCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.englCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"englishCourses\">Courses:</label>\r\n                <select id=\"englishCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of englishCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div *ngIf=\"i>0\" class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('englCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\"\r\n                                                              style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('englCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Math Foundation\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"mathCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"mathCredit\" formControlName=\"mathFoundationCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"mathCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.mathCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"mathCourses\">Courses:</label>\r\n                <select id=\"mathCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of mathCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('mathCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\"\r\n                                                              style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('mathCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Speech Foundation\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"speechCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"speechCredit\" formControlName=\"speechFoundationCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"speechCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.speechCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"speechCourses\">Courses:</label>\r\n                <select id=\"speechCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of speechCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('speechCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('speechCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Art Distribution\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"artCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"artCredit\" formControlName=\"artDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"artCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.artCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"artCourses\">Courses:</label>\r\n                <select id=\"artCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of artCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('artCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a  (click)=\"addCourse('artCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Behavioral Distribution\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"behavioralCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"behavioralCredit\" formControlName=\"behavioralDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"behavioralCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.behavioralCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"behavioralCourses\">Courses:</label>\r\n                <select id=\"behavioralCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of behavioralCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('behavioralCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('behavioralCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Humanities Distribution\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"humanCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"humanCredit\" formControlName=\"humanDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"humanCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.humanCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"humanCourses\">Courses:</label>\r\n                <select id=\"humanCourses\" formControlName = \"id\">\r\n                  <option *ngFor=\"let course of humanitiesCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('humanCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('humanCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Science Distribution\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"scienceCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"scienceCredit\" formControlName=\"scienceDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"scienceCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.scienceCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"scienceCourses\">Courses:</label>\r\n                <select id=\"scienceCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of scienceCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('scienceCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('scienceCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Science Distribution with Lab\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"scienceLabCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"scienceLabCredit\" formControlName=\"scienceLabDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"scienceLabCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.scienceLabCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"scienceLabCourses\">Courses:</label>\r\n                <select id=\"scienceLabCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of scienceLabCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('scienceLabCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('scienceLabCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Major Program\r\n      </div>\r\n\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"programCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"programCredit\" formControlName=\"programCredit\">\r\n        </div>\r\n\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"programCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.programCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"programCourses\">Courses:</label>\r\n                <select id=\"programCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of majorCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('programCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('programCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Electives\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"electivesCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"electivesCredit\" formControlName=\"electivesCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"electiveCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.electiveCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"electivesCourses\">Courses:</label>\r\n                <select id=\"electivesCourses\" formControlName = \"id\">\r\n                  <option *ngFor=\"let course of electiveCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('electiveCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('electiveCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"grid-x\">\r\n        Institutional requirement\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"institutionalCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"institutionalCredit\" formControlName=\"institutionalCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"institutionalAttributes\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.institutionalAttributes.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"institutionalAttribute\">Attributes</label>\r\n                <select id=\"institutionalAttribute\" formControlName=\"id\">\r\n                  <option *ngFor=\"let attribute of attributes\" value=\"{{attribute.id}}\">{{attribute.name}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a *ngIf=\"i>0\" (click)=\"removeCourse('institutionalAttributes',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('institutionalAttributes')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <input type=\"submit\" class=\"button\" value=\"Submit\">\r\n    </form>\r\n  </div>\r\n</section>\r\n"
+module.exports = "<section>\r\n  <div class=\"grid-container\">\r\n    <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit(form.value)\">\r\n      <div class=\"grid-x\">\r\n        <select formControlName=\"major\">\r\n          <option *ngFor=\"let major of majors\" value=\"{{major.code}}\">{{major.name}}</option>\r\n        </select>\r\n      </div>\r\n      <hr>\r\n      <div class=\"grid-x\">\r\n        <p><span>English Foundation</span></p>\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"englishCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"englishCredit\" formControlName=\"enFoundationCredit\">\r\n        </div>\r\n\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"englCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.englCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"englishCourses\">Courses:</label>\r\n                <select id=\"englishCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of englishCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('englCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\"\r\n                                                              style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('englCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Math Foundation\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"mathCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"mathCredit\" formControlName=\"mathFoundationCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"mathCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.mathCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"mathCourses\">Courses:</label>\r\n                <select id=\"mathCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of mathCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('mathCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\"\r\n                                                              style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('mathCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Speech Foundation\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"speechCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"speechCredit\" formControlName=\"speechFoundationCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"speechCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.speechCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"speechCourses\">Courses:</label>\r\n                <select id=\"speechCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of speechCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('speechCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('speechCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Art Distribution\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"artCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"artCredit\" formControlName=\"artDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"artCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.artCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"artCourses\">Courses:</label>\r\n                <select id=\"artCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of artCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('artCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a  (click)=\"addCourse('artCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Behavioral Distribution\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"behavioralCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"behavioralCredit\" formControlName=\"behavioralDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"behavioralCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.behavioralCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"behavioralCourses\">Courses:</label>\r\n                <select id=\"behavioralCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of behavioralCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('behavioralCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('behavioralCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Humanities Distribution\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"humanCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"humanCredit\" formControlName=\"humanDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"humanCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.humanCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"humanCourses\">Courses:</label>\r\n                <select id=\"humanCourses\" formControlName = \"id\">\r\n                  <option *ngFor=\"let course of humanitiesCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('humanCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('humanCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Science Distribution\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"scienceCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"scienceCredit\" formControlName=\"scienceDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"scienceCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.scienceCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"scienceCourses\">Courses:</label>\r\n                <select id=\"scienceCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of scienceCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('scienceCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('scienceCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Science Distribution with Lab\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"scienceLabCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"scienceLabCredit\" formControlName=\"scienceLabDistributionCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"scienceLabCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.scienceLabCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"scienceLabCourses\">Courses:</label>\r\n                <select id=\"scienceLabCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of scienceLabCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('scienceLabCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('scienceLabCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Major Program\r\n      </div>\r\n\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"programCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"programCredit\" formControlName=\"programCredit\">\r\n        </div>\r\n\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"programCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.programCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName] = \"i\">\r\n                <label for=\"programCourses\">Courses:</label>\r\n                <select id=\"programCourses\" formControlName=\"id\">\r\n                  <option *ngFor=\"let course of majorCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('programCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('programCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"grid-x\">\r\n        Electives\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"electivesCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"electivesCredit\" formControlName=\"electivesCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"electiveCourses\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.electiveCourses.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"electivesCourses\">Courses:</label>\r\n                <select id=\"electivesCourses\" formControlName = \"id\">\r\n                  <option *ngFor=\"let course of electiveCourses\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('electiveCourses',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('electiveCourses')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"grid-x\">\r\n        Institutional requirement\r\n      </div>\r\n      <div class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-3\">\r\n          <label for=\"institutionalCredit\">Credit:</label>\r\n          <input type=\"text\" id=\"institutionalCredit\" formControlName=\"institutionalCredit\">\r\n        </div>\r\n        <div class=\"cell medium-8\">\r\n          <div formArrayName=\"institutionalAttributes\">\r\n            <div class=\"grid-x\" *ngFor=\"let control of form.controls.institutionalAttributes.controls, let i = index\">\r\n              <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n                <label for=\"institutionalAttribute\">Attributes</label>\r\n                <select id=\"institutionalAttribute\" formControlName=\"id\">\r\n                  <option *ngFor=\"let attribute of attributes\" value=\"{{attribute.id}}\">{{attribute.name}}</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"cell medium-1\">\r\n                <a (click)=\"removeCourse('institutionalAttributes',i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\" style=\"font-size: 1em;\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"addCourse('institutionalAttributes')\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n      <input type=\"submit\" [disabled]=\"!form.valid\" class=\"button\" value=\"Submit\">\r\n    </form>\r\n  </div>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -217,6 +217,7 @@ module.exports = "<section>\r\n  <div class=\"grid-container\">\r\n    <form [fo
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_mc_template_service__ = __webpack_require__("../../../../../src/app/service/mc-template.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_attribute_service__ = __webpack_require__("../../../../../src/app/service/attribute.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_major_service__ = __webpack_require__("../../../../../src/app/service/major.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -230,9 +231,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AddMcTemplateComponent = (function () {
-    function AddMcTemplateComponent(_fb, attributeService, mcTemplateService) {
+    function AddMcTemplateComponent(_fb, majorService, attributeService, mcTemplateService) {
         this._fb = _fb;
+        this.majorService = majorService;
         this.attributeService = attributeService;
         this.mcTemplateService = mcTemplateService;
     }
@@ -249,65 +252,38 @@ var AddMcTemplateComponent = (function () {
         this.mcTemplateService.getCoursesOfType('natural_science_distribution').subscribe(function (response) { return _this.scienceCourses = response; });
         this.mcTemplateService.getCoursesOfType('major').subscribe(function (response) { return _this.majorCourses = response; });
         this.mcTemplateService.getCoursesOfType('electives').subscribe(function (response) { return _this.electiveCourses = response; });
+        this.majorService.getAll().subscribe(function (response) {
+            _this.majors = response;
+        });
         this.form = this._fb.group({
-            enFoundationCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            mathFoundationCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            speechFoundationCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            artDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            behavioralDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            humanDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            scienceDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            scienceLabDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            programCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            electivesCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            institutionalCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]')]],
-            englCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            mathCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            speechCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            artCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            behavioralCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            humanCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            scienceCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            scienceLabCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            programCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            electiveCourses: this._fb.array([
-                this.initFormGroup()
-            ]),
-            institutionalAttributes: this._fb.array([
-                this.initFormGroup()
-            ])
-            // speechCourses:this._fb.array([]),
-            // artCourses
-            // behaveCourses
-            // humanCourses
-            // scienceCourses
-            // scienceLabCourses
-            // majorCourses
-            // electiveCourses
-            // instAttributes
+            major: ['CMSC'],
+            enFoundationCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            mathFoundationCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            speechFoundationCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            artDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            behavioralDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            humanDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            scienceDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            scienceLabDistributionCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            programCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            electivesCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            institutionalCredit: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('^[0-9]+$')]],
+            englCourses: this._fb.array([]),
+            mathCourses: this._fb.array([]),
+            speechCourses: this._fb.array([]),
+            artCourses: this._fb.array([]),
+            behavioralCourses: this._fb.array([]),
+            humanCourses: this._fb.array([]),
+            scienceCourses: this._fb.array([]),
+            scienceLabCourses: this._fb.array([]),
+            programCourses: this._fb.array([]),
+            electiveCourses: this._fb.array([]),
+            institutionalAttributes: this._fb.array([])
         });
     };
     AddMcTemplateComponent.prototype.initFormGroup = function () {
         return this._fb.group({
-            id: this._fb.control(['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required])
+            id: this._fb.control([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required])
         });
     };
     AddMcTemplateComponent.prototype.addCourse = function (courseValue) {
@@ -318,6 +294,7 @@ var AddMcTemplateComponent = (function () {
         this.form.controls[courseValue].removeAt(i);
     };
     AddMcTemplateComponent.prototype.onSubmit = function (formValue) {
+        this.mcTemplateService.createTemplate(formValue).subscribe();
     };
     return AddMcTemplateComponent;
 }());
@@ -327,10 +304,10 @@ AddMcTemplateComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/add-mc-template.component/add-mc-template.component.html"),
         styles: [__webpack_require__("../../../../../src/app/add-mc-template.component/add-mc-template.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_attribute_service__["a" /* AttributeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_attribute_service__["a" /* AttributeService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_mc_template_service__["a" /* McTemplateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_mc_template_service__["a" /* McTemplateService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__service_major_service__["a" /* MajorService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__service_major_service__["a" /* MajorService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__service_attribute_service__["a" /* AttributeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_attribute_service__["a" /* AttributeService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__service_mc_template_service__["a" /* McTemplateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_mc_template_service__["a" /* McTemplateService */]) === "function" && _d || Object])
 ], AddMcTemplateComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=add-mc-template.component.js.map
 
 /***/ }),
@@ -417,12 +394,16 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__mc_template_component_mc_template_component__ = __webpack_require__("../../../../../src/app/mc-template.component/mc-template.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__add_mc_template_component_add_mc_template_component__ = __webpack_require__("../../../../../src/app/add-mc-template.component/add-mc-template.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__service_mc_template_service__ = __webpack_require__("../../../../../src/app/service/mc-template.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__service_university_service__ = __webpack_require__("../../../../../src/app/service/university.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__service_major_service__ = __webpack_require__("../../../../../src/app/service/major.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -474,6 +455,8 @@ AppModule = __decorate([
         providers: [__WEBPACK_IMPORTED_MODULE_13__service_attribute_service__["a" /* AttributeService */],
             __WEBPACK_IMPORTED_MODULE_14__service_course_service__["a" /* CourseService */],
             __WEBPACK_IMPORTED_MODULE_20__service_mc_template_service__["a" /* McTemplateService */],
+            __WEBPACK_IMPORTED_MODULE_21__service_university_service__["a" /* UniversityService */],
+            __WEBPACK_IMPORTED_MODULE_22__service_major_service__["a" /* MajorService */],
             { provide: __WEBPACK_IMPORTED_MODULE_15__service_provider_service__["b" /* baseUrlToken */], useValue: __WEBPACK_IMPORTED_MODULE_15__service_provider_service__["a" /* baseUrl */] }
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
@@ -1127,6 +1110,53 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/service/major.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MajorService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__provider_service__ = __webpack_require__("../../../../../src/app/service/provider.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+var MajorService = (function () {
+    function MajorService(http, baseUrl) {
+        this.http = http;
+        this.baseUrl = baseUrl;
+        this.headers = new Headers({ 'Content-Type': 'application/json' });
+    }
+    MajorService.prototype.getAll = function () {
+        return this.http.get(this.baseUrl + '/major', { headers: this.headers }).map(function (response) {
+            return response.json();
+        });
+    };
+    return MajorService;
+}());
+MajorService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
+    __param(1, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__provider_service__["b" /* baseUrlToken */])),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object, Object])
+], MajorService);
+
+var _a;
+//# sourceMappingURL=major.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/service/mc-template.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1159,7 +1189,7 @@ var McTemplateService = (function () {
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
     };
     McTemplateService.prototype.getAll = function () {
-        return this.http.get(this.baseUrl + '/template', { headers: this.headers }).map(function (response) {
+        return this.http.get(this.baseUrl + '/mctemplate', { headers: this.headers }).map(function (response) {
             return response.json();
         });
     };
@@ -1168,9 +1198,8 @@ var McTemplateService = (function () {
             return response.json();
         });
     };
-    McTemplateService.prototype.submitForm = function (formValue) {
-        console.log(formValue);
-        return this.http.post(this.baseUrl + '/template', formValue, { headers: this.headers }).map(function (response) { return response.json(); });
+    McTemplateService.prototype.createTemplate = function (formValue) {
+        return this.http.post(this.baseUrl + '/mctemplate', formValue, { headers: this.headers }).map(function (response) { return console.log(response.json()); });
     };
     return McTemplateService;
 }());
@@ -1198,6 +1227,53 @@ var _a;
 var baseUrlToken = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* InjectionToken */]('baseUrl');
 var baseUrl = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].baseUrl;
 //# sourceMappingURL=provider.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/service/university.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UniversityService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__provider_service__ = __webpack_require__("../../../../../src/app/service/provider.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+var UniversityService = (function () {
+    function UniversityService(http, baseUrl) {
+        this.http = http;
+        this.baseUrl = baseUrl;
+        this.headers = new Headers({ 'Content-Type': 'application/json' });
+    }
+    UniversityService.prototype.getAll = function () {
+        return this.http.get(this.baseUrl + '/university', { headers: this.headers }).map(function (response) {
+            return response.json();
+        });
+    };
+    return UniversityService;
+}());
+UniversityService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
+    __param(1, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__provider_service__["b" /* baseUrlToken */])),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["b" /* Http */]) === "function" && _a || Object, Object])
+], UniversityService);
+
+var _a;
+//# sourceMappingURL=university.service.js.map
 
 /***/ }),
 

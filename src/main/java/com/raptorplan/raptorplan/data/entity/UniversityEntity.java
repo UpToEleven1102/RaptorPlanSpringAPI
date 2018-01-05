@@ -1,6 +1,8 @@
 package com.raptorplan.raptorplan.data.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "H.universities")
@@ -9,7 +11,7 @@ public class UniversityEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
-    @Column
+    @Column(unique = true)
     public String code;
 
     @Column
@@ -47,4 +49,6 @@ public class UniversityEntity {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

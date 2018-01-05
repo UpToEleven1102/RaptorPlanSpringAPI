@@ -31,8 +31,8 @@ public class UniversityService {
         return conversionService.convert(entity, UniversityResponse.class);
     }
 
-    public UniversityResponse get(Long id){
-        UniversityEntity entity = repoUniversity.findOne(id);
+    public UniversityResponse get(String code){
+        UniversityEntity entity = repoUniversity.findByCode(code);
         return conversionService.convert(entity,UniversityResponse.class);
     }
 

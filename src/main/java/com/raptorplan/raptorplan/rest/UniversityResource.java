@@ -29,9 +29,9 @@ public class UniversityResource {
         return new ResponseEntity<List<UniversityResponse>>(this.service.getAll(),HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<UniversityResponse> get(Long id){
-        return new ResponseEntity<UniversityResponse>(this.service.get(id),HttpStatus.OK);
+    @RequestMapping(path = "/{code}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<UniversityResponse> get(String code){
+        return new ResponseEntity<UniversityResponse>(this.service.get(code),HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
