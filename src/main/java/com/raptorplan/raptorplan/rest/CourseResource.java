@@ -64,7 +64,6 @@ public class CourseResource {
 
     @RequestMapping(path = "/{courseCode}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<CourseResponse> getByCode(@PathVariable(name = "courseCode") String code){
-        System.out.println("Get course by code");
         CourseResponse response = courseService.getCourseByCode(code);
         return new ResponseEntity<CourseResponse>(response, HttpStatus.OK);
     }

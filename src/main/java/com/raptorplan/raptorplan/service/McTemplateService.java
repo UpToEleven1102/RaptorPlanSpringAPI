@@ -4,10 +4,8 @@ import com.google.common.collect.Lists;
 import com.raptorplan.raptorplan.config.converter.McTemplateEntityToMcTemplateResponse;
 import com.raptorplan.raptorplan.data.entity.*;
 import com.raptorplan.raptorplan.data.repository.*;
-import com.raptorplan.raptorplan.model.CourseAttribute;
-import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
+import com.raptorplan.raptorplan.model.IdHolder;
 import com.raptorplan.raptorplan.model.request.McTemplateRequest;
-import com.raptorplan.raptorplan.model.response.CourseInfoMcTemplateResponse;
 import com.raptorplan.raptorplan.model.response.McTemplateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
@@ -15,7 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,7 +36,7 @@ public class McTemplateService {
         this.repoMajor = repoMajor;
     }
 
-    public CourseInfoMcTemplate convertCourseInfo(String name, String attributeCode, Integer credit, List<CourseAttribute> courses){
+    public CourseInfoMcTemplate convertCourseInfo(String name, String attributeCode, Integer credit, List<IdHolder> courses){
         CourseInfoMcTemplate courseInfo = new CourseInfoMcTemplate();
         courseInfo.setCredit(credit);
         courseInfo.setName(name);

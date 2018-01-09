@@ -1,6 +1,6 @@
 package com.raptorplan.raptorplan.model.request;
 
-import com.raptorplan.raptorplan.model.CourseAttribute;
+import com.raptorplan.raptorplan.model.IdHolder;
 
 import java.util.List;
 
@@ -29,31 +29,31 @@ public class McTemplateRequest {
 
     private Integer institutionalCredit;
 
-    private List<CourseAttribute> institutionalAttributes;
+    private List<IdHolder> institutionalAttributes;
 
-    private List<CourseAttribute> englCourses;
+    private List<IdHolder> englCourses;
 
-    private List<CourseAttribute> mathCourses;
+    private List<IdHolder> mathCourses;
 
-    private List<CourseAttribute> speechCourses;
+    private List<IdHolder> speechCourses;
 
-    private List<CourseAttribute> artCourses;
+    private List<IdHolder> artCourses;
 
-    private List<CourseAttribute> behavioralCourses;
+    private List<IdHolder> behavioralCourses;
 
-    private List<CourseAttribute> humanCourses;
+    private List<IdHolder> humanCourses;
 
-    private List<CourseAttribute> scienceCourses;
+    private List<IdHolder> scienceCourses;
 
-    private List<CourseAttribute> scienceLabCourses;
+    private List<IdHolder> scienceLabCourses;
 
-    private List<CourseAttribute> programCourses;
+    private List<IdHolder> programCourses;
 
-    private List<CourseAttribute> electiveCourses;
+    private List<IdHolder> electiveCourses;
 
     public McTemplateRequest(){}
 
-    public McTemplateRequest(String major, Integer enFoundationCredit, Integer mathFoundationCredit, Integer speechFoundationCredit, Integer artDistributionCredit, Integer behavioralDistributionCredit, Integer humanDistributionCredit, Integer scienceDistributionCredit, Integer scienceLabDistributionCredit, Integer programCredit, Integer electivesCredit, Integer institutionalCredit, List<CourseAttribute> institutionalAttributes, List<CourseAttribute> englCourses, List<CourseAttribute> mathCourses, List<CourseAttribute> speechCourses, List<CourseAttribute> artCourses, List<CourseAttribute> behavioralCourses, List<CourseAttribute> humanCourses, List<CourseAttribute> scienceCourses, List<CourseAttribute> scienceLabCourses, List<CourseAttribute> programCourses, List<CourseAttribute> electiveCourses) {
+    public McTemplateRequest(String major, Integer enFoundationCredit, Integer mathFoundationCredit, Integer speechFoundationCredit, Integer artDistributionCredit, Integer behavioralDistributionCredit, Integer humanDistributionCredit, Integer scienceDistributionCredit, Integer scienceLabDistributionCredit, Integer programCredit, Integer electivesCredit, Integer institutionalCredit, List<IdHolder> institutionalAttributes, List<IdHolder> englCourses, List<IdHolder> mathCourses, List<IdHolder> speechCourses, List<IdHolder> artCourses, List<IdHolder> behavioralCourses, List<IdHolder> humanCourses, List<IdHolder> scienceCourses, List<IdHolder> scienceLabCourses, List<IdHolder> programCourses, List<IdHolder> electiveCourses) {
         this.major = major;
         this.enFoundationCredit = enFoundationCredit;
         this.mathFoundationCredit = mathFoundationCredit;
@@ -175,91 +175,91 @@ public class McTemplateRequest {
         this.institutionalCredit = institutionalCredit;
     }
 
-    public List<CourseAttribute> getInstitutionalAttributes() {
+    public List<IdHolder> getInstitutionalAttributes() {
         return institutionalAttributes;
     }
 
-    public void setInstitutionalAttributes(List<CourseAttribute> institutionalAttributes) {
+    public void setInstitutionalAttributes(List<IdHolder> institutionalAttributes) {
         this.institutionalAttributes = institutionalAttributes;
     }
 
-    public List<CourseAttribute> getEnglCourses() {
+    public List<IdHolder> getEnglCourses() {
         return englCourses;
     }
 
-    public void setEnglCourses(List<CourseAttribute> englCourses) {
+    public void setEnglCourses(List<IdHolder> englCourses) {
         this.englCourses = englCourses;
     }
 
-    public List<CourseAttribute> getMathCourses() {
+    public List<IdHolder> getMathCourses() {
         return mathCourses;
     }
 
-    public void setMathCourses(List<CourseAttribute> mathCourses) {
+    public void setMathCourses(List<IdHolder> mathCourses) {
         this.mathCourses = mathCourses;
     }
 
-    public List<CourseAttribute> getSpeechCourses() {
+    public List<IdHolder> getSpeechCourses() {
         return speechCourses;
     }
 
-    public void setSpeechCourses(List<CourseAttribute> speechCourses) {
+    public void setSpeechCourses(List<IdHolder> speechCourses) {
         this.speechCourses = speechCourses;
     }
 
-    public List<CourseAttribute> getArtCourses() {
+    public List<IdHolder> getArtCourses() {
         return artCourses;
     }
 
-    public void setArtCourses(List<CourseAttribute> artCourses) {
+    public void setArtCourses(List<IdHolder> artCourses) {
         this.artCourses = artCourses;
     }
 
-    public List<CourseAttribute> getBehavioralCourses() {
+    public List<IdHolder> getBehavioralCourses() {
         return behavioralCourses;
     }
 
-    public void setBehavioralCourses(List<CourseAttribute> behavioralCourses) {
+    public void setBehavioralCourses(List<IdHolder> behavioralCourses) {
         this.behavioralCourses = behavioralCourses;
     }
 
-    public List<CourseAttribute> getHumanCourses() {
+    public List<IdHolder> getHumanCourses() {
         return humanCourses;
     }
 
-    public void setHumanCourses(List<CourseAttribute> humanCourses) {
+    public void setHumanCourses(List<IdHolder> humanCourses) {
         this.humanCourses = humanCourses;
     }
 
-    public List<CourseAttribute> getScienceCourses() {
+    public List<IdHolder> getScienceCourses() {
         return scienceCourses;
     }
 
-    public void setScienceCourses(List<CourseAttribute> scienceCourses) {
+    public void setScienceCourses(List<IdHolder> scienceCourses) {
         this.scienceCourses = scienceCourses;
     }
 
-    public List<CourseAttribute> getScienceLabCourses() {
+    public List<IdHolder> getScienceLabCourses() {
         return scienceLabCourses;
     }
 
-    public void setScienceLabCourses(List<CourseAttribute> scienceLabCourses) {
+    public void setScienceLabCourses(List<IdHolder> scienceLabCourses) {
         this.scienceLabCourses = scienceLabCourses;
     }
 
-    public List<CourseAttribute> getProgramCourses() {
+    public List<IdHolder> getProgramCourses() {
         return programCourses;
     }
 
-    public void setProgramCourses(List<CourseAttribute> programCourses) {
+    public void setProgramCourses(List<IdHolder> programCourses) {
         this.programCourses = programCourses;
     }
 
-    public List<CourseAttribute> getElectiveCourses() {
+    public List<IdHolder> getElectiveCourses() {
         return electiveCourses;
     }
 
-    public void setElectiveCourses(List<CourseAttribute> electiveCourses) {
+    public void setElectiveCourses(List<IdHolder> electiveCourses) {
         this.electiveCourses = electiveCourses;
     }
 }

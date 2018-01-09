@@ -1,8 +1,5 @@
 package com.raptorplan.raptorplan.data.entity;
 
-import com.raptorplan.raptorplan.model.customObject.SemesterTemplate;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.persistence.*;
 import java.util.List;
 

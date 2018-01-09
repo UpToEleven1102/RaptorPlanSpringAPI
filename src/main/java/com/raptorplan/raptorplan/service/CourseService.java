@@ -8,7 +8,7 @@ import com.raptorplan.raptorplan.data.entity.DisciplineEntity;
 import com.raptorplan.raptorplan.data.repository.AttributeRepository;
 import com.raptorplan.raptorplan.data.repository.PageableCourseRepository;
 import com.raptorplan.raptorplan.data.repository.DisciplineRepository;
-import com.raptorplan.raptorplan.model.CourseAttribute;
+import com.raptorplan.raptorplan.model.IdHolder;
 import com.raptorplan.raptorplan.model.request.CourseRequest;
 import com.raptorplan.raptorplan.model.response.AttributeResponse;
 import com.raptorplan.raptorplan.model.response.CourseResponse;
@@ -43,7 +43,7 @@ public class CourseService {
         entity.setDiscipline(discipline);
         discipline.addCourse(entity);
 
-        for (CourseAttribute attribute :
+        for (IdHolder attribute :
                 requestObj.getAttributes()) {
             AttributeEntity attributeEntity = repoAttribute.findById(attribute.getId());
             entity.addAttribute(attributeEntity);
@@ -55,7 +55,12 @@ public class CourseService {
     }
 
     public Page<CourseResponse> getCoursesByDisciplineCode(String code, Pageable page){
-        Page<CourseResponse> response = this.repoCourse.findCourseByDisciplineCode(code, page).map(new CourseEntityToCourseResponse());
+        Page<CourseResponse> response;
+        if(page.getPageNumber() == 0){
+            response = new PageImpl<CourseEntity>(this.repoCourse.findCourseByDisciplineCode(code)).map(new CourseEntityToCourseResponse());
+        } else {
+            response = this.repoCourse.findCourseByDisciplineCode(code, page).map(new CourseEntityToCourseResponse());
+        }
         return response;
     }
 
@@ -65,7 +70,12 @@ public class CourseService {
     }
 
     public Page<CourseResponse> getCourses(Pageable pageable){
-        Page<CourseResponse> response = this.repoCourse.findAll(pageable).map(new CourseEntityToCourseResponse());
+        Page<CourseResponse> response;
+        if(pageable.getPageNumber()==0){
+            response = new PageImpl<CourseEntity>(Lists.newArrayList(this.repoCourse.findAll())).map(new CourseEntityToCourseResponse());
+        } else {
+            response = this.repoCourse.findAll(pageable).map(new CourseEntityToCourseResponse());
+        }
         return response;
     }
 

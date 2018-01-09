@@ -1,11 +1,11 @@
 package com.raptorplan.raptorplan.model;
 
-public class CourseAttribute {
+public class IdHolder {
     private Long id;
 
-    public CourseAttribute(){}
+    public IdHolder(){}
 
-    public CourseAttribute(Long id){
+    public IdHolder(Long id){
         this.id = id;
     }
 

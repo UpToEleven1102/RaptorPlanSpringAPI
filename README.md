@@ -62,3 +62,11 @@ ex: ./api/v1/course/discipline/ARTT  //get all ARTT courses
 ## Get an individual attribute:
 
 ./api/v1/attribute/{attribute id}
+
+## Get MC academic template by major
+
+./api/v1/mctemplate/{majorCode}
+
+## Get transfer template
+
+./api/v1/trans_template?major={majorCode}&school={schoolCode}

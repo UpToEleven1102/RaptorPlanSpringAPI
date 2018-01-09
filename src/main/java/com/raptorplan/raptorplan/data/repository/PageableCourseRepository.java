@@ -15,4 +15,6 @@ public interface PageableCourseRepository extends PagingAndSortingRepository<Cou
     public CourseEntity findByCode(String code);
 
     public Page<CourseEntity> findCourseByDisciplineCode(String code, Pageable pageable);
+
+    public List<CourseEntity> findCourseByDisciplineCode(String code);
 }

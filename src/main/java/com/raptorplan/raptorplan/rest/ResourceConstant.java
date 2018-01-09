@@ -10,5 +10,5 @@ public class ResourceConstant {
     public static final String MC_TEMPLATE_PATH = VERSION + "/mctemplate";
     public static final String MAJOR_PATH = VERSION + "/major";
     public static final String UNIVERSITY_PATH = VERSION +"/university";
-    public static final String TRAN_TEMPLATE_PATH = VERSION +"/tran_template";
+    public static final String TRAN_TEMPLATE_PATH = VERSION +"/trans_template";
 }
