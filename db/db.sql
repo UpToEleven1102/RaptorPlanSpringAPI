@@ -16,6 +16,87 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `h_advising_templates`
+--
+
+DROP TABLE IF EXISTS `h_advising_templates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `h_advising_templates` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `inst_credit` int(11) DEFAULT NULL,
+  `major_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKe2rn9pedylgx110x1hb3mbfpk` (`major_id`),
+  CONSTRAINT `FKe2rn9pedylgx110x1hb3mbfpk` FOREIGN KEY (`major_id`) REFERENCES `h_major` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `h_advising_templates`
+--
+
+LOCK TABLES `h_advising_templates` WRITE;
+/*!40000 ALTER TABLE `h_advising_templates` DISABLE KEYS */;
+INSERT INTO `h_advising_templates` VALUES (1,3,1);
+/*!40000 ALTER TABLE `h_advising_templates` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `h_advising_templates_course_info`
+--
+
+DROP TABLE IF EXISTS `h_advising_templates_course_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `h_advising_templates_course_info` (
+  `mc_advising_template_entity_id` bigint(20) NOT NULL,
+  `course_info_id` bigint(20) NOT NULL,
+  UNIQUE KEY `UK_8hkty4mn0dgwnjwys4g412ono` (`course_info_id`),
+  KEY `FK85c75sp6lecu2cjukrmh3eci7` (`mc_advising_template_entity_id`),
+  CONSTRAINT `FK85c75sp6lecu2cjukrmh3eci7` FOREIGN KEY (`mc_advising_template_entity_id`) REFERENCES `h_advising_templates` (`id`),
+  CONSTRAINT `FKcbj2w5v8ygw4b26xpjdxvo51i` FOREIGN KEY (`course_info_id`) REFERENCES `h_course_info` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `h_advising_templates_course_info`
+--
+
+LOCK TABLES `h_advising_templates_course_info` WRITE;
+/*!40000 ALTER TABLE `h_advising_templates_course_info` DISABLE KEYS */;
+INSERT INTO `h_advising_templates_course_info` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10);
+/*!40000 ALTER TABLE `h_advising_templates_course_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `h_advising_templates_inst_attributes`
+--
+
+DROP TABLE IF EXISTS `h_advising_templates_inst_attributes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `h_advising_templates_inst_attributes` (
+  `mc_advising_template_entity_id` bigint(20) NOT NULL,
+  `inst_attributes_id` bigint(20) NOT NULL,
+  UNIQUE KEY `UK_io9aksqyyt2dq13yuti1yuu4e` (`inst_attributes_id`),
+  KEY `FKjcbkklr3digljl8xtme6tiu46` (`mc_advising_template_entity_id`),
+  CONSTRAINT `FKecws9iutml7kpvltw9v4cncof` FOREIGN KEY (`inst_attributes_id`) REFERENCES `h_attributes` (`id`),
+  CONSTRAINT `FKjcbkklr3digljl8xtme6tiu46` FOREIGN KEY (`mc_advising_template_entity_id`) REFERENCES `h_advising_templates` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `h_advising_templates_inst_attributes`
+--
+
+LOCK TABLES `h_advising_templates_inst_attributes` WRITE;
+/*!40000 ALTER TABLE `h_advising_templates_inst_attributes` DISABLE KEYS */;
+INSERT INTO `h_advising_templates_inst_attributes` VALUES (1,4),(1,6);
+/*!40000 ALTER TABLE `h_advising_templates_inst_attributes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `h_api_course_attribute`
 --
 
@@ -55,7 +136,7 @@ CREATE TABLE `h_attributes` (
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_tf2qhm819mo3ev8onesbltcvk` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +145,7 @@ CREATE TABLE `h_attributes` (
 
 LOCK TABLES `h_attributes` WRITE;
 /*!40000 ALTER TABLE `h_attributes` DISABLE KEYS */;
-INSERT INTO `h_attributes` VALUES (1,'english_foundation','English Foundation'),(2,'math_foundation','Math Foundation'),(3,'speech_foundation','Speech Foundation'),(4,'art_distribution','Art Distribution'),(5,'behavioral_distribution','Behavioral Distribution'),(6,'humanities_distribution','Humanities Distribution'),(7,'natural_science_lab_distribution','Natural Science with Lab Distribution'),(8,'natural_science_distribution','Natural Science Distribution'),(9,'major','Major Requirement'),(10,'electives','Electives');
+INSERT INTO `h_attributes` VALUES (1,'english_foundation','English Foundation'),(2,'math_foundation','Math Foundation'),(3,'speech_foundation','Speech Foundation'),(4,'art_distribution','Art Distribution'),(5,'behavioral_distribution','Behavioral Distribution'),(6,'humanities_distribution','Humanities Distribution'),(7,'natural_science_lab_distribution','Natural Science with Lab Distribution'),(8,'natural_science_distribution','Natural Science Distribution'),(9,'major','Major Requirement'),(10,'electives','Electives'),(11,'institutional_requirement','Institutional Requirement');
 /*!40000 ALTER TABLE `h_attributes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +173,7 @@ CREATE TABLE `h_course_info` (
 
 LOCK TABLES `h_course_info` WRITE;
 /*!40000 ALTER TABLE `h_course_info` DISABLE KEYS */;
-INSERT INTO `h_course_info` VALUES (1,3,'Art Distribution',4),(2,6,'Behavioral Distribution',5),(3,3,'English Foundation',1),(4,6,'Electives',10),(5,3,'Humanities Distribution',6),(6,22,'Major Requirement',9),(7,4,'Math Foundation',2),(8,3,'Science Distribution',8),(9,4,'Science Distribution with Lab',7),(10,3,'Speech Foundation',3);
+INSERT INTO `h_course_info` VALUES (1,3,'Art Distribution',4),(2,6,'Behavioral Distribution',5),(3,3,'English Foundation',1),(4,6,'Electives',10),(5,3,'Humanities Distribution',6),(6,22,'Major Requirement',9),(7,4,'Math Foundation',2),(8,4,'Science Distribution',8),(9,3,'Science Distribution with Lab',7),(10,3,'Speech Foundation',3);
 /*!40000 ALTER TABLE `h_course_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,84 +315,59 @@ INSERT INTO `h_major` VALUES (1,'CMSC','Computer Science'),(2,'ENEE','Electrical
 UNLOCK TABLES;
 
 --
--- Table structure for table `h_mc_templates`
+-- Table structure for table `h_mc_template`
 --
 
-DROP TABLE IF EXISTS `h_mc_templates`;
+DROP TABLE IF EXISTS `h_mc_template`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `h_mc_templates` (
+CREATE TABLE `h_mc_template` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `inst_credit` int(11) DEFAULT NULL,
   `major_id` bigint(20) DEFAULT NULL,
+  `university_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK6wie3cgwmdq4s62jq0ie6vx85` (`major_id`),
-  CONSTRAINT `FK6wie3cgwmdq4s62jq0ie6vx85` FOREIGN KEY (`major_id`) REFERENCES `h_major` (`id`)
+  KEY `FKbknkki6hk81puxuhsrqclojpg` (`major_id`),
+  KEY `FKsicugwhd3fos5vpaovl56clfc` (`university_id`),
+  CONSTRAINT `FKbknkki6hk81puxuhsrqclojpg` FOREIGN KEY (`major_id`) REFERENCES `h_major` (`id`),
+  CONSTRAINT `FKsicugwhd3fos5vpaovl56clfc` FOREIGN KEY (`university_id`) REFERENCES `h_universities` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `h_mc_templates`
+-- Dumping data for table `h_mc_template`
 --
 
-LOCK TABLES `h_mc_templates` WRITE;
-/*!40000 ALTER TABLE `h_mc_templates` DISABLE KEYS */;
-INSERT INTO `h_mc_templates` VALUES (1,3,1);
-/*!40000 ALTER TABLE `h_mc_templates` ENABLE KEYS */;
+LOCK TABLES `h_mc_template` WRITE;
+/*!40000 ALTER TABLE `h_mc_template` DISABLE KEYS */;
+INSERT INTO `h_mc_template` VALUES (1,1,2);
+/*!40000 ALTER TABLE `h_mc_template` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `h_mc_templates_course_info`
+-- Table structure for table `h_mc_template_semesters`
 --
 
-DROP TABLE IF EXISTS `h_mc_templates_course_info`;
+DROP TABLE IF EXISTS `h_mc_template_semesters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `h_mc_templates_course_info` (
+CREATE TABLE `h_mc_template_semesters` (
   `mc_template_entity_id` bigint(20) NOT NULL,
-  `course_info_id` bigint(20) NOT NULL,
-  UNIQUE KEY `UK_geg735euy2eg9l4nc4c0ph2bl` (`course_info_id`),
-  KEY `FKar9hwy9nc5rj6cg6noiklt5w8` (`mc_template_entity_id`),
-  CONSTRAINT `FKar9hwy9nc5rj6cg6noiklt5w8` FOREIGN KEY (`mc_template_entity_id`) REFERENCES `h_mc_templates` (`id`),
-  CONSTRAINT `FKrammydsu4b6u5oe6r3390tx45` FOREIGN KEY (`course_info_id`) REFERENCES `h_course_info` (`id`)
+  `semesters_id` bigint(20) NOT NULL,
+  UNIQUE KEY `UK_pv9tmu6tswonyp45cxga8ucu7` (`semesters_id`),
+  KEY `FKmdnqbpgyxrad20yldua8t6ty0` (`mc_template_entity_id`),
+  CONSTRAINT `FK15x95tnclgw416aea2ch8luh8` FOREIGN KEY (`semesters_id`) REFERENCES `h_semester` (`id`),
+  CONSTRAINT `FKmdnqbpgyxrad20yldua8t6ty0` FOREIGN KEY (`mc_template_entity_id`) REFERENCES `h_mc_template` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `h_mc_templates_course_info`
+-- Dumping data for table `h_mc_template_semesters`
 --
 
-LOCK TABLES `h_mc_templates_course_info` WRITE;
-/*!40000 ALTER TABLE `h_mc_templates_course_info` DISABLE KEYS */;
-INSERT INTO `h_mc_templates_course_info` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10);
-/*!40000 ALTER TABLE `h_mc_templates_course_info` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `h_mc_templates_inst_attributes`
---
-
-DROP TABLE IF EXISTS `h_mc_templates_inst_attributes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `h_mc_templates_inst_attributes` (
-  `mc_template_entity_id` bigint(20) NOT NULL,
-  `inst_attributes_id` bigint(20) NOT NULL,
-  UNIQUE KEY `UK_9h7sb8wqf0mek52et0ciffnh5` (`inst_attributes_id`),
-  KEY `FK6kmclvkipm0r8ymkeyw0noql1` (`mc_template_entity_id`),
-  CONSTRAINT `FK32g36xbw8r0pk6erg2prs0shk` FOREIGN KEY (`inst_attributes_id`) REFERENCES `h_attributes` (`id`),
-  CONSTRAINT `FK6kmclvkipm0r8ymkeyw0noql1` FOREIGN KEY (`mc_template_entity_id`) REFERENCES `h_mc_templates` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `h_mc_templates_inst_attributes`
---
-
-LOCK TABLES `h_mc_templates_inst_attributes` WRITE;
-/*!40000 ALTER TABLE `h_mc_templates_inst_attributes` DISABLE KEYS */;
-INSERT INTO `h_mc_templates_inst_attributes` VALUES (1,4),(1,6);
-/*!40000 ALTER TABLE `h_mc_templates_inst_attributes` ENABLE KEYS */;
+LOCK TABLES `h_mc_template_semesters` WRITE;
+/*!40000 ALTER TABLE `h_mc_template_semesters` DISABLE KEYS */;
+INSERT INTO `h_mc_template_semesters` VALUES (1,1),(1,2),(1,3),(1,4);
+/*!40000 ALTER TABLE `h_mc_template_semesters` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -324,7 +380,7 @@ DROP TABLE IF EXISTS `h_semester`;
 CREATE TABLE `h_semester` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,6 +389,7 @@ CREATE TABLE `h_semester` (
 
 LOCK TABLES `h_semester` WRITE;
 /*!40000 ALTER TABLE `h_semester` DISABLE KEYS */;
+INSERT INTO `h_semester` VALUES (1),(2),(3),(4);
 /*!40000 ALTER TABLE `h_semester` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,12 +401,12 @@ DROP TABLE IF EXISTS `h_semester_attributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `h_semester_attributes` (
-  `semester_template_id` bigint(20) NOT NULL,
+  `mc_semester_template_id` bigint(20) NOT NULL,
   `attributes_id` bigint(20) NOT NULL,
-  UNIQUE KEY `UK_84vs1raxv6m77evv57x0y8a92` (`attributes_id`),
-  KEY `FKd2jxt7udodmhrpxbpk07bg83w` (`semester_template_id`),
+  KEY `FK9kbnu6boa8jgng6f87vvv8t1g` (`attributes_id`),
+  KEY `FKkcmjjwf7ca82r85hnxbfnkwm7` (`mc_semester_template_id`),
   CONSTRAINT `FK9kbnu6boa8jgng6f87vvv8t1g` FOREIGN KEY (`attributes_id`) REFERENCES `h_attributes` (`id`),
-  CONSTRAINT `FKd2jxt7udodmhrpxbpk07bg83w` FOREIGN KEY (`semester_template_id`) REFERENCES `h_semester` (`id`)
+  CONSTRAINT `FKkcmjjwf7ca82r85hnxbfnkwm7` FOREIGN KEY (`mc_semester_template_id`) REFERENCES `h_semester` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -359,6 +416,7 @@ CREATE TABLE `h_semester_attributes` (
 
 LOCK TABLES `h_semester_attributes` WRITE;
 /*!40000 ALTER TABLE `h_semester_attributes` DISABLE KEYS */;
+INSERT INTO `h_semester_attributes` VALUES (1,4),(1,5),(2,1),(2,11),(3,6),(3,7),(3,10),(4,3),(4,5),(4,8),(4,10);
 /*!40000 ALTER TABLE `h_semester_attributes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,11 +428,11 @@ DROP TABLE IF EXISTS `h_semester_courses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `h_semester_courses` (
-  `semester_template_id` bigint(20) NOT NULL,
+  `mc_semester_template_id` bigint(20) NOT NULL,
   `courses_id` bigint(20) NOT NULL,
-  UNIQUE KEY `UK_9dnpe76jf3nnpw3q6hf73s9n6` (`courses_id`),
-  KEY `FK4pkbeojq5504q3m9hgs1j04ad` (`semester_template_id`),
-  CONSTRAINT `FK4pkbeojq5504q3m9hgs1j04ad` FOREIGN KEY (`semester_template_id`) REFERENCES `h_semester` (`id`),
+  KEY `FKerlas1db8te2im19bk7f70wnu` (`courses_id`),
+  KEY `FKbray2wss44v7lws5uv58flk5o` (`mc_semester_template_id`),
+  CONSTRAINT `FKbray2wss44v7lws5uv58flk5o` FOREIGN KEY (`mc_semester_template_id`) REFERENCES `h_semester` (`id`),
   CONSTRAINT `FKerlas1db8te2im19bk7f70wnu` FOREIGN KEY (`courses_id`) REFERENCES `h_courses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -385,61 +443,8 @@ CREATE TABLE `h_semester_courses` (
 
 LOCK TABLES `h_semester_courses` WRITE;
 /*!40000 ALTER TABLE `h_semester_courses` DISABLE KEYS */;
+INSERT INTO `h_semester_courses` VALUES (1,19),(1,21),(1,23),(2,17),(2,22),(3,18),(4,20);
 /*!40000 ALTER TABLE `h_semester_courses` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `h_tran_template`
---
-
-DROP TABLE IF EXISTS `h_tran_template`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `h_tran_template` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `major_id` bigint(20) DEFAULT NULL,
-  `university_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKfkmtabal8djjswcrtio0j2hut` (`major_id`),
-  KEY `FKmhaj4xxd7w1vcfgtgq2enf6ll` (`university_id`),
-  CONSTRAINT `FKfkmtabal8djjswcrtio0j2hut` FOREIGN KEY (`major_id`) REFERENCES `h_major` (`id`),
-  CONSTRAINT `FKmhaj4xxd7w1vcfgtgq2enf6ll` FOREIGN KEY (`university_id`) REFERENCES `h_universities` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `h_tran_template`
---
-
-LOCK TABLES `h_tran_template` WRITE;
-/*!40000 ALTER TABLE `h_tran_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `h_tran_template` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `h_tran_template_semesters`
---
-
-DROP TABLE IF EXISTS `h_tran_template_semesters`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `h_tran_template_semesters` (
-  `transfer_template_entity_id` bigint(20) NOT NULL,
-  `semesters_id` bigint(20) NOT NULL,
-  UNIQUE KEY `UK_k8bvog3oubn5fbnk5x8aish7v` (`semesters_id`),
-  KEY `FK1rreoxomooas4ki2s88nbjw60` (`transfer_template_entity_id`),
-  CONSTRAINT `FK1rreoxomooas4ki2s88nbjw60` FOREIGN KEY (`transfer_template_entity_id`) REFERENCES `h_tran_template` (`id`),
-  CONSTRAINT `FKk3dubspcbrkvm998yufjanxs7` FOREIGN KEY (`semesters_id`) REFERENCES `h_semester` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `h_tran_template_semesters`
---
-
-LOCK TABLES `h_tran_template_semesters` WRITE;
-/*!40000 ALTER TABLE `h_tran_template_semesters` DISABLE KEYS */;
-/*!40000 ALTER TABLE `h_tran_template_semesters` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -477,4 +482,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-08 21:49:00
+-- Dump completed on 2018-01-09 15:11:44

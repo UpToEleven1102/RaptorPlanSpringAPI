@@ -1,101 +1,88 @@
 package com.raptorplan.raptorplan.service;
 
 import com.google.common.collect.Lists;
-import com.raptorplan.raptorplan.config.converter.McTemplateEntityToMcTemplateResponse;
-import com.raptorplan.raptorplan.data.entity.*;
+import com.raptorplan.raptorplan.config.converter.TransferTemplateEntityToTransferTemplateResponse;
+import com.raptorplan.raptorplan.data.entity.AttributeEntity;
+import com.raptorplan.raptorplan.data.entity.CourseEntity;
+import com.raptorplan.raptorplan.data.entity.McSemesterTemplate;
+import com.raptorplan.raptorplan.data.entity.McTemplateEntity;
 import com.raptorplan.raptorplan.data.repository.*;
-import com.raptorplan.raptorplan.model.IdHolder;
-import com.raptorplan.raptorplan.model.request.McTemplateRequest;
-import com.raptorplan.raptorplan.model.response.McTemplateResponse;
+import com.raptorplan.raptorplan.model.request.TransferTemplateRequest;
+import com.raptorplan.raptorplan.model.response.TransferTemplateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class McTemplateService {
-    private ConversionService conversionService;
-    private McTemplateRepository repoTemplate;
+public class TransferTemplateService {
+    private TransferTemplateRepository repoTransferTemplate;
     private AttributeRepository repoAttribute;
     private PageableCourseRepository repoCourse;
-    private CourseInfoRepository repoCourseInfo;
     private MajorRepository repoMajor;
+    private UniversityRepository repoUniversity;
+    private ConversionService conversionService;
+    private SemesterTemplateRepository repoSemester;
 
     @Autowired
-    public McTemplateService(McTemplateRepository repoTemplate, ConversionService conversionService,
-                             AttributeRepository repoAttribute, PageableCourseRepository repoCourse,
-                             CourseInfoRepository repoCourseInfo, MajorRepository repoMajor) {
-        this.repoTemplate = repoTemplate;
-        this.conversionService = conversionService;
+    public TransferTemplateService(TransferTemplateRepository repoTransferTemplate, ConversionService conversionService,
+                                   AttributeRepository repoAttribute, PageableCourseRepository repoCourse,
+                                   MajorRepository repoMajor, UniversityRepository repoUniversity, SemesterTemplateRepository repoSemester){
+        this.repoTransferTemplate = repoTransferTemplate;
         this.repoAttribute = repoAttribute;
         this.repoCourse = repoCourse;
-        this.repoCourseInfo = repoCourseInfo;
         this.repoMajor = repoMajor;
+        this.repoUniversity = repoUniversity;
+        this.conversionService = conversionService;
+        this.repoSemester = repoSemester;
     }
 
-    public CourseInfoMcTemplate convertCourseInfo(String name, String attributeCode, Integer credit, List<IdHolder> courses){
-        CourseInfoMcTemplate courseInfo = new CourseInfoMcTemplate();
-        courseInfo.setCredit(credit);
-        courseInfo.setName(name);
-
-        courseInfo.setAttribute(repoAttribute.findByCode(attributeCode));
-
-        courses.forEach(e -> {
-            CourseEntity course = repoCourse.findOne(e.getId());
-            courseInfo.addCourse(course);
-        });
-        repoCourseInfo.save(courseInfo);
-        return courseInfo;
-    }
-
-    public McTemplateResponse create(McTemplateRequest source) {
+    public TransferTemplateResponse create(TransferTemplateRequest requestBody){
         McTemplateEntity entity = new McTemplateEntity();
+        entity.setMajor(repoMajor.findByCode(requestBody.getMajor()));
+        entity.setUniversity(repoUniversity.findByCode(requestBody.getUniversity()));
 
-        entity.setInstCredit(source.getInstitutionalCredit());
+        List<McSemesterTemplate> semesters = new ArrayList<>();
 
-        source.getInstitutionalAttributes().forEach(e -> {
-            AttributeEntity attribute = repoAttribute.findOne(e.getId());
-            entity.addAttribute(attribute);
+        requestBody.getSemesters().forEach(e -> {
+            McSemesterTemplate mcSemesterTemplate = new McSemesterTemplate();
+            List<AttributeEntity> attributeEntities = new ArrayList<AttributeEntity>();
+            e.getAttributes().forEach(attribute -> {
+                attributeEntities.add(repoAttribute.findOne(attribute.getId()));
+            });
+
+            List<CourseEntity> courseEntities = new ArrayList<CourseEntity>();
+            e.getCourses().forEach(course -> {
+                courseEntities.add(repoCourse.findOne(course.getId()));
+            });
+
+            mcSemesterTemplate.setCourses(courseEntities);
+            mcSemesterTemplate.setAttributes(attributeEntities);
+            repoSemester.save(mcSemesterTemplate);
+            semesters.add(mcSemesterTemplate);
         });
 
-        entity.setMajor(repoMajor.findByCode(source.getMajor()));
+        entity.setSemesters(semesters);
 
-        entity.addCourseInfo(convertCourseInfo("Art Distribution","art_distribution", source.getArtDistributionCredit(), source.getArtCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("Behavioral Distribution", "behavioral_distribution", source.getBehavioralDistributionCredit(), source.getBehavioralCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("English Foundation" , "english_foundation", source.getEnFoundationCredit(), source.getEnglCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("Electives" , "electives", source.getElectivesCredit(), source.getElectiveCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("Humanities Distribution" , "humanities_distribution", source.getHumanDistributionCredit(), source.getHumanCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("Major Requirement" , "major", source.getProgramCredit(), source.getProgramCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("Math Foundation" , "math_foundation", source.getMathFoundationCredit(), source.getMathCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("Science Distribution" , "natural_science_distribution", source.getScienceDistributionCredit(), source.getScienceCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("Science Distribution with Lab" , "natural_science_lab_distribution", source.getScienceLabDistributionCredit(), source.getScienceLabCourses()));
-
-        entity.addCourseInfo(convertCourseInfo("Speech Foundation" , "speech_foundation", source.getSpeechFoundationCredit(), source.getSpeechCourses()));
-
-        repoTemplate.save(entity);
-        return conversionService.convert(entity, McTemplateResponse.class);
+        repoTransferTemplate.save(entity);
+        return conversionService.convert(entity,TransferTemplateResponse.class);
     }
 
-    public List<McTemplateResponse> getAll() {
-        Page<McTemplateResponse> templates = new PageImpl<McTemplateEntity>(Lists.newArrayList(repoTemplate.findAll()))
-                .map(new McTemplateEntityToMcTemplateResponse());
-        return Lists.newArrayList(templates);
+    public TransferTemplateResponse get(Long id){
+        McTemplateEntity entity = this.repoTransferTemplate.findOne(id);
+
+        return this.conversionService.convert(entity,TransferTemplateResponse.class);
     }
 
-    public McTemplateResponse getByMajor(String major) {
-        McTemplateEntity entity = repoTemplate.findByMajorCode(major);
-        McTemplateResponse response = conversionService.convert(entity,McTemplateResponse.class);
-        return response;
+    public TransferTemplateResponse getBySchoolAndMajor(String schoolCode, String majorCode) {
+        McTemplateEntity entity = this.repoTransferTemplate.findByUniversityCodeAndMajorCode(schoolCode,majorCode);
+        return conversionService.convert(entity,TransferTemplateResponse.class);
+    }
+
+    public List<TransferTemplateResponse> getAll(){
+        return Lists.newArrayList(new PageImpl<McTemplateEntity>(Lists.newArrayList(repoTransferTemplate.findAll())).map(new TransferTemplateEntityToTransferTemplateResponse()));
     }
 }

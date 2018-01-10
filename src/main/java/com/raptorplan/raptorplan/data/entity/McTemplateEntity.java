@@ -1,29 +1,31 @@
 package com.raptorplan.raptorplan.data.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "H.mc_templates")
-public class McTemplateEntity {
+@Table(name = "H.tran_template")
+public class TransferTemplateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
-    private Integer instCredit;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<SemesterTemplate> semesters;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<AttributeEntity> instAttributes;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private UniversityEntity university;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<CourseInfoMcTemplate> courseInfo;
-
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private MajorEntity major;
 
-    public McTemplateEntity() {
+    public TransferTemplateEntity() {
+    }
+
+    public TransferTemplateEntity(List<SemesterTemplate> semesters, UniversityEntity university, MajorEntity major) {
+        this.semesters = semesters;
+        this.university = university;
+        this.major = major;
     }
 
     public Long getId() {
@@ -34,28 +36,20 @@ public class McTemplateEntity {
         this.id = id;
     }
 
-    public Integer getInstCredit() {
-        return instCredit;
+    public List<SemesterTemplate> getSemesters() {
+        return semesters;
     }
 
-    public void setInstCredit(Integer instCredit) {
-        this.instCredit = instCredit;
+    public void setSemesters(List<SemesterTemplate> semesters) {
+        this.semesters = semesters;
     }
 
-    public List<AttributeEntity> getInstAttributes() {
-        return instAttributes;
+    public UniversityEntity getUniversity() {
+        return university;
     }
 
-    public void setInstAttributes(List<AttributeEntity> instAttributes) {
-        this.instAttributes = instAttributes;
-    }
-
-    public List<CourseInfoMcTemplate> getCourseInfo() {
-        return courseInfo;
-    }
-
-    public void setCourseInfo(List<CourseInfoMcTemplate> courseInfo) {
-        this.courseInfo = courseInfo;
+    public void setUniversity(UniversityEntity university) {
+        this.university = university;
     }
 
     public MajorEntity getMajor() {
@@ -64,21 +58,5 @@ public class McTemplateEntity {
 
     public void setMajor(MajorEntity major) {
         this.major = major;
-    }
-
-    public void addCourseInfo(CourseInfoMcTemplate courseInfo) {
-        if(this.courseInfo == null) {
-            this.courseInfo = new ArrayList<>();
-        }
-        this.courseInfo.add(courseInfo);
-    }
-
-    public void addAttribute(AttributeEntity attribute){
-        if(this.instAttributes==null){
-            this.instAttributes = new ArrayList<>();
-            this.instAttributes.add(attribute);
-        } else if(!this.instAttributes.contains(attribute)){
-            this.instAttributes.add(attribute);
-        }
     }
 }

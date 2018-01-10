@@ -1,53 +1,46 @@
 package com.raptorplan.raptorplan.config.converter;
 
-import com.raptorplan.raptorplan.data.entity.MajorEntity;
 import com.raptorplan.raptorplan.data.entity.McTemplateEntity;
-import com.raptorplan.raptorplan.model.Links;
-import com.raptorplan.raptorplan.model.Self;
 import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
-import com.raptorplan.raptorplan.model.customObject.MajorCustom;
-import com.raptorplan.raptorplan.model.response.CourseInfoMcTemplateResponse;
-import com.raptorplan.raptorplan.model.response.McTemplateResponse;
-import com.raptorplan.raptorplan.rest.ResourceConstant;
+import com.raptorplan.raptorplan.model.response.CourseResponse;
+import com.raptorplan.raptorplan.model.response.SemesterTemplateResponse;
+import com.raptorplan.raptorplan.model.response.TransferTemplateResponse;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class McTemplateEntityToMcTemplateResponse implements Converter<McTemplateEntity,McTemplateResponse> {
+public class TransferTemplateEntityToTransferTemplateResponse implements Converter<McTemplateEntity,TransferTemplateResponse> {
     AttributeEntityToAttributeCustom converterAttribute = new AttributeEntityToAttributeCustom();
-    CourseInfoTemplateToCourseInfoTemplateResponse converterCourseInfo = new CourseInfoTemplateToCourseInfoTemplateResponse();
+    MajorEntityToMajorResponse converterMajor = new MajorEntityToMajorResponse();
+    UniversityEntityToUniversityResponse converterUniversity = new UniversityEntityToUniversityResponse();
+    CourseEntityToCourseResponse converterCourse = new CourseEntityToCourseResponse();
 
     @Override
-    public McTemplateResponse convert(McTemplateEntity source) {
-        McTemplateResponse response = new McTemplateResponse();
-
+    public TransferTemplateResponse convert(McTemplateEntity source) {
+        TransferTemplateResponse response = new TransferTemplateResponse();
         response.setId(source.getId());
+        response.setMajor(converterMajor.convert(source.getMajor()));
+        response.setUniversity(converterUniversity.convert(source.getUniversity()));
+        List<SemesterTemplateResponse> semesters = new ArrayList<>();
+        source.getSemesters().forEach(e -> {
+            SemesterTemplateResponse semesterResponse = new SemesterTemplateResponse();
+            List<AttributeCustom> attributeResponses = new ArrayList<>();
+            e.getAttributes().forEach(attribute -> {
+                attributeResponses.add(converterAttribute.convert(attribute));
+            });
 
-        MajorEntity sourceMajor = source.getMajor();
-        MajorCustom majorResponse = new MajorCustom(sourceMajor.getId(),sourceMajor.getCode(), sourceMajor.getName());
-        Links majorLink = new Links();
-        Self majorSelf = new Self();
-        majorSelf.setRef(ResourceConstant.MAJOR_PATH + "/" + sourceMajor.getId());
-        majorLink.setSelf(majorSelf);
-        majorResponse.setLinks(majorLink);
-        response.setMajor(majorResponse);
-        response.setInstCredit(source.getInstCredit());
+            List<CourseResponse> courseResponses = new ArrayList<>();
+            e.getCourses().forEach(course -> {
+                courseResponses.add(converterCourse.convert(course));
+            });
 
-
-        List<AttributeCustom> attributes = new ArrayList<>();
-        source.getInstAttributes().forEach(e -> {
-            attributes.add(converterAttribute.convert(e));
-        });
-        response.setInstAttributes(attributes);
-
-        List<CourseInfoMcTemplateResponse> courseInfo = new ArrayList<>();
-        source.getCourseInfo().forEach(e -> {
-            courseInfo.add(converterCourseInfo.convert(e));
+            semesterResponse.setCourses(courseResponses);
+            semesterResponse.setAttributes(attributeResponses);
+            semesters.add(semesterResponse);
         });
 
-        response.setCourseInfo(courseInfo);
-
+        response.setSemesters(semesters);
         return response;
     }
 }

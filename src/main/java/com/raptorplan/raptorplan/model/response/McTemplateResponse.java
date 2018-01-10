@@ -1,30 +1,23 @@
 package com.raptorplan.raptorplan.model.response;
 
 
-import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
-import com.raptorplan.raptorplan.model.customObject.MajorCustom;
-
 import java.util.List;
 
-public class McTemplateResponse {
+public class TransferTemplateResponse {
     private Long id;
+    private MajorResponse major;
+    private UniversityResponse university;
 
-    private MajorCustom major;
+    private List<SemesterTemplateResponse> semesters;
 
-    private Integer instCredit;
-
-    private List<AttributeCustom> instAttributes;
-
-    private List<CourseInfoMcTemplateResponse> courseInfo;
-
-    public McTemplateResponse(Long id, MajorCustom major, List<AttributeCustom> instAttributes, List<CourseInfoMcTemplateResponse> courseInfo) {
-        this.id = id;
-        this.major = major;
-        this.instAttributes = instAttributes;
-        this.courseInfo = courseInfo;
+    public TransferTemplateResponse() {
     }
 
-    public McTemplateResponse() {
+    public TransferTemplateResponse(Long id, MajorResponse major, UniversityResponse university, List<SemesterTemplateResponse> semesters) {
+        this.id = id;
+        this.major = major;
+        this.university = university;
+        this.semesters = semesters;
     }
 
     public Long getId() {
@@ -35,35 +28,27 @@ public class McTemplateResponse {
         this.id = id;
     }
 
-    public Integer getInstCredit() {
-        return instCredit;
-    }
-
-    public void setInstCredit(Integer instCredit) {
-        this.instCredit = instCredit;
-    }
-
-    public MajorCustom getMajor() {
+    public MajorResponse getMajor() {
         return major;
     }
 
-    public void setMajor(MajorCustom major) {
+    public void setMajor(MajorResponse major) {
         this.major = major;
     }
 
-    public List<AttributeCustom> getInstAttributes() {
-        return instAttributes;
+    public UniversityResponse getUniversity() {
+        return university;
     }
 
-    public void setInstAttributes(List<AttributeCustom> instAttributes) {
-        this.instAttributes = instAttributes;
+    public void setUniversity(UniversityResponse university) {
+        this.university = university;
     }
 
-    public List<CourseInfoMcTemplateResponse> getCourseInfo() {
-        return courseInfo;
+    public List<SemesterTemplateResponse> getSemesters() {
+        return semesters;
     }
 
-    public void setCourseInfo(List<CourseInfoMcTemplateResponse> courseInfo) {
-        this.courseInfo = courseInfo;
+    public void setSemesters(List<SemesterTemplateResponse> semesters) {
+        this.semesters = semesters;
     }
 }
