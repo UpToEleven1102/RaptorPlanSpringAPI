@@ -1,12 +1,12 @@
 package com.raptorplan.raptorplan.service;
 
 import com.google.common.collect.Lists;
-import com.raptorplan.raptorplan.config.converter.McTemplateEntityToMcTemplateResponse;
+import com.raptorplan.raptorplan.config.converter.McAdvisingTemplateEntityToMcAdvisingTemplateResponse;
 import com.raptorplan.raptorplan.data.entity.*;
 import com.raptorplan.raptorplan.data.repository.*;
 import com.raptorplan.raptorplan.model.IdHolder;
-import com.raptorplan.raptorplan.model.request.McTemplateRequest;
-import com.raptorplan.raptorplan.model.response.McTemplateResponse;
+import com.raptorplan.raptorplan.model.request.McAdvisingTemplateRequest;
+import com.raptorplan.raptorplan.model.response.McAdvisingTemplateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
@@ -16,18 +16,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class McTemplateService {
+public class McAdvisingTemplateService {
     private ConversionService conversionService;
-    private McTemplateRepository repoTemplate;
+    private McAdvisingTemplateRepository repoTemplate;
     private AttributeRepository repoAttribute;
     private PageableCourseRepository repoCourse;
     private CourseInfoRepository repoCourseInfo;
     private MajorRepository repoMajor;
 
     @Autowired
-    public McTemplateService(McTemplateRepository repoTemplate, ConversionService conversionService,
-                             AttributeRepository repoAttribute, PageableCourseRepository repoCourse,
-                             CourseInfoRepository repoCourseInfo, MajorRepository repoMajor) {
+    public McAdvisingTemplateService(McAdvisingTemplateRepository repoTemplate, ConversionService conversionService,
+                                     AttributeRepository repoAttribute, PageableCourseRepository repoCourse,
+                                     CourseInfoRepository repoCourseInfo, MajorRepository repoMajor) {
         this.repoTemplate = repoTemplate;
         this.conversionService = conversionService;
         this.repoAttribute = repoAttribute;
@@ -51,7 +51,7 @@ public class McTemplateService {
         return courseInfo;
     }
 
-    public McTemplateResponse create(McTemplateRequest source) {
+    public McAdvisingTemplateResponse create(McAdvisingTemplateRequest source) {
         McAdvisingTemplateEntity entity = new McAdvisingTemplateEntity();
 
         entity.setInstCredit(source.getInstitutionalCredit());
@@ -84,18 +84,18 @@ public class McTemplateService {
         entity.addCourseInfo(convertCourseInfo("Speech Foundation" , "speech_foundation", source.getSpeechFoundationCredit(), source.getSpeechCourses()));
 
         repoTemplate.save(entity);
-        return conversionService.convert(entity, McTemplateResponse.class);
+        return conversionService.convert(entity, McAdvisingTemplateResponse.class);
     }
 
-    public List<McTemplateResponse> getAll() {
-        Page<McTemplateResponse> templates = new PageImpl<McAdvisingTemplateEntity>(Lists.newArrayList(repoTemplate.findAll()))
-                .map(new McTemplateEntityToMcTemplateResponse());
+    public List<McAdvisingTemplateResponse> getAll() {
+        Page<McAdvisingTemplateResponse> templates = new PageImpl<McAdvisingTemplateEntity>(Lists.newArrayList(repoTemplate.findAll()))
+                .map(new McAdvisingTemplateEntityToMcAdvisingTemplateResponse());
         return Lists.newArrayList(templates);
     }
 
-    public McTemplateResponse getByMajor(String major) {
+    public McAdvisingTemplateResponse getByMajor(String major) {
         McAdvisingTemplateEntity entity = repoTemplate.findByMajorCode(major);
-        McTemplateResponse response = conversionService.convert(entity,McTemplateResponse.class);
+        McAdvisingTemplateResponse response = conversionService.convert(entity,McAdvisingTemplateResponse.class);
         return response;
     }
 }

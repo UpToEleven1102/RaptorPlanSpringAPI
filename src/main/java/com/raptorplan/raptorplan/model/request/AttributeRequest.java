@@ -4,28 +4,28 @@ import com.raptorplan.raptorplan.model.response.CategoryResponse;
 
 public class AttributeRequest {
     public String name;
-    public Long category;
+    public String code;
 
     public AttributeRequest(){}
 
-    public AttributeRequest(String name, Long category){
+    public AttributeRequest(String name, String code) {
         this.name = name;
-        this.category = category;
+        this.code = code;
     }
 
-    public String getName(){
-        return this.name;
+    public String getName() {
+        return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Long getCategoryId() {
-        return category;
+    public String getCode() {
+        return code;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.category = categoryId;
+    public void setCode(String code) {
+        this.code = code;
     }
 }

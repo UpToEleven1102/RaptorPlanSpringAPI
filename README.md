@@ -70,3 +70,32 @@ ex: ./api/v1/course/discipline/ARTT  //get all ARTT courses
 ## Get transfer template
 
 ./api/v1/trans_template?major={majorCode}&school={schoolCode}
+
+
+## Authentication
+#login (post method)
+./api/login
+
+{
+    "username":"username",
+    "password":"password"
+}
+
+#create user (post method)
+
+./api/user
+
+{
+    "name": "name",
+    "lastName": "last name",
+    "email": "email@email.com",
+    "mNumber": "M number",
+    "password": "password",
+    "role": [{roleId}]
+}
+
+#get user (get method)
+
+./api/user/{userId}
+
+

@@ -3,17 +3,17 @@ package com.raptorplan.raptorplan.model.response;
 
 import java.util.List;
 
-public class TransferTemplateResponse {
+public class McTemplateResponse {
     private Long id;
     private MajorResponse major;
     private UniversityResponse university;
 
     private List<SemesterTemplateResponse> semesters;
 
-    public TransferTemplateResponse() {
+    public McTemplateResponse() {
     }
 
-    public TransferTemplateResponse(Long id, MajorResponse major, UniversityResponse university, List<SemesterTemplateResponse> semesters) {
+    public McTemplateResponse(Long id, MajorResponse major, UniversityResponse university, List<SemesterTemplateResponse> semesters) {
         this.id = id;
         this.major = major;
         this.university = university;

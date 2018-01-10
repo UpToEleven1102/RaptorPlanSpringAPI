@@ -16,7 +16,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /***/ "../../../../../src/app/add-attribute.component/add-attribute.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section>\r\n    <div class=\"grid-container\">\r\n        <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit(form.value)\">\r\n            <div class=\"grid-x grid-margin-x grid-margin-y\">\r\n                <div class=\"cell small-3\">\r\n                    <input type=\"text\" name=\"name\" placeholder=\"Attribute name\" formControlName=\"name\">\r\n                </div>\r\n                <div class=\"cell small-3\">\r\n                    <select name=\"categoryId\" formControlName=\"category\">\r\n                        <option *ngFor=\"let category of categories\" value=\"{{category.id}}\">{{category.name}}</option>\r\n                    </select>\r\n                </div>\r\n                <div class=\"cell small-1\">\r\n                    <input type=\"submit\" class=\"button success\" value=\"Submit\">\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</section>\r\n"
+module.exports = "<section>\r\n    <div class=\"grid-container\">\r\n        <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit(form.value)\">\r\n            <div class=\"grid-x grid-margin-x grid-margin-y\">\r\n                <div class=\"cell small-3\">\r\n                    <input type=\"text\" placeholder=\"Attribute name\" formControlName=\"name\">\r\n                </div>\r\n                <div class=\"cell small-3\">\r\n                  <input type=\"text\" placeholder=\"Attribute code\" formControlName=\"code\">\r\n                </div>\r\n                <div class=\"cell small-1\">\r\n                    <input type=\"submit\" class=\"button success\" value=\"Submit\">\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -51,7 +51,7 @@ var AddAttributeComponent = (function () {
         var _this = this;
         this.form = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormGroup */]({
             name: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('[\\w\\-\\s\\/]+')),
-            category: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */](1)
+            code: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern('[\\w\\-\\s\\/]+'))
         });
         this.service.getCategories().subscribe(function (categories) {
             _this.categories = categories;
@@ -312,6 +312,152 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
+/***/ "../../../../../src/app/add-transfer-template/add-transfer-template.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/add-transfer-template/add-transfer-template.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"grid-container\">\r\n  <form [formGroup]=\"form\" (submit)=\"onSubmit(form.value)\">\r\n    <div class=\"grid-x\">\r\n      <select formControlName=\"university\">\r\n        <option *ngFor=\"let university of universities\" value=\"{{university.code}}\">{{university.code}} -\r\n          {{university.name}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n\r\n    <div class=\"grid-x\">\r\n      <select formControlName=\"major\">\r\n        <option *ngFor=\"let major of majors\" value=\"{{major.code}}\">{{major.code}} - {{major.name}}</option>\r\n      </select>\r\n    </div>\r\n\r\n    <div formArrayName=\"semesters\">\r\n      <div *ngFor=\"let control of form.controls.semesters.controls, let i = index\" class=\"grid-x grid-margin-x\">\r\n        <div class=\"cell medium-11\" [formGroupName]=\"i\">\r\n          <div class=\"card\" style=\"padding: 10px;\">\r\n            <div formArrayName=\"attributes\">\r\n              <div class=\"card-divider\" style=\"margin-bottom: 10px;\">\r\n                Attributes\r\n              </div>\r\n              <div class=\"grid-x grid-margin-x\"\r\n                   *ngFor=\"let attributeControl of control.controls.attributes.controls, let j = index\">\r\n                <div [formGroupName]=\"j\" class=\"cell medium-11\">\r\n                  <select formControlName=\"id\">\r\n                    <option *ngFor=\"let attribute of attributes\" value=\"{{attribute.id}}\">{{attribute.name}}</option>\r\n                  </select>\r\n                </div>\r\n                <div class=\"cell medium-1\">\r\n                  <a (click)=\"removeAttribute(i,j)\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></a>\r\n                </div>\r\n              </div>\r\n\r\n              <div class=\"grid-x\">\r\n                <a (click)=\"addAttribute(i)\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i></a>\r\n              </div>\r\n            </div>\r\n            <div formArrayName=\"courses\">\r\n              <div class=\"card-divider\" style=\"margin-bottom: 10px;\">\r\n                Courses\r\n              </div>\r\n              <div *ngFor=\"let courseControl of control.controls.courses.controls, let j = index\">\r\n                <div [formGroupName]=\"j\">\r\n                  <div class=\"grid-x grid-margin-x\">\r\n                    <div class=\"cell medium-11\">\r\n                      <select #discipline (change)=\"loadCourses(discipline.value,j)\">\r\n                        <option *ngFor=\"let discipline of disciplines\" value=\"{{discipline.code}}\">{{discipline.name}}\r\n                        </option>\r\n                      </select>\r\n                    </div>\r\n                    <div class=\"cell medium-1\">\r\n                      <a (click)=\"removeCourse(i,j)\"><i class=\"fa fa-minus\" aria-hidden=\"true\"></i></a>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"grid-x\">\r\n                    <div *ngIf=\"courses[j]\" class=\"cell medium-11\">\r\n                      <select formControlName=\"id\">\r\n                        <option *ngFor=\"let course of courses[j]\" value=\"{{course.id}}\">{{course.code}} - {{course.title}}\r\n                        </option>\r\n                      </select>\r\n                    </div>\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n\r\n              <div class=\"grid-x\">\r\n                <a (click)=\"addCourse(i)\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i></a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"cell medium-1\">\r\n          <a (click)=\"removeSemester(i)\"><i class=\"fa fa-minus-circle\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n      </div>\r\n      <div>\r\n        <a (click)=\"addSemester()\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i> New semester</a>\r\n      </div>\r\n    </div>\r\n\r\n    <input type=\"submit\" class=\"button\">\r\n  </form>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/add-transfer-template/add-transfer-template.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddTransferTemplateComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_attribute_service__ = __webpack_require__("../../../../../src/app/service/attribute.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_university_service__ = __webpack_require__("../../../../../src/app/service/university.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_major_service__ = __webpack_require__("../../../../../src/app/service/major.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_course_service__ = __webpack_require__("../../../../../src/app/service/course.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__service_discipline_service__ = __webpack_require__("../../../../../src/app/service/discipline.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__service_transfer_template_service__ = __webpack_require__("../../../../../src/app/service/transfer-template.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+var AddTransferTemplateComponent = (function () {
+    function AddTransferTemplateComponent(attributeService, universityService, transferTemplateService, disciplineService, majorService, courseService, _fb) {
+        this.attributeService = attributeService;
+        this.universityService = universityService;
+        this.transferTemplateService = transferTemplateService;
+        this.disciplineService = disciplineService;
+        this.majorService = majorService;
+        this.courseService = courseService;
+        this._fb = _fb;
+        this.courses = [];
+    }
+    AddTransferTemplateComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.attributeService.getAll().subscribe(function (response) { _this.attributes = response; });
+        this.universityService.getAll().subscribe(function (response) { _this.universities = response; });
+        this.majorService.getAll().subscribe(function (response) { _this.majors = response; });
+        this.disciplineService.getDisciplines().subscribe(function (response) { return _this.disciplines = response; });
+        this.form = this._fb.group({
+            university: this._fb.control('UMD'),
+            major: this._fb.control('CMSC'),
+            semesters: this._fb.array([])
+        });
+    };
+    AddTransferTemplateComponent.prototype.initSemesterGroup = function () {
+        return this._fb.group({
+            attributes: this._fb.array([this.initAttributeGroup()]),
+            courses: this._fb.array([this.initCourseGroup()])
+        });
+    };
+    AddTransferTemplateComponent.prototype.initAttributeGroup = function () {
+        return this._fb.group({
+            id: this._fb.control('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required)
+        });
+    };
+    AddTransferTemplateComponent.prototype.initCourseGroup = function () {
+        return this._fb.group({
+            id: this._fb.control('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required)
+        });
+    };
+    AddTransferTemplateComponent.prototype.addSemester = function () {
+        var semesterArray = this.form.controls['semesters'];
+        semesterArray.push(this.initSemesterGroup());
+    };
+    AddTransferTemplateComponent.prototype.removeSemester = function (i) {
+        var semesterArray = this.form.controls['semesters'];
+        semesterArray.removeAt(i);
+    };
+    AddTransferTemplateComponent.prototype.addAttribute = function (i) {
+        var attributeArray = this.form.controls['semesters'].at(i).controls['attributes'];
+        attributeArray.push(this.initAttributeGroup());
+    };
+    AddTransferTemplateComponent.prototype.removeAttribute = function (i, j) {
+        var attributeArray = this.form.controls['semesters'].at(i).controls['attributes'];
+        attributeArray.removeAt(j);
+    };
+    AddTransferTemplateComponent.prototype.addCourse = function (i) {
+        var courseArray = this.form.controls['semesters'].at(i).controls['courses'];
+        courseArray.push(this.initCourseGroup());
+        this.courses.push();
+    };
+    AddTransferTemplateComponent.prototype.removeCourse = function (i, j) {
+        var courseArray = this.form.controls['semesters'].at(i).controls['courses'];
+        courseArray.removeAt(j);
+        this.courses.splice(j, 1);
+    };
+    AddTransferTemplateComponent.prototype.loadCourses = function (discipline, j) {
+        var _this = this;
+        this.courseService.getCoursesByDiscipline(discipline).subscribe(function (response) {
+            _this.courses[j] = (response);
+        });
+    };
+    AddTransferTemplateComponent.prototype.onSubmit = function (formValue) {
+        console.log(formValue);
+        this.transferTemplateService.create(formValue).subscribe(function (response) { return console.log(response); });
+    };
+    return AddTransferTemplateComponent;
+}());
+AddTransferTemplateComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-add-transfer-template',
+        template: __webpack_require__("../../../../../src/app/add-transfer-template/add-transfer-template.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/add-transfer-template/add-transfer-template.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_attribute_service__["a" /* AttributeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_attribute_service__["a" /* AttributeService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_university_service__["a" /* UniversityService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_university_service__["a" /* UniversityService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7__service_transfer_template_service__["a" /* TransferTemplateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__service_transfer_template_service__["a" /* TransferTemplateService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__service_discipline_service__["a" /* DisciplineService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__service_discipline_service__["a" /* DisciplineService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__service_major_service__["a" /* MajorService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__service_major_service__["a" /* MajorService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__service_course_service__["a" /* CourseService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__service_course_service__["a" /* CourseService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === "function" && _g || Object])
+], AddTransferTemplateComponent);
+
+var _a, _b, _c, _d, _e, _f, _g;
+//# sourceMappingURL=add-transfer-template.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/app.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -333,7 +479,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n<section>\n  <div style=\"text-align:center\">\n    <h1>\n      API Management Tool\n    </h1>\n    <a [routerLink]=\"['./course']\" class=\"button\">Manage Courses</a>\n    <a [routerLink]=\"['./attribute']\" class=\"button\">Manage Attributes</a>\n    <a [routerLink]=\"['./mctemplate']\" class=\"button\">Manage MC Templates</a>\n  </div>\n  <hr>\n  <!--<app-add-mc-template></app-add-mc-template>-->\n  <router-outlet></router-outlet>\n</section>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n<section>\n  <div style=\"text-align:center\">\n    <h1>\n      API Management Tool\n    </h1>\n    <a [routerLink]=\"['./course']\" class=\"button\">Manage Courses</a>\n    <a [routerLink]=\"['./attribute']\" class=\"button\">Manage Attributes</a>\n    <a [routerLink]=\"['./mctemplate']\" class=\"button\">Manage MC Templates</a>\n    <a [routerLink]=\"['./transfer']\" class=\"button\">Manage Transfer Template</a>\n  </div>\n  <hr>\n  <!--<app-add-mc-template></app-add-mc-template>-->\n  <router-outlet></router-outlet>\n</section>\n\n"
 
 /***/ }),
 
@@ -396,12 +542,20 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__service_mc_template_service__ = __webpack_require__("../../../../../src/app/service/mc-template.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__service_university_service__ = __webpack_require__("../../../../../src/app/service/university.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__service_major_service__ = __webpack_require__("../../../../../src/app/service/major.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__transfer_template_transfer_template_component__ = __webpack_require__("../../../../../src/app/transfer-template/transfer-template.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__add_transfer_template_add_transfer_template_component__ = __webpack_require__("../../../../../src/app/add-transfer-template/add-transfer-template.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__service_discipline_service__ = __webpack_require__("../../../../../src/app/service/discipline.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__service_transfer_template_service__ = __webpack_require__("../../../../../src/app/service/transfer-template.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -444,7 +598,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__add_course_component_add_course_component__["a" /* AddCourseComponent */],
             __WEBPACK_IMPORTED_MODULE_17__mc_template_list_component_mc_template_list_component__["a" /* McTemplateListComponent */],
             __WEBPACK_IMPORTED_MODULE_18__mc_template_component_mc_template_component__["a" /* McTemplateComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__add_mc_template_component_add_mc_template_component__["a" /* AddMcTemplateComponent */]
+            __WEBPACK_IMPORTED_MODULE_19__add_mc_template_component_add_mc_template_component__["a" /* AddMcTemplateComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__transfer_template_transfer_template_component__["a" /* TransferTemplateComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__add_transfer_template_add_transfer_template_component__["a" /* AddTransferTemplateComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -457,6 +613,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_20__service_mc_template_service__["a" /* McTemplateService */],
             __WEBPACK_IMPORTED_MODULE_21__service_university_service__["a" /* UniversityService */],
             __WEBPACK_IMPORTED_MODULE_22__service_major_service__["a" /* MajorService */],
+            __WEBPACK_IMPORTED_MODULE_25__service_discipline_service__["a" /* DisciplineService */],
+            __WEBPACK_IMPORTED_MODULE_26__service_transfer_template_service__["a" /* TransferTemplateService */],
             { provide: __WEBPACK_IMPORTED_MODULE_15__service_provider_service__["b" /* baseUrlToken */], useValue: __WEBPACK_IMPORTED_MODULE_15__service_provider_service__["a" /* baseUrl */] }
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
@@ -653,7 +811,6 @@ var CourseListComponent = (function () {
             _this.courses = response.content;
             _this.totalPages = response.totalPages;
             _this.processing = false;
-            console.log(_this.courses);
         });
     };
     CourseListComponent.prototype.nextPage = function () {
@@ -708,7 +865,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/course.component/course.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section>\r\n  <div style=\"text-align : center\">\r\n    <a [routerLink]=\"['./add']\" class=\"button success\">Add new course</a>\r\n  </div>\r\n  <router-outlet></router-outlet>\r\n\r\n</section>\r\n"
+module.exports = "<section>\r\n  <div style=\"text-align : center\">\r\n    <a [routerLink]=\"['./add']\" class=\"button success\">Add new course</a>\r\n  </div>\r\n  <router-outlet></router-outlet>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -926,6 +1083,10 @@ McTemplateComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mc_template_component_mc_template_component__ = __webpack_require__("../../../../../src/app/mc-template.component/mc-template.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__add_mc_template_component_add_mc_template_component__ = __webpack_require__("../../../../../src/app/add-mc-template.component/add-mc-template.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__mc_template_list_component_mc_template_list_component__ = __webpack_require__("../../../../../src/app/mc-template-list.component/mc-template-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__transfer_template_transfer_template_component__ = __webpack_require__("../../../../../src/app/transfer-template/transfer-template.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__add_transfer_template_add_transfer_template_component__ = __webpack_require__("../../../../../src/app/add-transfer-template/add-transfer-template.component.ts");
+
+
 
 
 
@@ -956,6 +1117,10 @@ var appRoutes = [
         path: 'mctemplate', component: __WEBPACK_IMPORTED_MODULE_9__mc_template_component_mc_template_component__["a" /* McTemplateComponent */], children: [
             { path: 'add', component: __WEBPACK_IMPORTED_MODULE_10__add_mc_template_component_add_mc_template_component__["a" /* AddMcTemplateComponent */] },
             { path: '', component: __WEBPACK_IMPORTED_MODULE_11__mc_template_list_component_mc_template_list_component__["a" /* McTemplateListComponent */] }
+        ]
+    }, {
+        path: 'transfer', component: __WEBPACK_IMPORTED_MODULE_12__transfer_template_transfer_template_component__["a" /* TransferTemplateComponent */], children: [
+            { path: 'add', component: __WEBPACK_IMPORTED_MODULE_13__add_transfer_template_add_transfer_template_component__["a" /* AddTransferTemplateComponent */] }
         ]
     },
     { path: '', pathMatch: 'full', redirectTo: 'main' }
@@ -1084,6 +1249,12 @@ var CourseService = (function () {
             return response.json();
         });
     };
+    CourseService.prototype.getCoursesByDiscipline = function (discipline) {
+        return this.http.get(this.baseUrl + '/course/discipline/' + discipline, { headers: this.headers })
+            .map(function (response) {
+            return response.json().content;
+        });
+    };
     CourseService.prototype.createCourse = function (formValue) {
         return this.http.post(this.baseUrl + '/course', formValue, { headers: this.headers }).map(function (response) {
             return response.json();
@@ -1107,6 +1278,51 @@ CourseService = __decorate([
 
 var _a;
 //# sourceMappingURL=course.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/service/discipline.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DisciplineService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__provider_service__ = __webpack_require__("../../../../../src/app/service/provider.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+var DisciplineService = (function () {
+    function DisciplineService(http, baseUrl) {
+        this.http = http;
+        this.baseUrl = baseUrl;
+        this.headers = new Headers({ 'Content-type': 'application/json' });
+    }
+    DisciplineService.prototype.getDisciplines = function () {
+        return this.http.get(this.baseUrl + '/discipline', { headers: this.headers }).map(function (response) { return response.json(); });
+    };
+    return DisciplineService;
+}());
+DisciplineService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__provider_service__["b" /* baseUrlToken */])),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, Object])
+], DisciplineService);
+
+var _a;
+//# sourceMappingURL=discipline.service.js.map
 
 /***/ }),
 
@@ -1230,6 +1446,55 @@ var baseUrl = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* env
 
 /***/ }),
 
+/***/ "../../../../../src/app/service/transfer-template.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TransferTemplateService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__provider_service__ = __webpack_require__("../../../../../src/app/service/provider.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+var TransferTemplateService = (function () {
+    function TransferTemplateService(http, baseUrl) {
+        this.http = http;
+        this.baseUrl = baseUrl;
+        this.headers = new Headers({ 'Content-type': 'application/json' });
+    }
+    TransferTemplateService.prototype.create = function (formValue) {
+        return this.http.post(this.baseUrl + '/trans_template', formValue, { headers: this.headers })
+            .map(function (response) { return response.json(); });
+    };
+    TransferTemplateService.prototype.get = function (major, university) {
+        return this.http.get(this.baseUrl + '/trans_template?major=' + major + '&school=' + university);
+    };
+    return TransferTemplateService;
+}());
+TransferTemplateService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__provider_service__["b" /* baseUrlToken */])),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, Object])
+], TransferTemplateService);
+
+var _a;
+//# sourceMappingURL=transfer-template.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/service/university.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1274,6 +1539,61 @@ UniversityService = __decorate([
 
 var _a;
 //# sourceMappingURL=university.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/transfer-template/transfer-template.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/transfer-template/transfer-template.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section>\r\n  <div style=\"text-align: center;\">\r\n    <a [routerLink]=\"['./add']\" class=\"button\">Add transfer template</a>\r\n  </div>\r\n  <router-outlet></router-outlet>\r\n</section>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/transfer-template/transfer-template.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TransferTemplateComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var TransferTemplateComponent = (function () {
+    function TransferTemplateComponent() {
+    }
+    return TransferTemplateComponent;
+}());
+TransferTemplateComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-transfer-template',
+        template: __webpack_require__("../../../../../src/app/transfer-template/transfer-template.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/transfer-template/transfer-template.component.css")]
+    })
+], TransferTemplateComponent);
+
+//# sourceMappingURL=transfer-template.component.js.map
 
 /***/ }),
 

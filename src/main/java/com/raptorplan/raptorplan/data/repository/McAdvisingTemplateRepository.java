@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface McTemplateRepository extends CrudRepository<McAdvisingTemplateEntity,Long> {
+public interface McAdvisingTemplateRepository extends CrudRepository<McAdvisingTemplateEntity,Long> {
     public McAdvisingTemplateEntity findByMajorCode(String major);
 }

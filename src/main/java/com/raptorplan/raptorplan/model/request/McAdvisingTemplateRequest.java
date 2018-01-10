@@ -4,7 +4,7 @@ import com.raptorplan.raptorplan.model.IdHolder;
 
 import java.util.List;
 
-public class McTemplateRequest {
+public class McAdvisingTemplateRequest {
     private String major;
 
     private Integer enFoundationCredit;
@@ -51,9 +51,9 @@ public class McTemplateRequest {
 
     private List<IdHolder> electiveCourses;
 
-    public McTemplateRequest(){}
+    public McAdvisingTemplateRequest(){}
 
-    public McTemplateRequest(String major, Integer enFoundationCredit, Integer mathFoundationCredit, Integer speechFoundationCredit, Integer artDistributionCredit, Integer behavioralDistributionCredit, Integer humanDistributionCredit, Integer scienceDistributionCredit, Integer scienceLabDistributionCredit, Integer programCredit, Integer electivesCredit, Integer institutionalCredit, List<IdHolder> institutionalAttributes, List<IdHolder> englCourses, List<IdHolder> mathCourses, List<IdHolder> speechCourses, List<IdHolder> artCourses, List<IdHolder> behavioralCourses, List<IdHolder> humanCourses, List<IdHolder> scienceCourses, List<IdHolder> scienceLabCourses, List<IdHolder> programCourses, List<IdHolder> electiveCourses) {
+    public McAdvisingTemplateRequest(String major, Integer enFoundationCredit, Integer mathFoundationCredit, Integer speechFoundationCredit, Integer artDistributionCredit, Integer behavioralDistributionCredit, Integer humanDistributionCredit, Integer scienceDistributionCredit, Integer scienceLabDistributionCredit, Integer programCredit, Integer electivesCredit, Integer institutionalCredit, List<IdHolder> institutionalAttributes, List<IdHolder> englCourses, List<IdHolder> mathCourses, List<IdHolder> speechCourses, List<IdHolder> artCourses, List<IdHolder> behavioralCourses, List<IdHolder> humanCourses, List<IdHolder> scienceCourses, List<IdHolder> scienceLabCourses, List<IdHolder> programCourses, List<IdHolder> electiveCourses) {
         this.major = major;
         this.enFoundationCredit = enFoundationCredit;
         this.mathFoundationCredit = mathFoundationCredit;

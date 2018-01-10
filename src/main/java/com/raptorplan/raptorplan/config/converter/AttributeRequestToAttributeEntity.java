@@ -9,6 +9,7 @@ public class AttributeRequestToAttributeEntity implements Converter<AttributeReq
     public AttributeEntity convert(AttributeRequest source) {
         AttributeEntity entity = new AttributeEntity();
         entity.setName(source.getName());
+        entity.setCode(source.getCode());
         return entity;
     }
 }

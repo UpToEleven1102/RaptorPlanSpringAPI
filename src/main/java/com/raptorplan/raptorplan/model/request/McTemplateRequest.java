@@ -4,7 +4,7 @@ import com.raptorplan.raptorplan.model.customObject.SemesterCustom;
 
 import java.util.List;
 
-public class TransferTemplateRequest {
+public class McTemplateRequest {
     private String major;
     private String university;
 

@@ -22,9 +22,11 @@ public class CourseInfoTemplateToCourseInfoTemplateResponse implements Converter
 
         List<CourseResponse> courseResponse = new ArrayList<>();
 
-        source.getCourses().forEach(e->{
-            courseResponse.add(converterCourse.convert(e));
-        });
+        if(source.getCourses()!=null)
+            source.getCourses().forEach(e->{
+                courseResponse.add(converterCourse.convert(e));
+            });
+
         response.setCourses(courseResponse);
         return response;
     }

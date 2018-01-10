@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "H.mc_templates")
-public class McTemplateEntity {
+@Table(name = "H.advising_templates")
+public class McAdvisingTemplateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -23,7 +23,7 @@ public class McTemplateEntity {
     @OneToOne
     private MajorEntity major;
 
-    public McTemplateEntity() {
+    public McAdvisingTemplateEntity() {
     }
 
     public Long getId() {

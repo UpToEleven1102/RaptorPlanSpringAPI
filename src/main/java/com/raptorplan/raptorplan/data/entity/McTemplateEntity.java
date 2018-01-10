@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "H.tran_template")
-public class TransferTemplateEntity {
+@Table(name = "H.mc_template")
+public class McTemplateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private List<SemesterTemplate> semesters;
+    private List<McSemesterTemplate> semesters;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private UniversityEntity university;
@@ -19,10 +19,10 @@ public class TransferTemplateEntity {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private MajorEntity major;
 
-    public TransferTemplateEntity() {
+    public McTemplateEntity() {
     }
 
-    public TransferTemplateEntity(List<SemesterTemplate> semesters, UniversityEntity university, MajorEntity major) {
+    public McTemplateEntity(List<McSemesterTemplate> semesters, UniversityEntity university, MajorEntity major) {
         this.semesters = semesters;
         this.university = university;
         this.major = major;
@@ -36,11 +36,11 @@ public class TransferTemplateEntity {
         this.id = id;
     }
 
-    public List<SemesterTemplate> getSemesters() {
+    public List<McSemesterTemplate> getSemesters() {
         return semesters;
     }
 
-    public void setSemesters(List<SemesterTemplate> semesters) {
+    public void setSemesters(List<McSemesterTemplate> semesters) {
         this.semesters = semesters;
     }
 

@@ -24,6 +24,4 @@ public class MajorEntityToMajorResponse implements Converter<MajorEntity,MajorRe
 
         return response;
     }
-
-
 }

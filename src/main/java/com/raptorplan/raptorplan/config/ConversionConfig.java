@@ -1,5 +1,6 @@
 package com.raptorplan.raptorplan.config;
 
+import com.raptorplan.raptorplan.auth.converter.*;
 import com.raptorplan.raptorplan.config.converter.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,9 +26,15 @@ public class ConversionConfig {
         converters.add(new MajorRequestToMajorEntity());
         converters.add(new UniversityEntityToUniversityResponse());
         converters.add(new UniversityRequestToUniversityEntity());
-        converters.add(new McTemplateEntityToMcTemplateResponse());
+        converters.add(new McAdvisingTemplateEntityToMcAdvisingTemplateResponse());
         converters.add(new AttributeEntityToAttributeCustom());
         converters.add(new CourseInfoTemplateToCourseInfoTemplateResponse());
+        converters.add(new McTemplateEntityToMcTemplateResponse());
+        converters.add(new UserRequestToUserEntityConverter());
+        converters.add(new UserEntityToUserResponseConverter());
+        converters.add(new RoleEntityToRoleResponse());
+        converters.add(new RoleRequestToRoleEntity());
+        converters.add(new RoleEntityToRoleCustom());
         return converters;
     }
 

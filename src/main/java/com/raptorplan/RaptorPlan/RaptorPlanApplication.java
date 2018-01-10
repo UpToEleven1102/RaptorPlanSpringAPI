@@ -3,13 +3,12 @@ package com.raptorplan.raptorplan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@ComponentScan
-@AutoConfigurationPackage
+@SpringBootApplication()
 public class RaptorPlanApplication extends SpringBootServletInitializer{
 
 	@Override

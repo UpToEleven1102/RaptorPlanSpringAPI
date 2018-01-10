@@ -7,20 +7,20 @@ import com.raptorplan.raptorplan.model.Self;
 import com.raptorplan.raptorplan.model.customObject.AttributeCustom;
 import com.raptorplan.raptorplan.model.customObject.MajorCustom;
 import com.raptorplan.raptorplan.model.response.CourseInfoMcTemplateResponse;
-import com.raptorplan.raptorplan.model.response.McTemplateResponse;
+import com.raptorplan.raptorplan.model.response.McAdvisingTemplateResponse;
 import com.raptorplan.raptorplan.rest.ResourceConstant;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class McTemplateEntityToMcTemplateResponse implements Converter<McAdvisingTemplateEntity,McTemplateResponse> {
+public class McAdvisingTemplateEntityToMcAdvisingTemplateResponse implements Converter<McAdvisingTemplateEntity,McAdvisingTemplateResponse> {
     AttributeEntityToAttributeCustom converterAttribute = new AttributeEntityToAttributeCustom();
     CourseInfoTemplateToCourseInfoTemplateResponse converterCourseInfo = new CourseInfoTemplateToCourseInfoTemplateResponse();
 
     @Override
-    public McTemplateResponse convert(McAdvisingTemplateEntity source) {
-        McTemplateResponse response = new McTemplateResponse();
+    public McAdvisingTemplateResponse convert(McAdvisingTemplateEntity source) {
+        McAdvisingTemplateResponse response = new McAdvisingTemplateResponse();
 
         response.setId(source.getId());
 
@@ -45,9 +45,7 @@ public class McTemplateEntityToMcTemplateResponse implements Converter<McAdvisin
         source.getCourseInfo().forEach(e -> {
             courseInfo.add(converterCourseInfo.convert(e));
         });
-
         response.setCourseInfo(courseInfo);
-
         return response;
     }
 }

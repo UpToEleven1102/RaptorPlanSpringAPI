@@ -6,7 +6,7 @@ import com.raptorplan.raptorplan.model.customObject.MajorCustom;
 
 import java.util.List;
 
-public class McTemplateResponse {
+public class McAdvisingTemplateResponse {
     private Long id;
 
     private MajorCustom major;
@@ -17,14 +17,14 @@ public class McTemplateResponse {
 
     private List<CourseInfoMcTemplateResponse> courseInfo;
 
-    public McTemplateResponse(Long id, MajorCustom major, List<AttributeCustom> instAttributes, List<CourseInfoMcTemplateResponse> courseInfo) {
+    public McAdvisingTemplateResponse(Long id, MajorCustom major, List<AttributeCustom> instAttributes, List<CourseInfoMcTemplateResponse> courseInfo) {
         this.id = id;
         this.major = major;
         this.instAttributes = instAttributes;
         this.courseInfo = courseInfo;
     }
 
-    public McTemplateResponse() {
+    public McAdvisingTemplateResponse() {
     }
 
     public Long getId() {

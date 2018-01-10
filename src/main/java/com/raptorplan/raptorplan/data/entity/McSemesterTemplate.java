@@ -8,20 +8,20 @@ import java.util.List;
 
 @Entity
 @Table(name = "H.semester")
-public class SemesterTemplate {
+public class McSemesterTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<AttributeEntity> attributes;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<CourseEntity> courses;
 
-    public SemesterTemplate() {}
+    public McSemesterTemplate() {}
 
-    public SemesterTemplate(Long id, List<AttributeEntity> attributes, List<CourseEntity> courses) {
+    public McSemesterTemplate(Long id, List<AttributeEntity> attributes, List<CourseEntity> courses) {
         this.id = id;
         this.attributes = attributes;
         this.courses = courses;
