@@ -1,6 +1,7 @@
 package com.raptorplan.raptorplan.auth.service;
 
 import com.raptorplan.raptorplan.auth.model.RoleEntity;
+import com.raptorplan.raptorplan.auth.model.custom.RoleCustom;
 import com.raptorplan.raptorplan.auth.model.request.RoleRequest;
 import com.raptorplan.raptorplan.auth.model.response.RoleResponse;
 import com.raptorplan.raptorplan.auth.model.response.UserResponse;
@@ -41,6 +42,15 @@ public class RoleService {
         });
 
         response.setUsers(userResponses);
+        return response;
+    }
+
+    public List<RoleCustom> getAll(){
+        List<RoleCustom> response = new ArrayList<>();
+        repoRole.findAll().forEach(roleEntity -> {
+            response.add(conversionService.convert(roleEntity,RoleCustom.class));
+        });
+
         return response;
     }
 

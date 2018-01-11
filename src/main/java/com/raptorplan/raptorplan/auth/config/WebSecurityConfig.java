@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/assets/**", "/webjars/**").permitAll()
+                .antMatchers("/**", "/assets/**", "/webjars/**").permitAll()
                 .antMatchers("/users/{userId}").access("@authz.check(#userId,principal)")
                 .mvcMatchers("/admin").denyAll()
                 .anyRequest().authenticated()
@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .httpBasic()
                 .and()
                 .formLogin()
-                .loginPage("/")
+                .loginPage("/login")
                 .permitAll()
                 .and()
                 .headers();

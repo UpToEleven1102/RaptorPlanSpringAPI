@@ -46,9 +46,23 @@ public class UserServiceImpl implements UserService {
         return conversionService.convert(entity, UserResponse.class);
     }
 
+    public UserResponse findById(Long id) {
+        UserEntity entity = repoUser.findOne(id);
+        return conversionService.convert(entity, UserResponse.class);
+    }
+
     @Override
     public void delete(String email) {
         UserEntity entity = repoUser.findByEmail(email);
         repoUser.delete(entity);
+    }
+
+    @Override
+    public List<UserResponse> getAll() {
+        List<UserResponse> response = new ArrayList<>();
+        repoUser.findAll().forEach(userEntity -> {
+            response.add(conversionService.convert(userEntity,UserResponse.class));
+        });
+        return response;
     }
 }

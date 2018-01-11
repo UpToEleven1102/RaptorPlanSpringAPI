@@ -1,5 +1,6 @@
 package com.raptorplan.raptorplan.auth.rest;
 
+import com.raptorplan.raptorplan.auth.model.custom.RoleCustom;
 import com.raptorplan.raptorplan.auth.model.request.RoleRequest;
 import com.raptorplan.raptorplan.auth.model.response.RoleResponse;
 import com.raptorplan.raptorplan.auth.service.RoleService;
@@ -9,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -25,6 +28,11 @@ public class RoleController {
     consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RoleResponse> create(@RequestBody RoleRequest requestBody) {
         return new ResponseEntity<RoleResponse>(roleService.create(requestBody), HttpStatus.CREATED);
+    }
+
+    @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<List<RoleCustom>> getAll(){
+        return new ResponseEntity<List<RoleCustom>>(roleService.getAll(),HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
