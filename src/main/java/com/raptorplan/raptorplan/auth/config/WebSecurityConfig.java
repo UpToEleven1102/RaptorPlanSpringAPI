@@ -17,22 +17,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     private UserDetailsService userDetailsService;
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and()
                 .authorizeRequests()
-                .antMatchers("/**", "/assets/**", "/webjars/**").permitAll()
+                .antMatchers( "/assets/**", "/webjars/**").permitAll()
                 .antMatchers("/users/{userId}").access("@authz.check(#userId,principal)")
                 .mvcMatchers("/admin").denyAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
+                .and().httpBasic()
+//                .and().addFilter(new CsrfHeaderFilter())
                 .and()
-                .httpBasic()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .headers();
+                .csrf().disable();
+//                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+//                .and()
+//                .headers();
 //                .contentSecurityPolicy("default-src 'self' " +
 //                        "https://ajax.googleapis.com " +
 //                        "https://cdnjs.cloudflare.com; " +

@@ -11,7 +11,7 @@ public interface UserService {
 
     public UserResponse findByEmail(String email);
 
-    public void delete(String email);
+    public void delete(Long id);
 
     public UserResponse findById(Long id);
 

@@ -52,9 +52,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(String email) {
-        UserEntity entity = repoUser.findByEmail(email);
-        repoUser.delete(entity);
+    public void delete(Long id) {
+        repoUser.delete(id);
     }
 
     @Override

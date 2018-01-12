@@ -73,7 +73,8 @@ ex: ./api/v1/course/discipline/ARTT  //get all ARTT courses
 
 
 ## Authentication
-##login (post method)
+..
+#login (post method)
 ./api/login
 
 {
@@ -81,7 +82,7 @@ ex: ./api/v1/course/discipline/ARTT  //get all ARTT courses
     "password":"password"
 }
 
-##create user (post method)
+#create user (post method)
 
 ./api/user
 
@@ -91,19 +92,24 @@ ex: ./api/v1/course/discipline/ARTT  //get all ARTT courses
     "email": "email@email.com",
     "mNumber": "M number",
     "password": "password",
-    "role": [{roleId}]
+    "role": [roleId1, roleId2]
 }
 
-##get user (get method)
+#get user (get method)
 
 ./api/user/{userId}
 
-##get all users(get)
+#delete user (delete method)
+
+./api/user/{userId}
+
+#get all users(get)
 
 ./api/user
 
-##get all userRoles
+#get all userRoles
 
 ./api/role
+
 
 

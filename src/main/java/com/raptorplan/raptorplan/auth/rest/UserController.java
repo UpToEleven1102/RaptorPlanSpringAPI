@@ -1,5 +1,6 @@
 package com.raptorplan.raptorplan.auth.rest;
 
+import com.raptorplan.raptorplan.auth.model.custom.LoginCustom;
 import com.raptorplan.raptorplan.auth.model.request.UserRequest;
 import com.raptorplan.raptorplan.auth.model.response.UserResponse;
 import com.raptorplan.raptorplan.auth.config.SecurityService;
@@ -10,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin
@@ -58,6 +61,16 @@ public class UserController {
     public ResponseEntity<UserResponse> get(@PathVariable Long userId) {
         UserResponse response = userService.findById(userId);
         return new ResponseEntity<UserResponse>(response, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/{userId}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long userId) {
+        userService.delete(userId);
+    }
+
+    @RequestMapping(path = "/principal")
+    public Principal getPrincipal(Principal user){
+        return user;
     }
 
 }
